@@ -7,6 +7,15 @@ type CheckState = { stage: "checking" | "signed-out" | "signed-in" | "error" | "
 
 export default function AuthStatusPage() {
   const [state, setState] = useState<CheckState>({ stage: "checking" });
+  const [signingOut, setSigningOut] = useState(false);
+  async function signOut() {
+    const client = getBrowserSupabase();
+    if (!client) return;
+    setSigningOut(true);
+    const { error } = await client.auth.signOut();
+    setSigningOut(false);
+    setState(error ? { stage: "error", detail: "Sign-out failed. Please try again." } : { stage: "signed-out" });
+  }
   useEffect(() => {
     let active = true;
     const supabase = getBrowserSupabase();
@@ -24,8 +33,7 @@ export default function AuthStatusPage() {
       }
     };
     void inspect();
-    const { data: subscription } = supabase.auth.onAuthStateChange(() => { void inspect(); });
-    return () => { active = false; subscription.subscription.unsubscribe(); };
+    return () => { active = false; };
   }, []);
   return <main className="shell">
     <header>
@@ -38,9 +46,11 @@ export default function AuthStatusPage() {
         <h2>Signed in</h2><p>Account: {state.email ?? "Verified user"}</p>
         <p>Database read test: {state.access === "allowed" ? "Query successful" : "Query failed"}</p>
         {state.detail && <p className="muted">{state.detail}</p>}
-        <p className="muted">A successful query confirms this session can access the endpoint, not that unauthorized users are denied. Owner-only policy testing remains a separate security checkpoint.</p>
+        <p className="muted">A successful query confirms endpoint access, not that other users are denied. Owner-only authorization must be tested separately.</p>
+        <button type="button" disabled={signingOut} onClick={() => { void signOut(); }} style={{padding:"12px 18px",borderRadius:10,border:0,cursor:"pointer"}}>{signingOut ? "Signing out…" : "Sign out"}</button>
       </section>}
       {state.stage === "error" && <p className="muted" role="status">{state.detail}</p>}
+      {state.stage === "signed-out" && <p><Link href="/auth/sign-in">Go to sign in →</Link></p>}
       <p><Link href="/">← Return to preview</Link></p>
     </header>
   </main>;
