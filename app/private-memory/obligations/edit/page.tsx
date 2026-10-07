@@ -14,7 +14,7 @@ export default function EditObligation(){
   if(authError||!user.user){setMessage("Authentication required.");return;}
   const {data,error}=await db.from("obligations").select("id,title,status,next_action").eq("visibility","safe_preview").order("title");
   if(error){setMessage("Unable to load obligations.");return;}
-  setItems(data??[]);setSelected(previous=>previous||(data?.[0]?.id??""));
+  setItems(data??[]);setSelected(previous=>previous||(data?.find(i=>i.id===new URLSearchParams(window.location.search).get("id"))?.id??data?.[0]?.id??""));
   setMessage(data?.length?"":"No editable obligations found.");
  }
  useEffect(()=>{void load();},[]);
