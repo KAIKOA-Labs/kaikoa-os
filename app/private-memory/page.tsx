@@ -36,7 +36,6 @@ export default function PrivateMemoryPage() {
  },[]);
  return <main className="shell"><header><p className="eyebrow">KAIKOA OS · MILESTONE 003</p><h1>Private memory.</h1>
  <p className="muted">Your authenticated workspace · records from PostgreSQL</p></header>
- <nav className="nav" aria-label="Private workspace"><div><Link href="/private-memory">Overview</Link><Link href="/private-memory/edit">Edit assets</Link><Link href="/private-memory/history">Change history</Link><Link href="/auth/status">Account</Link></div></nav>
  {stage==="checking"||stage==="loading"?<p role="status">Checking private access…</p>:null}
  {stage==="signed-out"?<section className="panel"><h2>Authentication required</h2><p>This page requires a signed-in account.</p><Link href="/auth/sign-in">Sign in →</Link></section>:null}
  {stage==="error"?<section className="panel" role="alert"><h2>Unable to load records</h2><p>{errorText}</p></section>:null}
