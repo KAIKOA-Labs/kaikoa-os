@@ -35,10 +35,11 @@ export default function PrivateMemoryPage() {
    return()=>{active=false;};
  },[]);
  return <main className="shell"><header><p className="eyebrow">KAIKOA OS · MILESTONE 003</p><h1>Private memory.</h1>
- <p className="muted">Read-only database verification. The public dashboard is not connected to this view.</p></header>
+ <p className="muted">Your authenticated workspace · records from PostgreSQL</p></header>
+ <nav className="nav" aria-label="Private workspace"><div><Link href="/private-memory">Overview</Link><Link href="/private-memory/edit">Edit assets</Link><Link href="/private-memory/history">Change history</Link><Link href="/auth/status">Account</Link></div></nav>
  {stage==="checking"||stage==="loading"?<p role="status">Checking private access…</p>:null}
  {stage==="signed-out"?<section className="panel"><h2>Authentication required</h2><p>This page requires a signed-in account.</p><Link href="/auth/sign-in">Sign in →</Link></section>:null}
  {stage==="error"?<section className="panel" role="alert"><h2>Unable to load records</h2><p>{errorText}</p></section>:null}
  {stage==="ready"?<><section className="panel"><h2>Entities · {records.length}</h2>{records.length===0?<p>No accessible records found.</p>:records.map(r=><div className="item" key={r.id}><strong>{r.name}</strong><p>{r.subtype??"Entity"} · {r.status}</p></div>)}</section><section className="panel"><h2>Obligations · {obligations.length}</h2>{obligations.map(o=><div className="item" key={o.id}><strong>{o.title}</strong><p>{o.status}</p></div>)}</section></>:null}
- <p><Link href="/auth/status">Check account status →</Link></p><p><Link href="/">← Return to preview</Link></p></main>;
+<p><Link href="/">← Return to preview</Link></p></main>;
 }
