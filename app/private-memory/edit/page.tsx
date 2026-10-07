@@ -19,7 +19,7 @@ export default function EditAssetPage(){
   if(error){setStatus("Unable to retrieve editable assets.");return;}
   setAssets(data??[]);
   setSelected(previous=>previous||(data?.[0]?.id??""));
-  setStatus(data?.length?"Ready to edit.":"No editable records found.");
+  setStatus(data?.length?"":"No editable records found.");
  }
  useEffect(()=>{void load();},[]);
  useEffect(()=>{setDescription(assets.find(a=>a.id===selected)?.description??"");},[selected,assets]);
@@ -38,6 +38,6 @@ export default function EditAssetPage(){
  <label htmlFor="asset">Asset</label><select id="asset" value={selected} onChange={e=>setSelected(e.target.value)} style={{display:"block",margin:"12px 0 24px",padding:12,background:"#15191f",color:"white",border:"1px solid #3a404a",borderRadius:8}}>{assets.map(a=><option key={a.id} value={a.id}>{a.name}</option>)}</select>
  <label htmlFor="description">Description</label><textarea id="description" maxLength={1000} rows={5} value={description} onChange={e=>setDescription(e.target.value)} disabled={!selected||busy} style={{display:"block",width:"100%",margin:"12px 0 20px",padding:14,background:"#15191f",color:"white",border:"1px solid #3a404a",borderRadius:8}}/>
  <button type="button" disabled={!selected||busy} onClick={()=>void save()} style={{padding:"12px 20px",borderRadius:8,border:0,fontWeight:700,cursor:"pointer"}}>{busy?"Saving…":"Save description"}</button>
- <p role="status" className="muted">{status}</p>
+ {status && <p role="status" className="muted">{status}</p>}
  </section></main>;
 }
