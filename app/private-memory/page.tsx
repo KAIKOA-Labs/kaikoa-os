@@ -51,7 +51,7 @@ export default function PrivateMemoryPage() {
    })().catch(()=>{if(active){setStage("error");setErrorText("Database check could not complete.");}});
    return()=>{active=false;};
  },[]);
- return <main className="shell"><header><p className="eyebrow">KAIKOA OS · MILESTONE 003</p><h1>Private memory.</h1>
+ return <main className="shell"><header><p className="eyebrow">KAIKOA OS · PRIVATE WORKSPACE</p><h1>Private OS.</h1>
  <p className="muted">Your authenticated workspace · records from PostgreSQL</p></header>
  {stage==="checking"||stage==="loading"?<p role="status">Checking private access…</p>:null}
  {stage==="signed-out"?<section className="panel"><h2>Authentication required</h2><p>This page requires a signed-in account.</p><Link href="/auth/sign-in">Sign in →</Link></section>:null}
