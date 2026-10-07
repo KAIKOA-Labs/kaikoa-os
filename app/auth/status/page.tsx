@@ -51,7 +51,7 @@ export default function AuthStatusPage() {
       </section>}
       {state.stage === "error" && <p className="muted" role="status">{state.detail}</p>}
       {state.stage === "signed-out" && <p><Link href="/auth/sign-in">Go to sign in →</Link></p>}
-      <p><Link href="/private-memory">← Back to Overview</Link></p>
+      
     </header>
   </main></>;
 }
