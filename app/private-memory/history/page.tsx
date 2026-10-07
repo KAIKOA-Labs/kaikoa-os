@@ -34,5 +34,5 @@ export default function HistoryPage(){
  <p><small>Before</small></p><p style={{whiteSpace:"pre-wrap"}}>{change.previous_value||"(empty)"}</p>
  <p><small>After</small></p><p style={{whiteSpace:"pre-wrap"}}>{change.new_value||"(empty)"}</p>
  </div>)}</section>}
- <p><Link href="/private-memory/edit">← Edit an asset</Link></p><p><Link href="/private-memory">Private memory →</Link></p></main>;
+ </main>;
 }
