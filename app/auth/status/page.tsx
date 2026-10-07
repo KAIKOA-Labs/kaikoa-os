@@ -35,7 +35,7 @@ export default function AuthStatusPage() {
     void inspect();
     return () => { active = false; };
   }, []);
-  return <main className="shell">
+  return <><div className="workspaceNavWrap"><nav className="workspaceNav" aria-label="Private workspace navigation"><Link className="workspaceBrand" href="/">KAIKOA OS</Link><div className="workspaceNavLinks"><Link className="workspaceNavLink" href="/private-memory">Overview</Link><Link className="workspaceNavLink" href="/private-memory/edit">Edit Assets</Link><Link className="workspaceNavLink" href="/private-memory/history">Change History</Link><Link className="workspaceNavLink active" aria-current="page" href="/auth/status">Account</Link></div></nav></div><main className="shell">
     <header>
       <p className="eyebrow">KAIKOA OS · SECURITY CHECK</p>
       <h1>Account status.</h1>
@@ -51,7 +51,7 @@ export default function AuthStatusPage() {
       </section>}
       {state.stage === "error" && <p className="muted" role="status">{state.detail}</p>}
       {state.stage === "signed-out" && <p><Link href="/auth/sign-in">Go to sign in →</Link></p>}
-      <p><Link href="/">← Return to preview</Link></p>
+      <p><Link href="/private-memory">← Back to Overview</Link></p>
     </header>
-  </main>;
+  </main></>;
 }
