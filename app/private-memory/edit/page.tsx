@@ -1,13 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import { getBrowserSupabase } from "@/lib/supabase-browser";
 
 type Asset = {id:string;name:string;description:string|null};
 export default function EditAssetPage(){
- const searchParams=useSearchParams();
- const initialSlug=searchParams.get("asset");
  const [assets,setAssets]=useState<Asset[]>([]);
  const [selected,setSelected]=useState("");
  const [description,setDescription]=useState("");
@@ -21,7 +18,7 @@ export default function EditAssetPage(){
   const {data,error}=await db.from("entities").select("id,name,description").eq("visibility","safe_preview").order("name");
   if(error){setStatus("Unable to retrieve editable assets.");return;}
   setAssets(data??[]);
-  setSelected(previous=>previous||(data?.find(a=>a.name.toLowerCase().replaceAll(" ","-")===initialSlug)?.id??data?.[0]?.id??""));
+  setSelected(previous=>previous||(data?.find(a=>a.name.toLowerCase().replaceAll(" ","-")===new URLSearchParams(window.location.search).get("asset"))?.id??data?.[0]?.id??""));
   setStatus(data?.length?"":"No editable records found.");
  }
  useEffect(()=>{void load();},[]);
