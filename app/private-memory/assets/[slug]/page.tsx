@@ -34,7 +34,7 @@ export default function PrivateAssetDetail(){
  {state!=="ready"?<section className="panel"><p role="status">{state}</p>{state==="Authentication required."&&<Link href="/auth/sign-in">Sign in →</Link>}</section>:asset&&<>
  <header><p className="eyebrow">{asset.subtype?.replaceAll("_"," ")??"Asset"} · Private inventory</p><h1>{asset.name}</h1><p className="muted">{asset.status}</p></header>
  <section className="panel"><h2>Asset details</h2><p style={{whiteSpace:"pre-wrap"}}>{asset.description||"No description recorded."}</p>{asset.location&&<p className="muted">Location: {asset.location}</p>}<p><Link href={"/private-memory/edit?asset="+encodeURIComponent(asset.slug)}>Edit description →</Link></p></section>
- <section className="panel"><h2>Linked obligations · {items.length}</h2>{items.length===0?<p className="muted">No linked obligations recorded.</p>:items.map(o=><div className="item" key={o.id}><div><strong>{o.title}</strong><p>{o.next_action}</p></div><span className="status">{o.status}</span></div>)}</section>
+ <section className="panel" id="obligations"><h2>Linked obligations · {items.length}</h2>{items.length===0?<p className="muted">No linked obligations recorded.</p>:items.map(o=><div className="item" key={o.id}><div><strong>{o.title}</strong><p>{o.next_action}</p></div><span className="status">{o.status}</span></div>)}</section>
  </>}
  </main>;
 }
