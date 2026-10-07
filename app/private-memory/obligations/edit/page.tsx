@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { getBrowserSupabase } from "@/lib/supabase-browser";
 type Obligation={id:string;title:string;status:string;next_action:string|null};
 export default function EditObligation(){
@@ -35,5 +34,5 @@ export default function EditObligation(){
  <label htmlFor="next-action">Next Action</label><textarea id="next-action" maxLength={1000} rows={5} value={action} onChange={e=>setAction(e.target.value)} disabled={!selected||busy} style={{display:"block",width:"100%",margin:"12px 0 20px",padding:14,background:"#15191f",color:"white",border:"1px solid #3a404a",borderRadius:8}}/>
  <button type="button" disabled={!selected||busy||!action.trim()} onClick={()=>void save()} style={{padding:"12px 20px",borderRadius:8,border:0,fontWeight:700,cursor:"pointer"}}>{busy?"Saving…":"Save next action"}</button>
  {message&&<p role="status" className="muted">{message}</p>}
- </section><p><Link href="/private-memory">Overview →</Link></p></main>;
+ </section></main>;
 }
