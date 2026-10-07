@@ -39,5 +39,5 @@ export default function EditAssetPage(){
  <label htmlFor="description">Description</label><textarea id="description" maxLength={1000} rows={5} value={description} onChange={e=>setDescription(e.target.value)} disabled={!selected||busy} style={{display:"block",width:"100%",margin:"12px 0 20px",padding:14,background:"#15191f",color:"white",border:"1px solid #3a404a",borderRadius:8}}/>
  <button type="button" disabled={!selected||busy} onClick={()=>void save()} style={{padding:"12px 20px",borderRadius:8,border:0,fontWeight:700,cursor:"pointer"}}>{busy?"Saving…":"Save description"}</button>
  <p role="status" className="muted">{status}</p>
- </section><p><Link href="/private-memory">← Private memory</Link></p></main>;
+ </section></main>;
 }
