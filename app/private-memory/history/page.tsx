@@ -4,6 +4,8 @@ import Link from "next/link";
 import { getBrowserSupabase } from "@/lib/supabase-browser";
 type Change={id:string;record_id:string;kind:"asset"|"obligation";field_name:string;previous_value:string|null;new_value:string|null;changed_at:string};
 type Named={id:string;name?:string;title?:string};
+const statusLabels:Record<string,string>={ATTENTION:"Needs Attention",UPCOMING:"Upcoming",IN_PROGRESS:"In Progress",WAITING_ON:"Waiting On"};
+function displayValue(change:Change,value:string|null){if(!value)return "(empty)";return change.field_name==="status"?(statusLabels[value]??value):value;}
 export default function HistoryPage(){
  const [state,setState]=useState("Checking account…");
  const [changes,setChanges]=useState<Change[]>([]);
@@ -33,7 +35,7 @@ export default function HistoryPage(){
  <section className="panel"><h2>Recorded changes · {changes.length}</h2>{changes.length===0?<p className="muted">No changes recorded yet.</p>:changes.map(change=><div className="item" key={change.kind+change.id}>
  <strong>{names[change.record_id]??"Unknown record"} · {change.field_name.replaceAll("_"," ")}</strong>
  <p className="muted">{new Date(change.changed_at).toLocaleString()}</p>
- <p><small>Before</small></p><p style={{whiteSpace:"pre-wrap"}}>{change.previous_value||"(empty)"}</p>
- <p><small>After</small></p><p style={{whiteSpace:"pre-wrap"}}>{change.new_value||"(empty)"}</p>
+ <p><small>Before</small></p><p style={{whiteSpace:"pre-wrap"}}>{displayValue(change,change.previous_value)}</p>
+ <p><small>After</small></p><p style={{whiteSpace:"pre-wrap"}}>{displayValue(change,change.new_value)}</p>
  </div>)}</section>}</main>;
 }
