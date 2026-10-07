@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { getBrowserSupabase } from "@/lib/supabase-browser";
 
-type Asset = {id:string;name:string;description:string|null};
+type Asset = {id:string;slug:string;name:string;description:string|null};
 export default function EditAssetPage(){
  const [assets,setAssets]=useState<Asset[]>([]);
  const [selected,setSelected]=useState("");
@@ -15,10 +15,10 @@ export default function EditAssetPage(){
   if(!db){setStatus("Authentication is not configured.");return;}
   const {data:user,error:authError}=await db.auth.getUser();
   if(authError||!user.user){setStatus("Please sign in before editing.");return;}
-  const {data,error}=await db.from("entities").select("id,name,description").eq("visibility","safe_preview").order("name");
+  const {data,error}=await db.from("entities").select("id,slug,name,description").eq("visibility","safe_preview").order("name");
   if(error){setStatus("Unable to retrieve editable assets.");return;}
   setAssets(data??[]);
-  setSelected(previous=>previous||(data?.find(a=>a.name.toLowerCase().replaceAll(" ","-")===new URLSearchParams(window.location.search).get("asset"))?.id??data?.[0]?.id??""));
+  setSelected(previous=>previous||(data?.find(a=>a.slug===new URLSearchParams(window.location.search).get("asset"))?.id??data?.[0]?.id??""));
   setStatus(data?.length?"":"No editable records found.");
  }
  useEffect(()=>{void load();},[]);
