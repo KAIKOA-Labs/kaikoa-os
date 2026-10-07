@@ -1,50 +1,14 @@
 import type { Entity, Obligation, Relationship } from "./model";
-
-export const entities: Entity[] = [
-  { id: "eduardo", name: "Eduardo", type: "person", subtype: "person", status: "ACTIVE", dataQuality: "verified" },
-  { id: "kaikoa", name: "KAIKOA", type: "asset", subtype: "vessel", status: "ACTIVE", location: "CM4 · Baie de Phaëton · Tahiti", dataQuality: "partial" },
-  { id: "burgos", name: "Burgos Ocean View", type: "asset", subtype: "property", status: "OWNED · COMPLETION OUTSTANDING", location: "Burgos · Siargao", dataQuality: "partial" },
-  { id: "kaikoa-com", name: "kaikoa.com", type: "asset", subtype: "digital_asset", status: "OWNED · CRITICAL", dataQuality: "partial" },
-  { id: "spanish-passport", name: "Spanish Passport", type: "credential", subtype: "passport", status: "ACTIVE", dataQuality: "partial" }
-];
-
-export const relationships: Relationship[] = [
-  { id: "r1", subjectId: "eduardo", type: "OWNS", objectId: "kaikoa" },
-  { id: "r2", subjectId: "eduardo", type: "OWNS", objectId: "burgos" },
-  { id: "r3", subjectId: "eduardo", type: "OWNS", objectId: "kaikoa-com" },
-  { id: "r4", subjectId: "eduardo", type: "HOLDS", objectId: "spanish-passport" }
-];
-
-export const obligations: Obligation[] = [
-  {
-    id: "o1",
-    title: "Verify kaikoa.com renewal protection",
-    relatedEntityId: "kaikoa-com",
-    status: "ATTENTION",
-    importance: "CRITICAL",
-    nextAction: "Verify registrar, renewal date, auto-renew and backup payment setup.",
-    requiresOwnerAttention: true,
-    sourceState: "USER_CONFIRMED"
-  },
-  {
-    id: "o2",
-    title: "Reconcile remaining Burgos 2026 payment",
-    relatedEntityId: "burgos",
-    status: "UPCOMING",
-    importance: "HIGH",
-    dueAt: "2026-12-31",
-    nextAction: "Verify exact balance from purchase documents and payment history.",
-    requiresOwnerAttention: true,
-    sourceState: "USER_CONFIRMED"
-  },
-  {
-    id: "o3",
-    title: "Verify Spanish passport expiry",
-    relatedEntityId: "spanish-passport",
-    status: "OK",
-    importance: "NORMAL",
-    nextAction: "Read authoritative passport details before creating renewal timing.",
-    requiresOwnerAttention: false,
-    sourceState: "UNVERIFIED"
-  }
-];
+export const entities:Entity[]=[
+{id:"eduardo",name:"Eduardo",type:"person",subtype:"person",status:"ACTIVE",dataQuality:"verified"},
+{id:"kaikoa",name:"KAIKOA",type:"asset",subtype:"vessel",status:"ACTIVE",location:"CM4 · Baie de Phaëton · Tahiti",description:"Outremer 45 · 2022",details:[{label:"Flag",value:"United Kingdom"},{label:"Current base",value:"CM4 · Baie de Phaëton"}],people:[{name:"Muriel",role:"Local oversight"},{name:"Claude",role:"Mooring"},{name:"Dominique",role:"Yard / maintenance"},{name:"Benjamin",role:"Marine Supplies"}],documents:[{name:"Registration",status:"Pending secure import"},{name:"Insurance",status:"Pending secure import"},{name:"Commercial documents",status:"Pending secure import"}],dataQuality:"partial"},
+{id:"burgos",name:"Burgos Ocean View",type:"asset",subtype:"property",status:"OWNED · COMPLETION OUTSTANDING",location:"Burgos · Siargao",description:"Ocean-view property · North Siargao",details:[{label:"Ownership",value:"Owned · final acquisition items outstanding"},{label:"Development",value:"Kaikoa Villa · planning"}],people:[{name:"Nanet",role:"Seller / contract reference"},{name:"Atty. Zara",role:"Legal"},{name:"Noel",role:"Architect"},{name:"Rod",role:"Engineer"},{name:"Erick",role:"Project coordination"}],documents:[{name:"Purchase contract",status:"Pending secure import"},{name:"Payment history",status:"Pending secure import"},{name:"Access-road documents",status:"Pending secure import"}],dataQuality:"partial"},
+{id:"kaikoa-com",name:"kaikoa.com",type:"asset",subtype:"digital_asset",status:"OWNED · CRITICAL",description:"Strategic KAIKOA brand domain",details:[{label:"Registrar",value:"GoDaddy · verify"},{label:"Renewal protection",value:"Verification required"}],documents:[{name:"Registrar / ownership evidence",status:"Pending secure import"}],dataQuality:"partial"},
+{id:"spanish-passport",name:"Spanish Passport",type:"credential",subtype:"passport",status:"ACTIVE",description:"Spanish identity credential",details:[{label:"Expiry",value:"Verify from authoritative document"}],documents:[{name:"Passport copy",status:"Pending secure import"}],dataQuality:"partial"}];
+export const relationships:Relationship[]=[{id:"r1",subjectId:"eduardo",type:"OWNS",objectId:"kaikoa"},{id:"r2",subjectId:"eduardo",type:"OWNS",objectId:"burgos"},{id:"r3",subjectId:"eduardo",type:"OWNS",objectId:"kaikoa-com"},{id:"r4",subjectId:"eduardo",type:"HOLDS",objectId:"spanish-passport"}];
+export const obligations:Obligation[]=[
+{id:"o1",title:"Verify kaikoa.com renewal protection",relatedEntityId:"kaikoa-com",status:"ATTENTION",importance:"CRITICAL",nextAction:"Verify registrar, renewal date, auto-renew and backup payment setup.",requiresOwnerAttention:true,sourceState:"USER_CONFIRMED"},
+{id:"o2",title:"Reconcile remaining Burgos 2026 payment",relatedEntityId:"burgos",status:"UPCOMING",importance:"HIGH",dueAt:"2026-12-31",nextAction:"Verify exact balance from purchase documents and payment history.",requiresOwnerAttention:true,sourceState:"USER_CONFIRMED"},
+{id:"o3",title:"Verify Spanish passport expiry",relatedEntityId:"spanish-passport",status:"OK",importance:"NORMAL",nextAction:"Read authoritative passport details before creating renewal timing.",requiresOwnerAttention:false,sourceState:"UNVERIFIED"}];
+export const getEntity=(id:string)=>entities.find(e=>e.id===id);
+export const getEntityObligations=(id:string)=>obligations.filter(o=>o.relatedEntityId===id);
