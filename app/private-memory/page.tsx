@@ -5,6 +5,8 @@ import { getBrowserSupabase } from "@/lib/supabase-browser";
 
 type RecordRow = { id: string; slug: string; name: string; subtype: string | null; status: string };
 type ObligationRow = { id: string; title: string; status: string; related_entity_id: string | null };
+const categoryLabels: Record<string,string> = {vessel:"Vessels",property:"Properties",digital_asset:"Digital Assets",vehicle:"Vehicles",passport:"Passports",credential:"Credentials"};
+const categoryOrder = ["vessel","property","vehicle","digital_asset","passport","credential"];
 type ViewState = "checking" | "signed-out" | "loading" | "ready" | "error";
 export default function PrivateMemoryPage() {
  const [stage,setStage]=useState<ViewState>("checking");
@@ -39,6 +41,6 @@ export default function PrivateMemoryPage() {
  {stage==="checking"||stage==="loading"?<p role="status">Checking private access…</p>:null}
  {stage==="signed-out"?<section className="panel"><h2>Authentication required</h2><p>This page requires a signed-in account.</p><Link href="/auth/sign-in">Sign in →</Link></section>:null}
  {stage==="error"?<section className="panel" role="alert"><h2>Unable to load records</h2><p>{errorText}</p></section>:null}
- {stage==="ready"?<><section className="panel"><h2>Assets & Records · {records.length}</h2>{records.length===0?<p>No accessible records found.</p>:records.map(r=><Link className="item itemLink" href={"/private-memory/assets/"+encodeURIComponent(r.slug)} key={r.id}><strong>{r.name} →</strong><p>{r.subtype?.replaceAll("_"," ")??"Entity"} · {r.status}</p></Link>)}</section><section className="panel"><h2>Obligations · {obligations.length}</h2>{obligations.map(o=>{const linked=records.find(r=>r.id===o.related_entity_id);return linked?<Link className="item itemLink" key={o.id} href={"/private-memory/assets/"+encodeURIComponent(linked.slug)+"#obligations"}><strong>{o.title} →</strong><p>{linked.name} · {o.status}</p></Link>:<div className="item" key={o.id}><strong>{o.title}</strong><p>{o.status} · Unlinked</p></div>})}</section></>:null}
+ {stage==="ready"?<><section className="panel"><h2>Assets & Records · {records.length}</h2>{records.length===0?<p>No accessible records found.</p>:[...new Set(records.map(r=>r.subtype??"other"))].sort((a,b)=>{const ai=categoryOrder.indexOf(a),bi=categoryOrder.indexOf(b);return (ai<0?999:ai)-(bi<0?999:bi)||a.localeCompare(b)}).map(category=><div key={category}><h3 className="eyebrow" style={{marginTop:26,marginBottom:6}}>{categoryLabels[category]??category.replaceAll("_"," ")}</h3>{records.filter(r=>(r.subtype??"other")===category).map(r=><Link className="item itemLink" href={"/private-memory/assets/"+encodeURIComponent(r.slug)} key={r.id}><strong>{r.name} →</strong><p>{r.status}</p></Link>)}</div>)}</section><section className="panel"><h2>Obligations · {obligations.length}</h2>{obligations.map(o=>{const linked=records.find(r=>r.id===o.related_entity_id);return linked?<Link className="item itemLink" key={o.id} href={"/private-memory/assets/"+encodeURIComponent(linked.slug)+"#obligations"}><strong>{o.title} →</strong><p>{linked.name} · {o.status}</p></Link>:<div className="item" key={o.id}><strong>{o.title}</strong><p>{o.status} · Unlinked</p></div>})}</section></>:null}
 </main>;
 }
