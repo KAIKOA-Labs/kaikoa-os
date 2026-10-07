@@ -39,6 +39,6 @@ export default function PrivateMemoryPage() {
  {stage==="checking"||stage==="loading"?<p role="status">Checking private access…</p>:null}
  {stage==="signed-out"?<section className="panel"><h2>Authentication required</h2><p>This page requires a signed-in account.</p><Link href="/auth/sign-in">Sign in →</Link></section>:null}
  {stage==="error"?<section className="panel" role="alert"><h2>Unable to load records</h2><p>{errorText}</p></section>:null}
- {stage==="ready"?<><section className="panel"><h2>Entities · {records.length}</h2>{records.length===0?<p>No accessible records found.</p>:records.map(r=><div className="item" key={r.id}><strong>{r.name}</strong><p>{r.subtype??"Entity"} · {r.status}</p></div>)}</section><section className="panel"><h2>Obligations · {obligations.length}</h2>{obligations.map(o=><div className="item" key={o.id}><strong>{o.title}</strong><p>{o.status}</p></div>)}</section></>:null}
+ {stage==="ready"?<><section className="panel"><h2>Entities · {records.length}</h2>{records.length===0?<p>No accessible records found.</p>:records.map(r=><Link className="item itemLink" href={"/private-memory/assets/"+encodeURIComponent(r.slug)} key={r.id}><strong>{r.name} →</strong><p>{r.subtype?.replaceAll("_"," ")??"Entity"} · {r.status}</p></Link>)}</section><section className="panel"><h2>Obligations · {obligations.length}</h2>{obligations.map(o=><div className="item" key={o.id}><strong>{o.title}</strong><p>{o.status}</p></div>)}</section></>:null}
 </main>;
 }
