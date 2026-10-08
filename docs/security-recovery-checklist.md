@@ -1,5 +1,13 @@
 # KAIKOA OS — Security and recovery gate (Milestone 003P)
 
+## Isolated database recovery — 2026-10-09
+
+Closeout at 05:50: founder deleted the disposable copy; connector project list verifies its absence and original ACTIVE_HEALTHY source, with expected tables, inventory, obligations, both audits and owner account present. Milestone 007 closes for its documented bounded scope. File recovery, full Auth/credential restoration and restored browser acceptance are not certified, and sensitive imports remain blocked. Pending-cleanup wording in the inspection paragraph below describes its earlier snapshot.
+
+The October 9 02:24:25 Manila COMPLETED physical backup was restored to a separate disposable project, with dashboard restoration COMPLETED observed at 05:45:52. Exact application metadata and all eight complete table contents/audits match the privately saved pre-creation baseline. Restored owner reads and non-owner/anonymous assertions passed using read-only rolled-back simulated roles/JWTs. Stable owner identity/role/app metadata match; full Auth state/credentials and actual restored-project browser login were not compared. Cleanup and publication remain pending. See [recovery results](milestone-007-recovery-results.md).
+
+Yesterday's 16 real-session HTTP checks remain separately recorded evidence. The document recovery plan has been reviewed with provider choices explicitly undecided; no file-object recovery passed. Sensitive document imports remain blocked. Earlier pending-recovery statements below are historical, not the current database test outcome.
+
 ## Current recovery result — 2026-10-08 at 15:20 Asia/Manila
 
 The founder created one separate recovery project from the October 8 02:25:11 Manila physical backup. Read-only inspection found no application tables/functions or Auth accounts in the copy. The earliest surviving source inventory and obligations were created at 03:38:25 Manila, and no current Auth account predates that backup. This attempt cannot verify recovery of the current application. The copy is ACTIVE_HEALTHY, but dashboard restoration completion has not been independently captured. Do not treat project health as successful recovery.

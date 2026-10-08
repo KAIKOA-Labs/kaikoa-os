@@ -1,5 +1,7 @@
 # KAIKOA OS — Separate document recovery plan
 
+Reviewed for architectural consistency on 2026-10-09: the isolated database recovery comparisons and simulated access checks passed; see [results](milestone-007-recovery-results.md). This review does not select a provider/destination or authorize file copying, scheduling, deletion or paid services. Provider, destination, export, access, retention and recovery targets remain explicitly undecided. File-object recovery remains untested and sensitive imports remain blocked. Older recovery statements below describe the October 8 preparation checkpoint.
+
 Prepared locally on 2026-10-08. Proposed procedure; no files have been imported, copied, restored or deleted under this plan. Destination, access and retention choices require founder review before execution.
 
 ## Preserve the architecture
