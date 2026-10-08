@@ -35,3 +35,13 @@ test("legacy records retain honest labels without invented schedules or assignme
   assert.equal(obligationStatusLabel("ATTENTION", false), "Needs Review");
   assert.equal(obligationStatusLabel("DEFERRED"), "Deferred / Awaiting Funding");
 });
+
+test("Needs Review isolates unassigned attention work without changing deadline alerts", () => {
+  const review = record("ATTENTION", false, "2026-10-07");
+  const records = [review, record("ATTENTION"), ...["WAITING", "WAITING_ON", "IN_PROGRESS", "SCHEDULED", "DEFERRED", "COMPLETED", "ARCHIVED", "UPCOMING"].map(state => record(state, false))];
+  assert.deepEqual(visibleObligations(records, "review", now), [review]);
+  assert.equal(classifyObligation(review, now).requires, false);
+  assert.equal(classifyObligation(review, now).overdue, true);
+  assert.equal(obligationStatusLabel(review.status, review.requires_owner_attention), "Needs Review");
+  assert.equal(visibleObligations(records, null, now).includes(review), true);
+});

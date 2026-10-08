@@ -1,6 +1,6 @@
 # KAIKOA OS — Roadmap
 
-Reviewed: 2026-10-08, Asia/Manila. Phases and implementation milestones are distinct.
+Reviewed: 2026-10-09, Asia/Manila. Phases and implementation milestones are distinct. The table is current; older dated milestone narratives retain their historical context.
 
 | Milestone | State | Evidence / limits |
 | --- | --- | --- |
@@ -11,8 +11,13 @@ Reviewed: 2026-10-08, Asia/Manila. Phases and implementation milestones are dist
 | 005 | Obligation workflow delivered | 3c0dfee; matching READY deployment |
 | 006 | Session boundary deployed; owner browser acceptance passed | 1e3efe4 then deda760; two-tab clearing without refresh and successful re-entry confirmed by founder 2026-10-08; independent authorization/recovery remain open |
 | 006.1 | Delivered, including session closeout | d5deaf6 then 99d84e7 then 64f600e then 5a9c95e; matching READY preview verified. Original pack's later push approval history unknown |
-| Login refinement | Implemented; live acceptance pending publication | Conventional email/password sign-in is primary with approved-account email-link fallback. Owner identity/RLS unchanged; 20 tests, TypeScript and production build passed locally. Resolve the publication commit and matching preview, then perform one owner browser sign-in. |
-| 007 | Complete within recorded scope; closeout publication follows | Yesterday's 16 real-session checks passed. October 9's completed backup was restored separately; all eight table contents/audits and application metadata match the privately saved baseline, and restored role/JWT owner/non-owner/anonymous assertions passed. Dashboard restoration COMPLETED observed at 05:45:52; founder deletion and connector cleanup/source-health verification completed at 05:50. Document plan reviewed with provider choices undecided; file recovery remains a sensitive-import gate. Actual restored browser login and full Auth/credential state are not certified. See recovery results and CURRENT_STATE.md for limits. |
+| Login refinement | Owner acceptance passed, founder-confirmed 2026-10-09 | Founder confirms password sign-in reaches the private dashboard and existing records. Baseline 85af7d2 and matching READY preview directly verified; no repeated login test. |
+| 007 | Complete within recorded scope; closeout published at 85af7d2 | Yesterday's 16 real-session checks passed. October 9's completed backup was restored separately; all eight table contents/audits and application metadata match the privately saved baseline, and restored role/JWT owner/non-owner/anonymous assertions passed. Dashboard restoration COMPLETED observed at 05:45:52; founder deletion and connector cleanup/source-health verification completed at 05:50. Document plan reviewed with provider choices undecided; file recovery remains a sensitive-import gate. Actual restored browser login and full Auth/credential state are not certified. See recovery results and CURRENT_STATE.md for limits. |
+| 008 | Needs Review visibility implemented; owner browser acceptance pending | Shared counter/filter on Home and Private OS; existing attention-state records with owner-attention false only. No database or record changes. 21 unit tests, TypeScript and production build passed locally. Publication subject: Command Center: surface Needs Review obligations; verify delivery through Git/Vercel. |
+
+## Milestone 008 — bounded Command Center improvement
+
+The founder authorized the smallest useful Command Center improvement on 2026-10-09 after confirming password-login acceptance. Expose the existing Needs Review classification through a counter and filter, preserving workflow/attention/deadline separation. Finish acceptance with one founder-operated click and return to Show All. Sensitive imports remain blocked by file-recovery prerequisites.
 
 ## Milestone 006.1 acceptance
 

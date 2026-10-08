@@ -1,6 +1,6 @@
 # KAIKOA OS — Control Pack
 
-Reviewed for session close: 2026-10-08, Asia/Manila. Control Pack and reconciliation published; Milestone 006 owner browser acceptance recorded at `64f600e` with a matching READY preview. The closeout documentation commit follows this snapshot; identify it from Git history.
+Reviewed: 2026-10-09, Asia/Manila. Latest completed milestone is 007 within its recorded scope, closed at `85af7d2` with a matching READY preview directly verified this session. Owner password-login acceptance is founder-confirmed. Milestone 008 adds Needs Review visibility; see CURRENT_STATE.md for verification, delivery resolution and the pending one-click browser acceptance. Older evidence sections describe their dated sessions.
 
 ## Purpose and reading order
 

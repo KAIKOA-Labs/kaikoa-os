@@ -9,7 +9,8 @@ export const workflowOptions = [
 export type WorkflowStatus = typeof workflowOptions[number]["value"];
 export type WorkflowRecord = { status: string; requires_owner_attention: boolean; due_at: string | null };
 export const obligationFilters = [
-  { key: "requires", label: "Requires You" }, { key: "waiting", label: "Waiting On" },
+  { key: "requires", label: "Requires You" }, { key: "review", label: "Needs Review" },
+  { key: "waiting", label: "Waiting On" },
   { key: "progress", label: "In Progress" }, { key: "scheduled", label: "Scheduled" },
   { key: "completed", label: "Completed" }, { key: "deferred", label: "Deferred / Awaiting Funding" },
   { key: "overdue", label: "Overdue" }, { key: "soon", label: "Due Soon" },
@@ -28,6 +29,8 @@ export function classifyObligation(record: WorkflowRecord, now: number) {
   const due = record.due_at ? Date.parse(record.due_at) : NaN;
   return {
     requires: active && record.requires_owner_attention && !waiting && !deferred,
+    // Match the existing Needs Review label without assigning owner attention.
+    review: active && record.status === "ATTENTION" && record.requires_owner_attention === false,
     waiting, progress: active && record.status === "IN_PROGRESS",
     scheduled: active && record.status === "SCHEDULED", completed: record.status === "COMPLETED", deferred,
     // A deferred task can still have a real overdue deadline.

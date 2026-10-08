@@ -1,5 +1,23 @@
 # KAIKOA OS — Current State
 
+## Milestone 008 — Needs Review visibility, 2026-10-09
+
+Current session scope: the founder confirmed owner password-login acceptance and instructed proceeding with the smallest Command Center improvement. Routine safe implementation, verification and development-branch publication are authorized by the session-start instruction; founder-operated browser steps remain required. No agent browser was opened.
+
+Direct baseline verification: GitHub `milestone-001-hull` remains at `85af7d2d441599a20c0d2fbf5cde7f194ac9daff`, with no newer branch change at inspection. The development alias resolves to matching READY preview `dpl_2BgVNcHarPfE72kXA4jJxiFt9T4V` in the existing Vercel project/team, target preview. A fresh local checkout reconstructed through the GitHub connector matches the exact remote file tree and commit; it was clean before implementation. Milestone 007 closure and recovery results are recorded evidence from the previous session; none of those tests was repeated.
+
+Owner password-login acceptance: **passed, founder-confirmed** in this session. The founder reports the private KAIKOA OS dashboard and existing records are visible. This closes the conventional-login acceptance gate on the source application; it is not agent-observed browser testing or restored-project Auth acceptance.
+
+Bounded improvement: add a Needs Review counter and toggleable filter to Home and Private OS through their existing shared obligation filter/classification module. It includes only `ATTENTION` obligations with `requires_owner_attention` explicitly false, matching the existing Needs Review label. Existing Requires You, workflow and deadline rules remain; a Needs Review item can also have a real overdue deadline. No new status, schema, record, RPC, authentication or provider setting is introduced.
+
+Verification: all 21 local unit tests pass, including queue isolation from owner-assigned, waiting, progress, scheduled, deferred, completed, archived and legacy upcoming work; genuine overdue flags remain. TypeScript, production build and whitespace checks pass. Both dashboard source mappings consume the shared filter. Live visual/interaction acceptance of this new counter is pending founder confirmation; no private rows were retrieved for this change. Publication subject: `Command Center: surface Needs Review obligations`. Resolve its SHA and matching READY preview through Git/Vercel after publication; this entry precedes delivery verification.
+
+Last completed milestone: 007 within its recorded scope. Milestone 008 is implemented and locally verified, with owner browser acceptance pending. Sensitive imports remain blocked by the separate document/file-recovery prerequisites. Full restored Auth/credential recovery, document-provider choices and repository governance remain open with their recorded limits.
+
+Exact next step: open Home on the development alias in the founder's existing browser, refresh once, click Needs Review, and confirm the filtered list (or empty state) appears. Click it again or Show All to return to active obligations. Do not repeat password-login, cross-tab, authorization or restoration tests without a relevant failure/change.
+
+The older dated snapshots below preserve their inspection-time state and are superseded by this section where applicable.
+
 ## Milestone 007 closeout — 2026-10-09 at 05:50 Asia/Manila
 
 Milestone 007 is complete for its bounded acceptance scope: the recorded real-session authorization checks, isolated application-database recovery with exact data/audit/metadata comparison and simulated restored access checks, separate document recovery plan reviewed with outstanding choices recorded, and disposable-copy cleanup. This does not certify full Auth/credential restoration, restored-project browser acceptance or file-object recovery. Sensitive imports remain blocked by the separate file-recovery prerequisites. The login refinement's owner browser acceptance remains unverified here. These limitations are not waived by milestone closure.
