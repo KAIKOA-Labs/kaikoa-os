@@ -1,6 +1,6 @@
 # KAIKOA OS — Founder Inbox
 
-Reviewed: 2026-10-08, Asia/Manila. Recovered candidate ideas; not verified obligations.
+Reviewed: 2026-10-09, Asia/Manila. Recovered candidate ideas; not verified obligations.
 
 Capture does not authorize implementation, create an operational obligation or establish current status. Keep private details in an authorized private source. This repository receives only public-safe descriptions.
 
@@ -13,6 +13,7 @@ Capture does not authorize implementation, create an operational obligation or e
 | F05 | Captured 2026-10-08; recovered master direction | Future investment intelligence | Approved scope, data sources and human authority | Future Alpha / capital specification | Deferred; no trading automation authorized |
 | F06 | Captured 2026-10-09; current founder feedback after 008 acceptance | Dashboard top filter cards feel crowded; acceptable at this initial stage | Review a compact arrangement that preserves categories, semantics and access; candidate: primary attention views plus More views | Command Center progressive disclosure | Deferred candidate; no further UI change requested |
 | F07 | Captured 2026-10-09; available Founder's Room excerpt in project context, exact message date unknown | Fuller portfolio coverage: vehicles, properties, rental amounts/schedules and artwork edition inventory | Confirm records, ownership/opportunity distinction, currencies, dates, edition totals/sales and source evidence; preserve sensitive-import gates | Future inventory expansion | Candidate; 010 only improves browsing of existing records, with no new imports |
+| F08 | Captured/source 2026-10-09; current founder feedback closing 010 acceptance | Separate property/vehicle assets from recurring subscriptions in the interface | Inspect subtype semantics, existing views and routing; preserve unknowns, ownership/opportunity distinctions and access boundaries | Assets and Subscriptions modules | Direction promoted to D24 and proposed 011; implementation pending |
 
 ## Entry and promotion protocol
 

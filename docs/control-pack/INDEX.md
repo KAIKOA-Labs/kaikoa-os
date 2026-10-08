@@ -1,6 +1,6 @@
 # KAIKOA OS — Control Pack
 
-Reviewed: 2026-10-09, Asia/Manila. Latest completed milestone is 009, accepted and closed at `e5011b1` with matching READY preview. Milestone 010 adds a focused searchable inventory view and awaits founder browser acceptance. CURRENT_STATE.md records verification, publication resolution and the next action; older dated sections retain their context.
+Reviewed: 2026-10-09, Asia/Manila. Latest completed milestone is 010: focused searchable inventory at `073f3a1`, with matching READY preview and founder-confirmed browser acceptance. Milestone 011 is proposed to separate Assets and Subscriptions in the interface while preserving the universal record model. CURRENT_STATE.md records verification, publication resolution and the next action; older dated sections retain their context.
 
 ## Purpose and reading order
 
