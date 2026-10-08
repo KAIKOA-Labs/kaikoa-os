@@ -7,6 +7,7 @@ const sections = [
   { href: "/private-memory", label: "Overview" },
   { href: "/private-memory/edit", label: "Edit Assets" },
   { href: "/private-memory/assets/new", label: "Add Asset" },
+  { href: "/private-memory/assets/archive", label: "Archive Asset" },
   { href: "/private-memory/history", label: "Change History" },
   { href: "/private-memory/subscriptions", label: "Subscriptions" },
   { href: "/auth/status", label: "Account" },
