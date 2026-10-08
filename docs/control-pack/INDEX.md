@@ -1,6 +1,6 @@
 # KAIKOA OS — Control Pack
 
-Reviewed: 2026-10-08, Asia/Manila. Milestone 006.1 documentation reviewed and approved for commit.
+Reviewed: 2026-10-08, Asia/Manila. Milestone 006.1 verified on GitHub and in a READY Vercel preview at `d5deaf6`; local checkpoint reconciliation and subsequent commit approved.
 
 ## Purpose and reading order
 
@@ -37,7 +37,7 @@ If sources disagree, report the conflict and inspect authoritative evidence. Do 
 - [Milestone 005](../milestone-005-obligation-workflow.md)
 - [Milestone 006](../milestone-006-private-session-security.md)
 
-Earlier checkpoint instructions to stop after 006 describe the earlier session. The founder has now authorized drafting and committing 006.1 documentation, not pushing or implementing 007. Existing documents are retained as evidence; this pack does not rewrite their historical claims.
+Earlier checkpoint instructions to stop after 006 describe the earlier session. Original 006.1 drafting/commit approval and push-pending wording are historical; GitHub and Vercel now verify delivery at `d5deaf6`, without establishing the later push approval history. Current approvals cover documentation-only reconciliation and its commit, not pushing or implementing 007. Existing evidence documents are retained without rewriting their historical claims.
 
 ## Reusable session-start instruction
 

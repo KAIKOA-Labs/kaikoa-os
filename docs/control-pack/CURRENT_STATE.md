@@ -2,19 +2,24 @@
 
 Inspected: 2026-10-08, Asia/Manila.
 
-## Verified application baseline
+## Verified repository and deployment checkpoint
 
 - Repository: KAIKOA-Labs/kaikoa-os.
 - Development branch: `milestone-001-hull`.
-- GitHub branch head: `deda760da6d4381b1242fac48458c56535b5b7e5`.
-- Original Milestone 006: `1e3efe47f6a90d1941f1d5455527948cde11519d`; matching deployment READY.
-- Current follow-up: `deda760`; full sign-in form immediately after sign-out.
-- Current deployment: `dpl_HPJ1r1o5p6zZzXkkHXCNibFQpUGw`, READY, branch preview (`target: null`).
+- Local HEAD and latest GitHub branch commit at the read-only session inspection: `d5deaf65577ab14f652039c758dcab891ca54fda`, Milestone 006.1 — Project Continuity. The authorized reconciliation commit follows this snapshot; resolve its SHA from local Git history.
+- Original Milestone 006: `1e3efe47f6a90d1941f1d5455527948cde11519d`, confirmed in local history; its matching READY deployment was reported by the earlier continuity inspection, not rechecked in this session.
+- Latest application follow-up: `deda760da6d4381b1242fac48458c56535b5b7e5`; full sign-in form immediately after sign-out.
+- Current deployment: `dpl_BRLDU3ysJv1JBj1Gu79mEQgLHiWL`, READY, branch preview (`target: null`), serving `d5deaf65577ab14f652039c758dcab891ca54fda`.
 - Development alias: https://kaikoa-os-git-milestone-001-hull-ehzobel-4943.vercel.app
-- Immutable deployment URL: https://kaikoa-ir92pywus-ehzobel-4943.vercel.app
+- Immutable deployment URL: https://kaikoa-cz7oc31jl-ehzobel-4943.vercel.app
 - Vercel alias inspection resolves to that deployment and commit. GitHub Vercel status reports success.
-- `main`: `646a41bea4d0b4338147ce1fda178896df87bc2c`, initial commit.
-- Working tree was clean before drafting this pack. Documentation-only Milestone 006.1 follows this baseline; application code remains unchanged. Resolve the continuity commit SHA from Git history; the deployed application SHA remains deda760.
+- `main` was recorded by the earlier continuity inspection at `646a41bea4d0b4338147ce1fda178896df87bc2c`, initial commit; not rechecked in this session.
+- Working tree was clean at session start and immediately before this reconciliation. Local Git comparison confirms that `d5deaf6` adds exactly the nine Control Pack files; application code is unchanged from `deda760`.
+- Evidence this session: GitHub commit lookup for `milestone-001-hull`, GitHub combined Vercel status, Vercel deployment lookup using the development alias, and local Git status/history/diff.
+
+## Checkpoint reconciliation
+
+The original pack recorded `deda760` and deployment `dpl_HPJ1r1o5p6zZzXkkHXCNibFQpUGw` as current, with 006.1 approved for commit and push approval pending. Those statements describe the earlier inspection and authorization record. This session directly verified 006.1 on GitHub and deployed; the later push approval history remains unknown. Observed delivery does not establish authorization retrospectively.
 
 ## Delivered implementation
 
@@ -44,6 +49,6 @@ Sensitive imports remain blocked by the existing security/recovery gate. No prod
 
 ## Current task and authorization
 
-Milestone 006.1 — Project Continuity. Founder approved the proposed nine-file structure and drafting on 2026-10-08. The founder subsequently approved committing these files. No application code, database, deployment or existing evidence document changes are included.
+Milestone 006.1 documentation delivery is verified: committed, pushed and deployed at `d5deaf6`. Milestone 006 browser acceptance and the security/recovery gates above remain open.
 
-Commit approval is granted. GitHub push and any resulting deployment remain outside this approval. Milestone 007 remains proposed, not authorized.
+On 2026-10-08, the founder approved local documentation-only reconciliation of the checkpoint, delivery status and historical authorization wording, then approved committing the five corrections. This reconciliation is a local follow-up to `d5deaf6`; push approval remains separate. No application, database, deployment or existing evidence document changes are authorized. Milestone 007 remains proposed, not authorized.
