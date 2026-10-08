@@ -1,6 +1,8 @@
 # KAIKOA OS — Current State
 
-## Milestone 009 — recorded deadline visibility, 2026-10-09
+## Milestone 009 — complete, acceptance recorded 2026-10-09 at 06:24 Asia/Manila
+
+Owner browser acceptance passed, founder-confirmed: the founder explicitly confirms deadline labels appear beneath obligations on Home. No screenshot or agent browser is used for this acceptance. The report establishes label presence; it does not identify whether live records had actual dates, verify a specific timezone conversion, or separately test Private OS/mobile. Dated/timezone/invalid rendering remains covered by the recorded unit tests.
 
 The founder instructed continuing after Milestone 008 acceptance. The next bounded Command Center step makes already-recorded obligation deadlines visible without opening each record. Existing routine safe implementation/publication authorization applies; no parallel browser, operational-data mutation or new paid infrastructure is involved.
 
@@ -10,9 +12,9 @@ Implementation: Home and Private OS obligation rows share a small deadline compo
 
 Verification: 23 unit tests pass, including timezone day rollover preserving the same instant, null/invalid timestamps, overdue waiting/deferred work, neutral completed deadlines and the exact deadline boundary. TypeScript, production build and whitespace checks pass. React review confirms shared typed rendering, no new effects/hooks/dependencies, semantic time markup and continued private gating. Database query strings match the baseline exactly; no live rows were fetched for this UI change and no real authorization/recovery batch was repeated.
 
-Milestone 009 is implemented and locally verified, with owner browser acceptance pending. Publication subject: `Command Center: show recorded obligation deadlines`; resolve its SHA and matching preview after publication. This snapshot precedes delivery verification. Last completed milestone remains 008. Sensitive imports remain blocked by separate file-recovery prerequisites; other existing Auth/document-provider/governance limitations remain open.
+Milestone 009 is complete within its recorded deadline-visibility scope. Direct closeout inspection confirms remote and local `363cdf4f9e24bbc59a864b218a829ccd13ecba33`, clean working tree, and the development alias serving matching READY preview `dpl_94o2czbTwE2J7Vakv2VT6gWjdHMk`. This acceptance update changes documentation only; application tests are not repeated. Closeout subject: `Milestone 009: record owner acceptance`; resolve its SHA and matching preview after publication. Last completed milestone is 009. Sensitive imports remain blocked by separate file-recovery prerequisites; other existing Auth/document-provider/governance limitations remain open.
 
-Exact next step: refresh Home in the founder's existing browser and confirm obligation rows show their recorded deadline (including timezone) or No deadline recorded where no date exists. Do not invent or edit a date just to create an acceptance fixture. If only undated records are present, record that live dated rendering remains covered by unit tests rather than claim a dated owner-browser test.
+Exact next-session step: verify the development branch and matching preview, treat 009 as complete, then scope one useful next increment consistent with the master plan. Non-sensitive inventory coverage is a candidate for review; do not infer new records, ownership, amounts or dates from chat memory. Dashboard filter simplification remains deferred in F06. Do not repeat completed login, Home acceptance, authorization or recovery tests without a relevant change or failure.
 
 ## Milestone 008 acceptance and closeout — 2026-10-09 at 06:16 Asia/Manila
 

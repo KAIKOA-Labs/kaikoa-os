@@ -1,6 +1,6 @@
 # KAIKOA OS — Control Pack
 
-Reviewed: 2026-10-09, Asia/Manila. Latest completed milestone is 008, accepted and closed at `958121c` with matching READY preview. Milestone 009 adds recorded deadline visibility and awaits founder browser acceptance. Password-login acceptance passed. CURRENT_STATE.md records the latest verification, publication resolution and next action; older dated sections retain their context.
+Reviewed: 2026-10-09, Asia/Manila. Latest completed milestone is 009 within its recorded deadline-visibility scope: feature `363cdf4`, matching READY preview directly verified, and founder-confirmed Home label acceptance. Password-login and 008 Home acceptance also passed. CURRENT_STATE.md records closeout publication resolution, evidence limits and the exact next-session starting point; older dated sections retain their context.
 
 ## Purpose and reading order
 
