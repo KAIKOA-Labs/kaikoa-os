@@ -38,6 +38,8 @@ The read-only review, temporary account setup and all 16 real-session authorizat
 
 At 15:39 the source backup list still contains only the old recovery points. The [separate document recovery plan](../milestone-007-document-recovery-plan.md) is now drafted locally for review; provider/destination/access/retention choices and an isolated file recovery test remain open. No files were imported or provider settings changed.
 
+Follow-up preparation authorized at 15:50: a [bounded recovery procedure](../milestone-007-recovery-procedure.md) and single read-only metadata/content snapshot query are prepared. Source execution passed at 15:57:39; this is not target recovery evidence. At 16:04 the founder approved committing/publishing the follow-up and verifying the preview to close the session. Find `Milestone 007: save recovery procedure and close session` in Git history; deployment verification is reported after publication. No new paid project or restoration was created by this follow-up. Milestone 007 remains open.
+
 ## Later candidates
 
 After the relevant gates: reconcile authoritative non-sensitive inventory, service billing, acquisition-payment evidence, operational readiness and permits/insurance; improve Needs Review visibility; develop the broader Command Center, integrations and intelligence.

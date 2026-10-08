@@ -2,6 +2,8 @@
 
 Reviewed: 2026-10-08, Asia/Manila.
 
+Latest founder authorization, 16:04: "If it doesn't involve a safety issue, go ahead without my approval." Routine safe work within the agreed objective, including verified commits and deployments, can proceed without separate per-action confirmation. This supersedes the historical 15:02 request to approve each backend/Vercel action. Ask for a concrete safety concern or an action outside the authorized scope; keep existing sensitive-data, isolated-recovery and exact external-data scope boundaries. Continue to provide visible progress updates and founder-operated browser steps.
+
 ## Session routine
 
 1. Read root AGENTS.md and the Control Pack.
