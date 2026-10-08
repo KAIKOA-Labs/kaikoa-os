@@ -1,5 +1,13 @@
 # KAIKOA OS — Security and recovery gate (Milestone 003P)
 
+## Current recovery result — 2026-10-08 at 15:20 Asia/Manila
+
+The founder created one separate recovery project from the October 8 02:25:11 Manila physical backup. Read-only inspection found no application tables/functions or Auth accounts in the copy. The earliest surviving source inventory and obligations were created at 03:38:25 Manila, and no current Auth account predates that backup. This attempt cannot verify recovery of the current application. The copy is ACTIVE_HEALTHY, but dashboard restoration completion has not been independently captured. Do not treat project health as successful recovery.
+
+The founder deleted the temporary copy, and connector project-list verification confirmed its absence at 15:37 Manila. The original project remains ACTIVE_HEALTHY with its eight application tables, inventory, obligations, audit histories and one Auth account present. Next: obtain a backup or securely handled export covering current schema, records, audits and owner access before isolated restoration validation. No production restore is authorized. Separate document-object recovery remains pending; sensitive imports stay blocked. See docs/control-pack/CURRENT_STATE.md for cost, authorization and evidence limits. Older sections below are historical assessments.
+
+The source Scheduled backups screenshot at 15:39 still lists the same old backup points. A separate [document recovery plan](milestone-007-document-recovery-plan.md) has been drafted locally for review. It covers file bytes, private manifests, paired database references, isolated owner/non-owner checks and approved cleanup. No destination has been selected and no file restoration has passed.
+
 ## Milestone 006 — session boundary and expanded denial checks
 
 The shared browser boundary now unmounts private UI on sign-out/identity change and rejects stale verification responses. All eight application-table SELECT checks and all eight public write-RPC denial checks passed with a synthetic non-owner database role/JWT in a rolled-back transaction. Anonymous table/execute permissions and absence of authenticated direct writes were also checked. See database/tests/authorization-boundary.sql and docs/milestone-006-private-session-security.md.

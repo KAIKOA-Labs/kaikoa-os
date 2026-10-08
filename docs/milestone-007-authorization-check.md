@@ -13,11 +13,13 @@ Results show endpoint names, pass/fail, HTTP status and sanitized evidence only.
 ## Verification and limits
 
 - Local verification: 20 unit tests, TypeScript and production build passed on 2026-10-08.
-- Live execution: pending. Local unit tests use fixtures and do not close the real-account gate.
+- Live execution passed at 14:42:46 Asia/Manila on 2026-10-08: founder-executed, screenshot-observed results show eight successful zero-count reads and eight explicit owner-guard denials. Runner commit 011899a and its matching development deployment are verified. This is separate from local fixture tests; no raw network trace was saved.
 - Before execution, use a read-only administrative connector to verify the fixture UUID is absent and capture aggregate row counts/content fingerprints for all eight tables. Compare after execution, including both audit histories; do not put private contents or fingerprints in the public repository.
 - If any response unexpectedly succeeds, stop and investigate before further writes. Do not automatically delete records or audit entries.
 - Empty reads establish the observed session's visibility. Tables without existing data provide limited evidence; policy inspection complements these checks. RPC probes establish the guard before validation, rather than a full valid-input mutation test matrix.
-- After tests, sign out the temporary account and verify owner re-entry. Temporary account deletion/session cleanup requires an explicit approved scope.
+- Existing owner inventory and populated counters were screenshot-observed again at 14:52:34 after the account-switch instructions. The image does not show the account email or sign-out action. Temporary account deletion/session cleanup requires an explicit approved scope.
+- Cleanup completed at 14:57: the founder deleted the exact temporary account in the Supabase dashboard after a connector check confirmed zero stored sessions. Subsequent connector verification confirms it is absent, only the policy-owner account remains, and inventory/obligations/audits are present. No authentication mutation was performed by the agent.
+- Post-test connector inspection at 14:46 confirms inventory/obligations/audits remain present, the probe ID is absent and surviving application/audit rows have no creation/update/change timestamps since 14:19. The temporary pre-test fingerprint snapshot was unavailable on this turn; an exact before/after comparison was not completed, and timestamp checks do not establish absence of deletions. Preserve that limit without claiming a successful fingerprint comparison.
 - Isolated restoration, document-object recovery and repository governance remain separate open gates. No production restoration or additional paid infrastructure is authorized by this check.
 
 Sources: live RPC/grant review, `database/tests/authorization-boundary.sql`, `lib/authorization-check.ts` and current-session founder authorization. Supabase RPC reference: https://supabase.com/docs/reference/javascript/rpc.
