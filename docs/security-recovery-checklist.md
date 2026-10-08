@@ -18,3 +18,11 @@
 
 ## Release gate
 No import of sensitive health, identity, family or financial documents until independent authorization testing and a tested restore procedure are complete.
+
+## Backup assessment — 2026-10-08
+- Supabase organization subscription is **Free** (confirmed through project organization API).
+- Official Supabase documentation says managed automatic daily backups are included on Pro, Team, and Enterprise, **not Free**. Free projects should maintain external exports with the Supabase CLI `db dump` command.
+- No independent database export or restore test has been completed; recovery remains **unverified**.
+- Do not assume backup availability or retention based on a green deployment.
+- Recommendation: establish managed daily backups or independently encrypted off-site logical exports, then test restore in a separate environment before importing sensitive information.
+- Documentation: https://supabase.com/docs/guides/platform/backups
