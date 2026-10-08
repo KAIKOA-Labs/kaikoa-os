@@ -37,7 +37,8 @@ export default function InventoryBrowser({ section }: { section: Exclude<Invento
   function clearFilters() { setQuery(""); setCategory(null); }
   return <main className="shell">
     <header><p className="eyebrow">KAIKOA OS · INVENTORY</p><h1>{definition.title}.</h1>
-      <p className="muted">{definition.description}</p></header>
+      <p className="muted">{definition.description}</p>
+      {section === "artwork" && stage === "ready" && <Link className="back" href="/private-memory/artwork/new">Add artwork →</Link>}</header>
     {stage === "loading" && <p role="status">Loading {definition.title.toLowerCase()}…</p>}
     {stage === "signed-out" && <section className="panel"><p>Sign in to view your {definition.title.toLowerCase()}.</p><Link href="/auth/sign-in">Sign in →</Link></section>}
     {stage === "error" && <section className="panel" role="alert"><h2>Unable to load {definition.title.toLowerCase()}</h2><p>Check your connection and try again.</p></section>}

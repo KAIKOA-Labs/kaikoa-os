@@ -10,6 +10,8 @@ Next.js 15.5.27 App Router, React 19.1.1, TypeScript and Supabase JavaScript cli
 
 `/assets` is a redirect alias to `/private-memory/inventory`. This focused read-only view is inside the existing private-session boundary and reads entity summary fields through the authenticated Supabase client and existing RLS. Search and category selection operate on already-loaded records; no public seed inventory, new entity table or valuation/rent inference is introduced. Detail navigation uses existing private asset routes. Milestone 011 scopes this browser to Assets and adds shared protected Artwork and Other Records pages. The subtype classifier is shared with Home/Overview section links; unknown and unrelated subtypes remain in Other Records. Subscriptions retains its existing dedicated page. This is interface grouping, not a new data hierarchy or an inference of income/ownership. All new routes remain under the existing private-memory session boundary; section route keys reset filters.
 
+Milestone 012 adds `/private-memory/artwork/new`, a protected title/description form using the existing audited `create_inventory_asset` RPC. The installed function's subtype allowlist is extended to artwork with security attributes preserved; no new table or direct browser write is introduced. Edition counts, sales and financial detail are future source-backed extensions, not fields delivered by this form.
+
 ## Model and persistence
 
 Entities, relationships, events, obligations and evidence form the universal model. Current TypeScript entity types are a narrower implementation subset; conceptual domains are not all separate implemented modules.

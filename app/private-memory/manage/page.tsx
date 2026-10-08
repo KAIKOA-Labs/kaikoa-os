@@ -1,5 +1,6 @@
 import Link from "next/link";
 const groups=[
+ {title:"Artwork",description:"Record a creative work with a title and optional description.",links:[["Add Artwork","/private-memory/artwork/new"],["View Artwork","/private-memory/artwork"]]},
  {title:"Assets",description:"Create, edit or archive inventory records.",links:[["Add Asset","/private-memory/assets/new"],["Edit Assets","/private-memory/edit"],["Archive Asset","/private-memory/assets/archive"]]},
  {title:"Obligations",description:"Record responsibilities, update workflow states and next actions and archive obsolete items.",links:[["Add Obligation","/private-memory/obligations/new"],["Update Obligations","/private-memory/obligations/edit"],["Archive Obligation","/private-memory/obligations/archive"]]}
 ];

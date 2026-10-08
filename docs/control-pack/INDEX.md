@@ -1,6 +1,6 @@
 # KAIKOA OS — Control Pack
 
-Reviewed: 2026-10-09, Asia/Manila. Latest completed milestone is 010: focused searchable inventory at `073f3a1`, with matching READY preview and founder-confirmed browser acceptance. Milestone 011 implements separate Assets, Artwork and Subscriptions browsing/navigation, preserving Other Records and the universal model; owner acceptance is pending. Income remains a linked future concern rather than a browsing classification. CURRENT_STATE.md records verification, publication resolution and the next action; older dated sections retain their context.
+Reviewed: 2026-10-09, Asia/Manila. Latest completed milestone is 011: separate Assets, Artwork, Subscriptions and Other Records at `b0d3933`, with matching READY preview and founder-confirmed navigation acceptance. Milestone 012 adds basic protected, audited artwork creation; owner acceptance is pending. The founder requested simplified artwork-source extraction; the referenced inventory workbook remains unresolved, with no import performed. CURRENT_STATE.md records implementation, verification limits and the next action; older dated sections retain their context.
 
 ## Purpose and reading order
 
