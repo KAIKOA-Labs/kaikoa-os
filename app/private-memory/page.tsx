@@ -38,7 +38,7 @@ export default function PrivateMemoryPage() {
      setStage("loading");
      const [entitiesResult,obligationsResult]=await Promise.all([
        client.from("entities").select("id,slug,name,subtype,status").neq("status","ARCHIVED").order("name"),
-       client.from("obligations").select("id,title,status,related_entity_id,requires_owner_attention,due_at").order("title")
+       client.from("obligations").select("id,title,status,related_entity_id,requires_owner_attention,due_at").neq("status","ARCHIVED").order("title")
      ]);
      if(!active)return;
      if(entitiesResult.error||obligationsResult.error){
