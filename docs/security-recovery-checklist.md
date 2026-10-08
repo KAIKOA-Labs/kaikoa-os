@@ -33,3 +33,9 @@ No import of sensitive health, identity, family or financial documents until ind
 - The backup list does not itself prove ongoing schedule success, file-object backup coverage, or that all recent changes are included. Recheck after the next scheduled backup.
 - Database physical backups exclude actual Supabase Storage objects. Plan separate object backups before document imports.
 - Next gate: controlled restoration to an isolated environment and validation of row counts, owner-only access and audit trail before treating recovery as fully verified.
+
+## Simulated authorization negative tests — 2026-10-08
+- Within rolled-back SQL transactions, impersonated the `authenticated` database role with a synthetic non-owner JWT subject. SELECT returned zero rows for entities, obligations, entity_change_history and obligation_change_history; assertions passed.
+- The same synthetic non-owner was denied by all three privileged editing RPCs: entity description, obligation next action and obligation status; assertions passed. Dummy IDs were used; no records were changed.
+- Within a rolled-back transaction, impersonated `anon` and verified all eight public tables cannot be read (either insufficient privilege or RLS zero rows); assertions passed.
+- **Limit:** these are simulated SQL role/JWT tests, not a real second-account HTTP test. Real-user authorization, deployment-protection bypass testing and isolated restore verification remain pending.
