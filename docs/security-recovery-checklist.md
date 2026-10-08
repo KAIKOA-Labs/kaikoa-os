@@ -26,3 +26,10 @@ No import of sensitive health, identity, family or financial documents until ind
 - Do not assume backup availability or retention based on a green deployment.
 - Recommendation: establish managed daily backups or independently encrypted off-site logical exports, then test restore in a separate environment before importing sensitive information.
 - Documentation: https://supabase.com/docs/guides/platform/backups
+
+## Managed backups observed — 2026-10-08
+- Supabase dashboard screenshot confirms two physical backups listed, dated 2026-10-07 18:25:11 UTC and 2026-10-07 16:24:59 UTC, each with a Restore action.
+- **Backup availability confirmed; restoration NOT tested.** Do not restore production for testing.
+- The backup list does not itself prove ongoing schedule success, file-object backup coverage, or that all recent changes are included. Recheck after the next scheduled backup.
+- Database physical backups exclude actual Supabase Storage objects. Plan separate object backups before document imports.
+- Next gate: controlled restoration to an isolated environment and validation of row counts, owner-only access and audit trail before treating recovery as fully verified.
