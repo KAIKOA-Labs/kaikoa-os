@@ -1,5 +1,17 @@
 # KAIKOA OS — Current State
 
+## Milestone 008 acceptance and closeout — 2026-10-09 at 06:16 Asia/Manila
+
+Milestone 008 is complete within its bounded Needs Review visibility scope. The founder reports that everything works. The three supplied screenshots were opened directly from their existing scratch paths after the automatic reader reported missing files. They show the Home Needs Review filtered view, the subsequent return to Active obligations, and the dashboard counter. This is founder-executed, screenshot-observed Home acceptance; it does not establish a separate Private OS interaction test or mobile acceptance. Both views share the locally tested classifier/filter module.
+
+Direct checkpoint verification before this documentation closeout: remote and local development HEAD match `19d7617a95f2e71b24a611c7affd5c8a78c21ba0`; working tree clean. Its matching READY preview and development alias were verified at feature delivery in the preceding turn. The 21 unit tests, TypeScript and production build passed for that unchanged application tree; they are not repeated for documentation-only closeout.
+
+The founder notes that the dashboard's top filter cards feel crowded, but explicitly considers this acceptable at the initial stage. Capture as a deferred Founder Inbox candidate; no additional UI implementation is authorized by that feedback alone. A candidate refinement is to prioritize a few attention views and place remaining filters behind More views, preserving every existing category and its meaning.
+
+This closeout updates continuity documentation only under the existing routine safe publication scope. Publication subject: `Milestone 008: record dashboard acceptance and closeout`; resolve its SHA and matching Vercel preview after delivery. No application, database or operational records change, and private screenshot contents are not copied into this public repository.
+
+Exact next-session start: verify the development head and matching deployment, treat 008 as completed, then propose one bounded next improvement consistent with the master plan. Dashboard filter simplification is captured for later consideration; do not assume it is the current implementation objective. Sensitive imports remain blocked by file-recovery prerequisites; existing restored-Auth/document-provider/governance limitations remain open. Do not repeat passed login, Home acceptance, authorization or recovery tests without a relevant change or failure.
+
 ## Milestone 008 — Needs Review visibility, 2026-10-09
 
 Current session scope: the founder confirmed owner password-login acceptance and instructed proceeding with the smallest Command Center improvement. Routine safe implementation, verification and development-branch publication are authorized by the session-start instruction; founder-operated browser steps remain required. No agent browser was opened.

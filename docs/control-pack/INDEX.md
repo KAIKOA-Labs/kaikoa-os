@@ -1,6 +1,6 @@
 # KAIKOA OS — Control Pack
 
-Reviewed: 2026-10-09, Asia/Manila. Latest completed milestone is 007 within its recorded scope, closed at `85af7d2` with a matching READY preview directly verified this session. Owner password-login acceptance is founder-confirmed. Milestone 008 adds Needs Review visibility; see CURRENT_STATE.md for verification, delivery resolution and the pending one-click browser acceptance. Older evidence sections describe their dated sessions.
+Reviewed: 2026-10-09, Asia/Manila. Latest completed milestone is 008 within its bounded Needs Review scope: feature `19d7617`, matching READY preview verified at delivery, then founder-confirmed and screenshot-observed Home acceptance. Password-login acceptance also passed. See CURRENT_STATE.md for documentation-closeout delivery resolution, evidence limits and the exact next-session starting point. Older sections retain their dated context.
 
 ## Purpose and reading order
 
