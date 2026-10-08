@@ -25,6 +25,8 @@ Milestone 005: six workflow states, private-obligation editing, atomic audited w
 
 Milestone 006: shared private-session boundary, stale-response suppression, identity-change/sign-out clearing, expiry/focus/history checks, consistent Account navigation, expanded repeatable authorization assertions, and this durable resumption checkpoint. See milestone-006-private-session-security.md for exact scope and verification limits. Deployment and CI evidence will be recorded in the milestone commit/check runs and checkpoint follow-up.
 
+Milestone 006 acceptance follow-up: the owner provided a signed-out screenshot with private records absent. The bare access gate is replaced by the full, responsive Welcome back sign-in form, shared with /auth/sign-in. Existing email-link authentication remains approved-account-only; Gmail is supported as an email address. Native Google OAuth is not configured by this change. The earlier Google sign-in options were Vercel deployment authentication. Two-tab behavior and successful re-entry still require acceptance evidence.
+
 Existing production records and audit history are preserved. No repairs, quotation approvals, costs, deadlines or completion were inferred or recorded in this session. No obligation was recreated. There are four existing maintenance obligations; the prior milestone left two as Needs Review pending an explicit owner workflow decision. Their detailed private context must remain in the database rather than this public repository.
 
 ## Open release gates

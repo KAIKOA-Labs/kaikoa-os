@@ -20,7 +20,9 @@ No schema migration, real-record mutation, new dependency, paid service, change 
 
 ## Essential acceptance test
 
-Open Home in one signed-in tab. In a second tab on the same development URL, open Private OS → Account → Sign out. Return to the first tab without reloading: private record cards must be gone and the Sign in link visible. Sign in again and confirm the existing records return. This uses no data edits.
+Follow-up from the owner's signed-out screenshot: the private records were absent, but the generic access gate added an unnecessary click. Signed-out protected routes now show the same full sign-in form as /auth/sign-in, with a compact responsive card and the existing approved-account email-link flow. Gmail works as an email address; native Google OAuth has not been configured or added. The earlier Google/provider choices belonged to Vercel deployment access. Session clearing, RLS and shouldCreateUser=false are preserved. A screenshot of one signed-out view does not establish the full two-tab or re-entry test.
+
+Open Home in one signed-in tab. In a second tab on the same development URL, open Private OS → Account → Sign out. Return to the first tab without reloading: private record cards must be gone and the Welcome back sign-in form visible. Sign in again and confirm the existing records return. This uses no data edits.
 
 ## References used
 

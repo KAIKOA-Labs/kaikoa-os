@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { getBrowserSupabase } from "@/lib/supabase-browser";
 import { createPrivateSession, needsPrivateSession, type PrivateAccess } from "@/lib/private-session";
+import SignInScreen from "./sign-in-screen";
 
 export default function PrivateSessionBoundary({ children }: { children: ReactNode }) {
   const pathname = usePathname();
@@ -38,10 +39,11 @@ export default function PrivateSessionBoundary({ children }: { children: ReactNo
   }, [retry]);
   if (!needsPrivateSession(pathname)) return children;
   if (access.stage === "ready") return <div key={access.revision}>{children}</div>;
+  if (access.stage === "signed-out") return <SignInScreen />;
   return <main className="shell">
     <nav className="nav"><Link className="brand" href="/">KAIKOA OS</Link></nav>
     <header><p className="eyebrow">KAIKOA OS · PRIVATE ACCESS</p><h1>Private workspace.</h1></header>
-    <section className="panel"><p role="status">{access.stage === "checking" ? "Checking private access…" : access.stage === "signed-out" ? "Sign in to view your private records." : "Private access could not be verified. Please retry."}</p>
+    <section className="panel"><p role="status">{access.stage === "checking" ? "Checking private access…" : "Private access could not be verified. Please retry."}</p>
       {access.stage === "checking" ? null : <p><Link href="/auth/sign-in">Sign in →</Link></p>}
       {access.stage === "error" && <button type="button" onClick={() => { setAccess({ stage: "checking", userId: null, revision: access.revision + 1 }); setRetry(value => value + 1); }}>Retry access check</button>}
     </section>
