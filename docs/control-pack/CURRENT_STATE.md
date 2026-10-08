@@ -1,5 +1,11 @@
 # KAIKOA OS — Current State
 
+## Final workflow refinement — 2026-10-08 at 16:09 Asia/Manila
+
+The founder requested a safe wrap-up, review of the slowdown and a tighter workflow for tomorrow. The existing closeout was directly verified at `2d41a1d870cc51d6eb01f32ed8f514cdae9012e8` with a clean working tree and matching READY preview. Vercel's recorded build intervals for the two latest deliveries were 37.179 seconds and 26.877 seconds. These do not explain the reported 17-minute turn; exact model/tool/platform latency attribution remains unverified. The session did include an avoidable restore from a backup predating current records, repeated manual handoffs and multiple checkpoint publications. Useful authorization/recovery preparation was completed, but restoration of the current application remains unverified.
+
+WORKING_PROTOCOL.md now calls for one bounded deliverable, reuse of passed evidence, backup freshness checks before recovery provisioning, short founder-operated dashboard steps and one publication at a coherent stopping point. This refinement changes documentation only. Final commit subject: `Continuity: tighten workflow and preserve tomorrow's recovery start`; resolve its SHA from Git history and verify its preview as part of the handover. No further work is scheduled or running autonomously after session close. Tomorrow's first action remains checking a fresh COMPLETED source backup against the current checkpoint, then following the existing bounded recovery procedure.
+
 ## Session close — 2026-10-08 at 16:04 Asia/Manila
 
 - Last fully completed milestone: 006.1. Current checkpoint: Milestone 007 authorization passed within the documented limits; recovery of the current application has not passed.

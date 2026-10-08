@@ -9,12 +9,19 @@ Latest founder authorization, 16:04: "If it doesn't involve a safety issue, go a
 1. Read root AGENTS.md and the Control Pack.
 2. Inspect working tree, development branch head and matching deployment. State discrepancies before acting.
 3. Report confirmed state, historical reports, recovered context and unresolved questions separately.
-4. Agree one bounded step under current session authorization. Planning approval alone does not authorize execution.
+4. Select one bounded deliverable and finish condition within current authorization. Routine safe work does not need renewed approval. Planning approval alone does not authorize actions outside its scope.
 5. Implement only the authorized step, preserving records and audit history.
 6. Run checks appropriate to the change; record what was actually tested and its limits.
 7. Verify deployment only when deployment is authorized. Identify branch, commit, project and environment.
 8. Update Current State, Roadmap and relevant Decisions when documentation updates are authorized.
 9. Hand over completed work, evidence, limitations and next proposed step.
+
+## Keep work bounded
+
+- Reuse passed checks and verified evidence within their recorded scope. Repeat them only for a relevant change, observed failure or specific unresolved question; recheck mutable infrastructure when needed.
+- Check source backup age and coverage before provisioning a recovery copy. If the next required backup is unavailable, preserve the checkpoint and stop that test rather than cycling through logins, screenshots or obsolete backups.
+- Prepare and verify a coherent batch, then publish once at its stopping point. Avoid separate deployments for each evidence note. A feature that needs live acceptance may require an earlier deployment.
+- Use the exact available screenshot path directly when automatic reading fails. Keep founder dashboard actions short, show meaningful progress at least once per minute, and distinguish an actual blocker from work that can continue safely.
 
 ## Browser and connector workflow
 
