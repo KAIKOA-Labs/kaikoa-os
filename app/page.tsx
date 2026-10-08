@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import ObligationDeadline from "@/app/obligation-deadline";
 import { getBrowserSupabase } from "@/lib/supabase-browser";
 import { classifyObligation as classify, obligationFilters, obligationStatusLabel, visibleObligations, type ObligationFilter as Filter } from "@/lib/obligation-workflow";
 type Asset={id:string;slug:string;name:string;subtype:string|null;status:string;location:string|null};
@@ -28,7 +29,7 @@ export default function Home(){
  <><header><p className="eyebrow">KAIKOA OS · LIVE DASHBOARD</p><h1>Good morning, Eddie.</h1><p className="muted">Your private assets and obligations, connected to live records.</p></header>
  <section className="metrics workflowMetrics" aria-label="Obligation summary">{metrics.map(m=><button type="button" key={m.key} className="metric" aria-pressed={filter===m.key} onClick={()=>{setFilter(f=>f===m.key?null:m.key);document.getElementById("home-obligations")?.scrollIntoView({behavior:"smooth",block:"start"})}} style={{textAlign:"left",cursor:"pointer",color:"inherit",background:filter===m.key?"#202831":undefined}}><strong>{obligations.filter(o=>classify(o,now)[m.key]).length}</strong><span>{m.label}</span></button>)}</section>
  <section className="panel" id="home-obligations"><div className="sectionHead"><h2>{filter?metrics.find(m=>m.key===filter)?.label:"Active obligations"} · {visible.length}</h2>{filter&&<button type="button" onClick={()=>setFilter(null)}>Show All</button>}</div>
- {visible.length===0?<p className="muted">No obligations in this category.</p>:visible.map(o=>{const asset=assets.find(a=>a.id===o.related_entity_id);return <Link key={o.id} className="item itemLink" href={"/private-memory/obligations/edit?id="+encodeURIComponent(o.id)}><div><strong>{o.title} →</strong><p>{asset?.name??"Unlinked"} · {obligationStatusLabel(o.status,o.requires_owner_attention)}</p></div>{o.next_action&&<small>{o.next_action}</small>}</Link>})}</section>
+ {visible.length===0?<p className="muted">No obligations in this category.</p>:visible.map(o=>{const asset=assets.find(a=>a.id===o.related_entity_id);return <Link key={o.id} className="item itemLink" href={"/private-memory/obligations/edit?id="+encodeURIComponent(o.id)}><div><strong>{o.title} →</strong><p>{asset?.name??"Unlinked"} · {obligationStatusLabel(o.status,o.requires_owner_attention)}</p></div><ObligationDeadline record={o} now={now}/>{o.next_action&&<small>{o.next_action}</small>}</Link>})}</section>
  <section className="panel"><div className="sectionHead"><h2>Assets & Records · {assets.length}</h2><Link href="/private-memory">Private OS →</Link></div><div className="assetGrid">{assets.map(a=><Link key={a.id} className="asset assetLink" href={"/private-memory/assets/"+encodeURIComponent(a.slug)}><span className="eyebrow">{a.subtype?.replaceAll("_"," ")??"Record"}</span><strong>{a.name}</strong><span>{a.status}</span>{a.location&&<small>{a.location}</small>}</Link>)}</div></section></>}
  </main>;
 }

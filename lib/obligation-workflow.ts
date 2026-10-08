@@ -49,3 +49,16 @@ export function toLocalDateTime(value: string | null): string {
   const pad = (part: number) => String(part).padStart(2, "0");
   return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`;
 }
+
+export function obligationDeadline(record: WorkflowRecord, now: number, timeZone?: string) {
+  if (!record.due_at) return { label: "No deadline recorded", dateTime: null };
+  const date = new Date(record.due_at);
+  if (!Number.isFinite(date.getTime())) return { label: "Deadline needs review", dateTime: null };
+  const formatted = new Intl.DateTimeFormat("en-GB", {
+    year: "numeric", month: "short", day: "numeric",
+    hour: "2-digit", minute: "2-digit", timeZoneName: "short", timeZone,
+  }).format(date);
+  const prefix = record.status === "COMPLETED" || record.status === "ARCHIVED"
+    ? "Deadline" : classifyObligation(record, now).overdue ? "Overdue" : "Due";
+  return { label: `${prefix} · ${formatted}`, dateTime: date.toISOString() };
+}

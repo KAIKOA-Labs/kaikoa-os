@@ -1,5 +1,19 @@
 # KAIKOA OS — Current State
 
+## Milestone 009 — recorded deadline visibility, 2026-10-09
+
+The founder instructed continuing after Milestone 008 acceptance. The next bounded Command Center step makes already-recorded obligation deadlines visible without opening each record. Existing routine safe implementation/publication authorization applies; no parallel browser, operational-data mutation or new paid infrastructure is involved.
+
+Direct baseline: remote and local `milestone-001-hull` match `958121c0f2c6bb67833402d96bdb2085dc68edeb`, the 008 documentation closeout. The working tree was clean; the development alias resolves to matching READY preview `dpl_FZzLtYvenj2MZZ72GEbswXGrz5xA`. Milestone 008 remains completed within its recorded scope.
+
+Implementation: Home and Private OS obligation rows share a small deadline component. Valid stored timestamps show the date, time and browser timezone, with semantic time markup preserving the exact UTC instant. Missing dates show No deadline recorded; invalid values show Deadline needs review. Real overdue active work uses the existing classification; completed/archived work uses a neutral historical Deadline label. No due date, schedule, workflow state or owner attention is inferred or changed. Supabase select queries and security boundaries are unchanged; the new display appears only within ready private-row rendering. Filter-card crowding remains a deferred candidate rather than an additional change.
+
+Verification: 23 unit tests pass, including timezone day rollover preserving the same instant, null/invalid timestamps, overdue waiting/deferred work, neutral completed deadlines and the exact deadline boundary. TypeScript, production build and whitespace checks pass. React review confirms shared typed rendering, no new effects/hooks/dependencies, semantic time markup and continued private gating. Database query strings match the baseline exactly; no live rows were fetched for this UI change and no real authorization/recovery batch was repeated.
+
+Milestone 009 is implemented and locally verified, with owner browser acceptance pending. Publication subject: `Command Center: show recorded obligation deadlines`; resolve its SHA and matching preview after publication. This snapshot precedes delivery verification. Last completed milestone remains 008. Sensitive imports remain blocked by separate file-recovery prerequisites; other existing Auth/document-provider/governance limitations remain open.
+
+Exact next step: refresh Home in the founder's existing browser and confirm obligation rows show their recorded deadline (including timezone) or No deadline recorded where no date exists. Do not invent or edit a date just to create an acceptance fixture. If only undated records are present, record that live dated rendering remains covered by unit tests rather than claim a dated owner-browser test.
+
 ## Milestone 008 acceptance and closeout — 2026-10-09 at 06:16 Asia/Manila
 
 Milestone 008 is complete within its bounded Needs Review visibility scope. The founder reports that everything works. The three supplied screenshots were opened directly from their existing scratch paths after the automatic reader reported missing files. They show the Home Needs Review filtered view, the subsequent return to Active obligations, and the dashboard counter. This is founder-executed, screenshot-observed Home acceptance; it does not establish a separate Private OS interaction test or mobile acceptance. Both views share the locally tested classifier/filter module.
