@@ -10,8 +10,8 @@ Reviewed: 2026-10-08, Asia/Manila. Phases and implementation milestones are dist
 | 004 series | Staged inventory planning and controlled record management delivered | Commit history and inventory plan; planning does not prove all imports |
 | 005 | Obligation workflow delivered | 3c0dfee; matching READY deployment |
 | 006 | Session boundary deployed; owner browser acceptance passed | 1e3efe4 then deda760; two-tab clearing without refresh and successful re-entry confirmed by founder 2026-10-08; independent authorization/recovery remain open |
-| 006.1 | Original pack, reconciliation and browser-acceptance record published; session closing | d5deaf6 then 99d84e7 then 64f600e; matching READY preview verified; closeout documentation commit follows this snapshot. Original pack's later push approval history unknown |
-| 007 | Proposed, not authorized | Independent authorization and isolated recovery gate |
+| 006.1 | Delivered, including session closeout | d5deaf6 then 99d84e7 then 64f600e then 5a9c95e; matching READY preview verified. Original pack's later push approval history unknown |
+| 007 | Real-account browser verification underway | Temporary test identity verified; Account, Overview and Change History screenshots show successful queries and no visible inventory/obligations/audit entries. A bounded 16-check real-session runner is prepared; its live execution and isolated recovery remain open. No new paid infrastructure approved |
 
 ## Milestone 006.1 acceptance
 
@@ -30,11 +30,11 @@ Reviewed: 2026-10-08, Asia/Manila. Phases and implementation milestones are dist
 
 Passed by founder confirmation on 2026-10-08: signing out in Tab B cleared the original Home Tab A without refreshing; signing back in restored the private dashboard and existing records. See [Current State](CURRENT_STATE.md) for provenance and evidence limits. This closes only the owner browser-acceptance gate; it does not prove non-owner denial or recoverability.
 
-## Proposed Milestone 007
+## Milestone 007 — authorization and recovery
 
-Establish real non-owner HTTP denial evidence, a full restoration procedure tested in isolation, and a separate document-object backup plan. Verify schema, records, audit history and owner access. Never restore production for testing. Obtain approval for any new paid project/service. Scope and execution require a new authorization.
+Establish real non-owner HTTP denial evidence, a full restoration procedure tested in isolation, and a separate document-object backup plan. Verify schema, records, audit history and owner access. Never restore production for testing. The founder authorized milestone preparation and one temporary non-owner login; isolated restoration, new paid resources and governance changes need a concrete approved scope.
 
-First recommended step: the read-only evidence review and proposal specified in [Current State](CURRENT_STATE.md), leading to one bounded real second-account authorization check. The owner browser test is already passed; callback wording is a deferred UX issue.
+The read-only evidence review, temporary account setup, sign-in and visible Overview/Change History checks are complete. Next step: use `/private-memory/access-check` in the same temporary-user browser session, capture its 16 HTTP results and compare the live database against the pre-test fingerprint through the connector. See [Current State](CURRENT_STATE.md) for delivery status and evidence limits. Use connectors for supported backend work and direct links for founder-operated dashboard steps. Callback wording is a deferred UX issue.
 
 ## Later candidates
 

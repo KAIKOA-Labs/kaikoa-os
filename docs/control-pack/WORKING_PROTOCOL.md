@@ -14,6 +14,18 @@ Reviewed: 2026-10-08, Asia/Manila.
 8. Update Current State, Roadmap and relevant Decisions when documentation updates are authorized.
 9. Hand over completed work, evidence, limitations and next proposed step.
 
+## Browser and connector workflow
+
+Founder preference, 2026-10-08 at 13:55 Asia/Manila:
+
+- Use supported connectors for authorized backend inspections and actions.
+- For sign-in, approvals and unsupported dashboard operations, provide a direct link to the relevant page and one short instruction. The founder opens it and completes the action in their own browser.
+- Do not start or resume an agent-controlled parallel browser unless the founder explicitly requests it. A user's own browser login does not authenticate an agent browser.
+- Never ask for passwords, one-time codes, tokens or other credentials in chat.
+- Verify the result through a connector when possible; otherwise request a concise founder confirmation. Do not repeat screenshots or tests without a specific unresolved question.
+- If automatic screenshot reading reports a missing file, check the supplied local path and upload directory, then open the existing image with the local image viewer before reporting it unreadable or asking for another upload. Inspect only relevant user-provided images. Distinguish an automatic read error from an image that cannot be opened directly.
+- Record whether evidence is connector-verified or founder-confirmed. Keep the checkpoint when access blocks execution and do independent work where possible.
+
 ## Database and data discipline
 
 Inspect live schema, grants, RPC definitions and existing records before changes. Prevent duplicate records and unintended mutation. Keep workflow state separate from attention and due/scheduled dates. Never infer financial completion, credential validity or deadlines.
