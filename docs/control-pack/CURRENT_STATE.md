@@ -1,5 +1,15 @@
 # KAIKOA OS — Current State
 
+## Milestone 012 delivery checkpoint — 2026-10-09
+
+At 07:14 Asia/Manila the founder authorized finishing and packaging the milestone while away. Implementation is delivered at `6d593f4a89edf177e364d9e4014726f6ad6d9d92` on `milestone-001-hull`; matching READY feature deployment `dpl_5H4RKgZxetisdfFB5iz3FKdXiiDv` and the development alias are connector-verified. Local and remote exact commit/tree match and the working tree was clean after feature publication. GitHub build and preview-comment checks passed. This closes implementation and automated/database verification; owner-operated browser acceptance remains pending and is not invented from the request to finish while away.
+
+A private one-page artwork handoff records supported source facts, unresolved inventory quantities and the next extension. It is saved outside Git. The referenced inventory workbook was not located; the requested extraction remains partial, with no current printed/remaining counts asserted or source records imported. Do not commit private source facts or infer stock from production quotes, artist proofs or replacements.
+
+This closeout changes continuity documents only, reusing passed checks for the unchanged application. Publication subject: `Milestone 012: package verified artwork creation checkpoint`; resolve its exact SHA and matching READY deployment after publication. Preserve the migration/SQL-test evidence and remaining source/recovery gates described below.
+
+Resume here: inspect this branch head and matching preview; locate the authoritative workbook, using a direct link when available; reconcile edition/image-size/current-count essentials before a small edition extension. Owner form acceptance can be checked when the founder returns. No new login, recovery, sample records, costs/accounting schema or further infrastructure work is needed for this checkpoint.
+
 ## Milestone 012 — basic artwork creation, 2026-10-09
 
 The founder accepted the section navigation at 07:02 Asia/Manila and authorized continued bounded development. Milestone 011 is complete within its interface scope at feature `b0d393327c308c509872d84e1fea7db839e5f7a3`, with matching READY preview `dpl_9sNq3TiT64V4GCctumDSCeQKgTTT` verified. Acceptance is the founder's general manual navigation confirmation, not a separate mobile test or data-import certification.
