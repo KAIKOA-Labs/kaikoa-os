@@ -1,0 +1,6 @@
+import Link from "next/link";
+const groups=[
+ {title:"Assets",description:"Create, edit or archive inventory records.",links:[["Add Asset","/private-memory/assets/new"],["Edit Assets","/private-memory/edit"],["Archive Asset","/private-memory/assets/archive"]]},
+ {title:"Obligations",description:"Record responsibilities, update next actions and archive obsolete items.",links:[["Add Obligation","/private-memory/obligations/new"],["Edit Next Action","/private-memory/obligations/edit"],["Archive Obligation","/private-memory/obligations/archive"]]}
+];
+export default function ManagePage(){return <main className="shell"><header><p className="eyebrow">KAIKOA OS · PRIVATE WORKSPACE</p><h1>Manage records.</h1><p className="muted">Controlled changes · owner-only · audited</p></header>{groups.map(g=><section className="panel" key={g.title}><h2>{g.title}</h2><p className="muted">{g.description}</p>{g.links.map(([name,url])=><Link className="item itemLink" key={url} href={url}><strong>{name} →</strong></Link>)}</section>)}</main>}
