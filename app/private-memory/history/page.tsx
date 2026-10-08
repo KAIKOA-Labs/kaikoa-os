@@ -2,10 +2,16 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { getBrowserSupabase } from "@/lib/supabase-browser";
+import { obligationStatusLabel } from "@/lib/obligation-workflow";
 type Change={id:string;record_id:string;kind:"asset"|"obligation";field_name:string;previous_value:string|null;new_value:string|null;changed_at:string};
 type Named={id:string;name?:string;title?:string};
-const statusLabels:Record<string,string>={ATTENTION:"Needs Attention",UPCOMING:"Upcoming",IN_PROGRESS:"In Progress",WAITING_ON:"Waiting On"};
-function displayValue(change:Change,value:string|null){if(!value)return "(empty)";return change.field_name==="status"?(statusLabels[value]??value):value;}
+function displayValue(change:Change,value:string|null){
+ if(value===null||value==="")return "(empty)";
+ if(change.kind==="obligation"&&change.field_name==="status")return obligationStatusLabel(value);
+ if(change.field_name==="requires_owner_attention")return value==="true"?"Yes":"No";
+ if(["scheduled_at","completed_at"].includes(change.field_name))return new Date(value).toLocaleString();
+ return value;
+}
 export default function HistoryPage(){
  const [state,setState]=useState("Checking account…");
  const [changes,setChanges]=useState<Change[]>([]);
