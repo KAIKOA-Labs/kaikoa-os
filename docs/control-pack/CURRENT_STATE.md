@@ -1,20 +1,20 @@
 # KAIKOA OS — Current State
 
-Inspected: 2026-10-08 at 13:28, Asia/Manila. Infrastructure snapshot precedes the acceptance-recording commit; resolve later documentation commits from Git history and recheck the live alias each session.
+Inspected for session close: 2026-10-08 at 13:31, Asia/Manila. Infrastructure snapshot precedes the closeout documentation commit; identify that commit by its subject in Git history and recheck the live alias each session.
 
 ## Verified repository and deployment checkpoint
 
 - Repository: KAIKOA-Labs/kaikoa-os.
 - Development branch: `milestone-001-hull`.
-- Local HEAD and latest GitHub branch commit at this inspection: `99d84e705bdda74ebefd7877029ffc6353883f69`, Milestone 006.1 checkpoint reconciliation. The authorized browser-acceptance documentation commit follows this snapshot; resolve its SHA from Git history.
+- Local HEAD and latest GitHub branch commit at this inspection: `64f600e034cc2e64fe0f71c95d44de3c18b33a59`, owner-confirmed browser acceptance. The authorized closeout commit follows this snapshot; find `Milestone 006.1: close session and reconcile continuity handover` in Git history for its SHA.
 - Original Milestone 006: `1e3efe47f6a90d1941f1d5455527948cde11519d`, confirmed in local history; its matching READY deployment was reported by the earlier continuity inspection, not rechecked in this session.
 - Latest application follow-up: `deda760da6d4381b1242fac48458c56535b5b7e5`; full sign-in form immediately after sign-out.
-- Deployment at this inspection: `dpl_5GbwacfdjcEP3Gu2ibgzu34QuBJ8`, READY, branch preview (`target: null`), serving `99d84e705bdda74ebefd7877029ffc6353883f69`.
+- Deployment at this inspection: `dpl_81hRtgoHegJrAjEh6VbLunTCgfjn`, READY, branch preview (`target: null`), serving `64f600e034cc2e64fe0f71c95d44de3c18b33a59`.
 - Development alias: https://kaikoa-os-git-milestone-001-hull-ehzobel-4943.vercel.app
-- Immutable deployment URL at this inspection: https://kaikoa-a6dona7uv-ehzobel-4943.vercel.app
+- Immutable deployment URL at this inspection: https://kaikoa-im0b95or0-ehzobel-4943.vercel.app
 - Vercel alias inspection resolves to that deployment and commit. GitHub Vercel status reports success.
 - `main` was recorded by the earlier continuity inspection at `646a41bea4d0b4338147ce1fda178896df87bc2c`, initial commit; not rechecked in this session.
-- Working tree was clean immediately before recording acceptance. The original pack (`d5deaf6`) and checkpoint reconciliation (`99d84e7`) changed documentation only; application code remains at the `deda760` baseline.
+- Working tree was clean at closeout inspection. All changes since `deda760` are the nine Control Pack documentation files; application code and database files remain unchanged.
 - Evidence this session: GitHub commit lookup for `milestone-001-hull`, GitHub combined Vercel status, Vercel deployment lookup using the development alias, and local Git status/history/diff.
 
 ## Checkpoint reconciliation
@@ -60,6 +60,14 @@ Sensitive imports remain blocked by the existing security/recovery gate. No prod
 
 ## Current task and authorization
 
-Milestone 006.1's original pack and checkpoint reconciliation are delivered at `d5deaf6` and `99d84e7`. Milestone 006's owner browser acceptance passed; the remaining security/recovery gates above stay open.
+Milestone 006.1's original pack and checkpoint reconciliation are delivered at `d5deaf6` and `99d84e7`; browser acceptance is recorded at `64f600e`. Milestone 006's owner browser acceptance passed; the remaining security/recovery gates above stay open. The session is closing with documentation-only handover corrections.
 
-On 2026-10-08 at 13:28, the founder approved recording this owner-confirmed result in CURRENT_STATE.md and ROADMAP.md, committing and publishing the documentation update, and verifying the automatic Vercel preview. No application, database or existing evidence document changes are authorized. Milestone 007 remains proposed, not authorized.
+On 2026-10-08 at 13:28, the founder approved recording the owner-confirmed result, committing/publishing the update and verifying the preview. At 13:31, the founder authorized session close: verify completed work, run appropriate checks, correct the Control Pack where necessary, commit/push only verified changed files, and confirm deployment. No application, database or existing evidence document changes are included. Milestone 007 remains proposed, not authorized.
+
+## Exact recommended next-session starting point
+
+After reading AGENTS.md and the complete Control Pack, verify the actual development branch head, clean working tree and matching Vercel preview. Use this objective:
+
+> Milestone 007 preparation: perform a read-only review of docs/security-recovery-checklist.md, docs/current-database-schema.md and database/tests/authorization-boundary.sql. Separate historical simulated SQL evidence from missing real second-account HTTP evidence and isolated recovery evidence. Propose the single smallest real second-account authorization check, including its identity/access prerequisites and pass criteria. Do not create accounts, provision services, change settings, mutate records or start restoration without approval.
+
+Do not repeat the owner two-tab acceptance test unless new code changes or observed failures justify it. Callback wording about invitation/safe preview is an observed deferred UX issue, not a reopened acceptance gate. Fresh repository visibility/protection, current Supabase configuration/backups and detailed constitutional transcript recovery remain unverified as listed above.

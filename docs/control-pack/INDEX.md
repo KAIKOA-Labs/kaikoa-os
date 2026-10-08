@@ -1,6 +1,6 @@
 # KAIKOA OS — Control Pack
 
-Reviewed: 2026-10-08, Asia/Manila. Milestone 006.1 verified on GitHub and in a READY Vercel preview at `d5deaf6`; local checkpoint reconciliation and subsequent commit approved.
+Reviewed for session close: 2026-10-08, Asia/Manila. Control Pack and reconciliation published; Milestone 006 owner browser acceptance recorded at `64f600e` with a matching READY preview. The closeout documentation commit follows this snapshot; identify it from Git history.
 
 ## Purpose and reading order
 
@@ -37,7 +37,7 @@ If sources disagree, report the conflict and inspect authoritative evidence. Do 
 - [Milestone 005](../milestone-005-obligation-workflow.md)
 - [Milestone 006](../milestone-006-private-session-security.md)
 
-Earlier checkpoint instructions to stop after 006 describe the earlier session. Original 006.1 drafting/commit approval and push-pending wording are historical; GitHub and Vercel now verify delivery at `d5deaf6`, without establishing the later push approval history. Current approvals cover documentation-only reconciliation and its commit, not pushing or implementing 007. Existing evidence documents are retained without rewriting their historical claims.
+Earlier checkpoint instructions to stop after 006 describe the earlier session. Original 006.1 drafting/commit approval and push-pending wording are historical; the original pack's later push approval history remains unrecovered. This session's reconciliation and acceptance-recording commit/publication approvals are explicit and delivery was verified. Session-close approval covers necessary documentation corrections, committing/pushing verified changes and preview verification; it does not authorize implementing 007. Existing evidence documents are retained without rewriting their historical claims. Earlier milestone/security documents that leave owner browser acceptance open describe the pre-acceptance state; CURRENT_STATE.md records the founder-confirmed result at 13:26–13:27.
 
 ## Reusable session-start instruction
 

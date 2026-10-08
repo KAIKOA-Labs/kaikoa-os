@@ -28,6 +28,6 @@ This is an existing project. Preserve its architecture, records, audit history a
 
 Milestone 006.1 was verified on GitHub and in a READY Vercel preview at `d5deaf65577ab14f652039c758dcab891ca54fda` on 2026-10-08. The original pack recorded drafting and commit approval with push approval pending; that is historical authorization evidence, not the current delivery status. The later push approval history has not been recovered.
 
-Current session: the founder approved local documentation-only checkpoint reconciliation and subsequently approved committing the five corrections on 2026-10-08. Push approval remains separate; deployment, application and database changes are outside this approval. Milestone 007 remains proposed, not authorized.
+Session close, 2026-10-08: the founder approved reconciliation, its commit/publication, recording the owner-confirmed browser acceptance, and this documentation-only closeout with commit/push if verified files change and preview verification. These approvals apply to this session's documentation work, not future implementation. Milestone 006 browser acceptance passed; Milestone 007 remains proposed, not authorized. Resume from the checkpoint and exact next step in CURRENT_STATE.md; recheck mutable infrastructure before acting.
 
 Session-specific instructions take precedence over historical stop points. See [Working Protocol](docs/control-pack/WORKING_PROTOCOL.md).

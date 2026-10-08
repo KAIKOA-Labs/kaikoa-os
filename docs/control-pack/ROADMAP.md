@@ -10,7 +10,7 @@ Reviewed: 2026-10-08, Asia/Manila. Phases and implementation milestones are dist
 | 004 series | Staged inventory planning and controlled record management delivered | Commit history and inventory plan; planning does not prove all imports |
 | 005 | Obligation workflow delivered | 3c0dfee; matching READY deployment |
 | 006 | Session boundary deployed; owner browser acceptance passed | 1e3efe4 then deda760; two-tab clearing without refresh and successful re-entry confirmed by founder 2026-10-08; independent authorization/recovery remain open |
-| 006.1 | Original pack and checkpoint reconciliation published | d5deaf65577ab14f652039c758dcab891ca54fda then 99d84e705bdda74ebefd7877029ffc6353883f69; READY preview verified; original pack's later push approval history unknown |
+| 006.1 | Original pack, reconciliation and browser-acceptance record published; session closing | d5deaf6 then 99d84e7 then 64f600e; matching READY preview verified; closeout documentation commit follows this snapshot. Original pack's later push approval history unknown |
 | 007 | Proposed, not authorized | Independent authorization and isolated recovery gate |
 
 ## Milestone 006.1 acceptance
@@ -23,7 +23,8 @@ Reviewed: 2026-10-08, Asia/Manila. Phases and implementation milestones are dist
 - Fresh sessions can recover through AGENTS.md and INDEX.md.
 - Original drafting and commit approvals are recorded; the original push-pending wording is historical. Current GitHub/Vercel evidence verifies delivery, not the later push approval history.
 - Checkpoint reconciliation received local edit, commit and publication approvals in this session; published at 99d84e7 with matching READY preview.
-- Founder approved recording browser acceptance in CURRENT_STATE.md and ROADMAP.md, committing/publishing that update and verifying the preview on 2026-10-08 at 13:28. The update follows the inspected 99d84e7 snapshot; resolve its SHA from Git history.
+- Founder approved recording browser acceptance, committing/publishing that update and verifying the preview on 2026-10-08 at 13:28; delivered at 64f600e with matching READY preview.
+- Session close authorized at 13:31: necessary Control Pack corrections, verified changed-file commit/push and preview confirmation. The closeout commit follows the inspected 64f600e snapshot; resolve its SHA from Git history.
 
 ## Milestone 006 browser acceptance
 
@@ -32,6 +33,8 @@ Passed by founder confirmation on 2026-10-08: signing out in Tab B cleared the o
 ## Proposed Milestone 007
 
 Establish real non-owner HTTP denial evidence, a full restoration procedure tested in isolation, and a separate document-object backup plan. Verify schema, records, audit history and owner access. Never restore production for testing. Obtain approval for any new paid project/service. Scope and execution require a new authorization.
+
+First recommended step: the read-only evidence review and proposal specified in [Current State](CURRENT_STATE.md), leading to one bounded real second-account authorization check. The owner browser test is already passed; callback wording is a deferred UX issue.
 
 ## Later candidates
 
