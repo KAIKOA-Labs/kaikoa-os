@@ -1,6 +1,6 @@
 # KAIKOA OS — Architecture
 
-Reviewed: 2026-10-08, Asia/Manila. Source structure inspected; live database descriptions are historical reports.
+Reviewed: 2026-10-09, Asia/Manila. Source structure inspected; live database descriptions are historical reports.
 
 ## Implemented stack
 
@@ -8,7 +8,7 @@ Next.js 15.5.27 App Router, React 19.1.1, TypeScript and Supabase JavaScript cli
 
 ## Inventory interface
 
-`/assets` is a redirect alias to `/private-memory/inventory`. This focused read-only view is inside the existing private-session boundary and reads entity summary fields through the authenticated Supabase client and existing RLS. Search and category selection operate on already-loaded records; no public seed inventory, new entity table or valuation/rent inference is introduced. Detail navigation uses existing private asset routes.
+`/assets` is a redirect alias to `/private-memory/inventory`. This focused read-only view is inside the existing private-session boundary and reads entity summary fields through the authenticated Supabase client and existing RLS. Search and category selection operate on already-loaded records; no public seed inventory, new entity table or valuation/rent inference is introduced. Detail navigation uses existing private asset routes. Milestone 011 scopes this browser to Assets and adds shared protected Artwork and Other Records pages. The subtype classifier is shared with Home/Overview section links; unknown and unrelated subtypes remain in Other Records. Subscriptions retains its existing dedicated page. This is interface grouping, not a new data hierarchy or an inference of income/ownership. All new routes remain under the existing private-memory session boundary; section route keys reset filters.
 
 ## Model and persistence
 

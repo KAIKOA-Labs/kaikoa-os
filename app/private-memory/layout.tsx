@@ -5,10 +5,12 @@ import type { ReactNode } from "react";
 
 const sections = [
   { href: "/private-memory", label: "Overview" },
-  { href: "/private-memory/inventory", label: "Assets & Records" },
+  { href: "/private-memory/inventory", label: "Assets" },
+  { href: "/private-memory/artwork", label: "Artwork" },
+  { href: "/private-memory/subscriptions", label: "Subscriptions" },
+  { href: "/private-memory/records", label: "Other Records" },
   { href: "/private-memory/manage", label: "Manage Records" },
   { href: "/private-memory/history", label: "Change History" },
-  { href: "/private-memory/subscriptions", label: "Subscriptions" },
   { href: "/auth/status", label: "Account" },
 ];
 
