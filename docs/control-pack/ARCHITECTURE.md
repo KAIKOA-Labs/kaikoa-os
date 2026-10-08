@@ -6,6 +6,10 @@ Reviewed: 2026-10-08, Asia/Manila. Source structure inspected; live database des
 
 Next.js 15.5.27 App Router, React 19.1.1, TypeScript and Supabase JavaScript client 2.117.3; Vercel branch-preview hosting. Versions are the inspected package baseline, not a promise of future versions. No Python backend or Captain AI integration is implemented in this baseline.
 
+## Inventory interface
+
+`/assets` is a redirect alias to `/private-memory/inventory`. This focused read-only view is inside the existing private-session boundary and reads entity summary fields through the authenticated Supabase client and existing RLS. Search and category selection operate on already-loaded records; no public seed inventory, new entity table or valuation/rent inference is introduced. Detail navigation uses existing private asset routes.
+
 ## Model and persistence
 
 Entities, relationships, events, obligations and evidence form the universal model. Current TypeScript entity types are a narrower implementation subset; conceptual domains are not all separate implemented modules.

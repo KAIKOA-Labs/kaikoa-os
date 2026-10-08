@@ -1,5 +1,19 @@
 # KAIKOA OS — Current State
 
+## Milestone 010 — focused inventory view, 2026-10-09
+
+The founder requested continued work and the next step after 009 closure. The bounded next deliverable is a read-only, searchable Assets & Records view of existing inventory, consistent with the universal model and inventory-expansion plan. Routine safe implementation/publication authorization applies. No new records, values, rental schedules or artwork editions are imported from memory.
+
+Direct baseline verification: remote and local development HEAD match `e5011b148797c2aadf50bf0d5a2c1f4e7628acc7`, with a clean working tree and matching READY preview `dpl_CqdTkNLQ71nEBahGLpfATEULSiYX` on the development alias. Last completed milestone remains 009. Supabase source remains ACTIVE_HEALTHY; a read-only schema inspection confirms the seven fields used by the view. A count-only projection query executes successfully after implementation. This is SQL projection/source-presence evidence, not owner-browser or anonymous HTTP acceptance.
+
+Implementation: `/assets` remains a redirect alias, now targeting `/private-memory/inventory`, which uses the existing private-session boundary and RLS. The new page reads only non-archived entity summaries, ordered by name, and supports combined name/category/location search and category selection, category counts, Clear filters, no-results states and links to existing detail pages. Status, location and recorded data quality remain explicit; absent quality is Not recorded rather than verified. Categories are derived from present records, so an absent domain is not displayed as an existing portfolio. Private workspace navigation exposes Assets & Records. Responsive styling uses the established theme. No schema, RPC, grant, ownership, authentication-controller, secret or operational-data change is made.
+
+Verification: all 25 unit tests pass, including combined search/category filtering, archive exclusion, missing/unknown data quality, record-derived category counts and the new protected route. TypeScript, production build and whitespace/link checks pass. React review confirms labels, keyboard-native inputs/selects, semantic navigation, accessible result status, stable row keys, fetch cancellation and no new dependencies. The new source queries were checked against current Supabase docs/changelog; no relevant convention change was introduced. No agent browser or repeated real-account authorization/recovery batch was used. Live interaction/mobile acceptance remains unverified.
+
+Milestone 010 is implemented and locally verified, pending owner browser acceptance. Publication subject: `Inventory: add searchable Assets and Records view`; resolve its SHA and matching preview after publication. This snapshot precedes delivery verification. Sensitive imports remain blocked by separate file-recovery prerequisites, and other recorded recovery/provider/governance limits remain open. F07 captures the wider portfolio/artwork direction for review without expanding this implementation.
+
+Exact next step: open Assets in the founder's browser; confirm existing records appear, search for a displayed record, select a category, use Clear filters, then open an existing record and return through Assets & Records. Do not create or edit a record as an acceptance fixture. After acceptance, propose one verified inventory-expansion step separately.
+
 ## Milestone 009 — complete, acceptance recorded 2026-10-09 at 06:24 Asia/Manila
 
 Owner browser acceptance passed, founder-confirmed: the founder explicitly confirms deadline labels appear beneath obligations on Home. No screenshot or agent browser is used for this acceptance. The report establishes label presence; it does not identify whether live records had actual dates, verify a specific timezone conversion, or separately test Private OS/mobile. Dated/timezone/invalid rendering remains covered by the recorded unit tests.

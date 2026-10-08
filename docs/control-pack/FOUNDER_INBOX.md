@@ -12,6 +12,7 @@ Capture does not authorize implementation, create an operational obligation or e
 | F04 | Captured 2026-10-08; existing inventory plan | Property and project planning | Ownership versus opportunity, authoritative commitments and dated evidence | Projects / inventory review | Candidate |
 | F05 | Captured 2026-10-08; recovered master direction | Future investment intelligence | Approved scope, data sources and human authority | Future Alpha / capital specification | Deferred; no trading automation authorized |
 | F06 | Captured 2026-10-09; current founder feedback after 008 acceptance | Dashboard top filter cards feel crowded; acceptable at this initial stage | Review a compact arrangement that preserves categories, semantics and access; candidate: primary attention views plus More views | Command Center progressive disclosure | Deferred candidate; no further UI change requested |
+| F07 | Captured 2026-10-09; available Founder's Room excerpt in project context, exact message date unknown | Fuller portfolio coverage: vehicles, properties, rental amounts/schedules and artwork edition inventory | Confirm records, ownership/opportunity distinction, currencies, dates, edition totals/sales and source evidence; preserve sensitive-import gates | Future inventory expansion | Candidate; 010 only improves browsing of existing records, with no new imports |
 
 ## Entry and promotion protocol
 
