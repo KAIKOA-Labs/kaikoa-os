@@ -1,25 +1,27 @@
 # KAIKOA OS — Current State
 
-Inspected: 2026-10-08, Asia/Manila.
+Inspected: 2026-10-08 at 13:28, Asia/Manila. Infrastructure snapshot precedes the acceptance-recording commit; resolve later documentation commits from Git history and recheck the live alias each session.
 
 ## Verified repository and deployment checkpoint
 
 - Repository: KAIKOA-Labs/kaikoa-os.
 - Development branch: `milestone-001-hull`.
-- Local HEAD and latest GitHub branch commit at the read-only session inspection: `d5deaf65577ab14f652039c758dcab891ca54fda`, Milestone 006.1 — Project Continuity. The authorized reconciliation commit follows this snapshot; resolve its SHA from local Git history.
+- Local HEAD and latest GitHub branch commit at this inspection: `99d84e705bdda74ebefd7877029ffc6353883f69`, Milestone 006.1 checkpoint reconciliation. The authorized browser-acceptance documentation commit follows this snapshot; resolve its SHA from Git history.
 - Original Milestone 006: `1e3efe47f6a90d1941f1d5455527948cde11519d`, confirmed in local history; its matching READY deployment was reported by the earlier continuity inspection, not rechecked in this session.
 - Latest application follow-up: `deda760da6d4381b1242fac48458c56535b5b7e5`; full sign-in form immediately after sign-out.
-- Current deployment: `dpl_BRLDU3ysJv1JBj1Gu79mEQgLHiWL`, READY, branch preview (`target: null`), serving `d5deaf65577ab14f652039c758dcab891ca54fda`.
+- Deployment at this inspection: `dpl_5GbwacfdjcEP3Gu2ibgzu34QuBJ8`, READY, branch preview (`target: null`), serving `99d84e705bdda74ebefd7877029ffc6353883f69`.
 - Development alias: https://kaikoa-os-git-milestone-001-hull-ehzobel-4943.vercel.app
-- Immutable deployment URL: https://kaikoa-cz7oc31jl-ehzobel-4943.vercel.app
+- Immutable deployment URL at this inspection: https://kaikoa-a6dona7uv-ehzobel-4943.vercel.app
 - Vercel alias inspection resolves to that deployment and commit. GitHub Vercel status reports success.
 - `main` was recorded by the earlier continuity inspection at `646a41bea4d0b4338147ce1fda178896df87bc2c`, initial commit; not rechecked in this session.
-- Working tree was clean at session start and immediately before this reconciliation. Local Git comparison confirms that `d5deaf6` adds exactly the nine Control Pack files; application code is unchanged from `deda760`.
+- Working tree was clean immediately before recording acceptance. The original pack (`d5deaf6`) and checkpoint reconciliation (`99d84e7`) changed documentation only; application code remains at the `deda760` baseline.
 - Evidence this session: GitHub commit lookup for `milestone-001-hull`, GitHub combined Vercel status, Vercel deployment lookup using the development alias, and local Git status/history/diff.
 
 ## Checkpoint reconciliation
 
 The original pack recorded `deda760` and deployment `dpl_HPJ1r1o5p6zZzXkkHXCNibFQpUGw` as current, with 006.1 approved for commit and push approval pending. Those statements describe the earlier inspection and authorization record. This session directly verified 006.1 on GitHub and deployed; the later push approval history remains unknown. Observed delivery does not establish authorization retrospectively.
+
+The founder subsequently approved publishing the checkpoint reconciliation in this session. It was published at `99d84e7`; GitHub created a different commit SHA from local `679450e`, with an identical file tree. The local checkout was aligned to the published commit and its READY preview was verified. This recovered approval concerns the reconciliation, not the original pack's still-unrecovered push approval history.
 
 ## Delivered implementation
 
@@ -29,6 +31,16 @@ Milestone 005 (`3c0dfee`): six workflow states, atomic audited workflow/context 
 
 Milestone 006 (`1e3efe4`): shared session boundary, stale-response suppression, clearing on sign-out/identity changes, expiry/focus/history checks and authorization assertions. Follow-up `deda760` shows the full sign-in form after sign-out. Email-link authentication remains; native Google OAuth was not added.
 
+## Milestone 006 browser acceptance — passed, owner-confirmed
+
+On 2026-10-08, the founder repeated the prescribed test in two normal tabs in the same Chrome window on the development alias, while `99d84e7` was deployed:
+
+- Home in Tab A showed the private dashboard and existing records before sign-out.
+- After signing out through Account in Tab B, the founder confirmed at 13:26 that Tab A cleared without refreshing.
+- At 13:27, the founder explicitly confirmed that the private dashboard and existing records returned after signing back in.
+
+Evidence: the founder's direct reports in this session, following the six-step test instructions. This closes the owner browser-acceptance gate. It is owner-confirmed manual acceptance, not an agent-observed or automated browser test. The newly attached screenshots were not inspected because their supplied local paths were unavailable; this result does not depend on those images. Independent non-owner HTTP authorization and isolated recovery remain unverified.
+
 ## Historical verification reports
 
 Existing milestone documents report successful production builds, TypeScript checks, twelve unit tests and rolled-back database authorization tests. These were not rerun in this continuity session. READY is build/deployment evidence, not proof of user acceptance or recoverability.
@@ -37,7 +49,6 @@ The last documented database has eight application tables, owner-restricted RLS,
 
 ## Open gates
 
-- Owner's complete two-tab sign-out and successful re-entry acceptance evidence.
 - Independent real second-account HTTP denial checks across reads and every write endpoint.
 - Successful isolated restoration validating schema, records, audit history and owner access.
 - Separate document-object recovery before sensitive imports.
@@ -49,6 +60,6 @@ Sensitive imports remain blocked by the existing security/recovery gate. No prod
 
 ## Current task and authorization
 
-Milestone 006.1 documentation delivery is verified: committed, pushed and deployed at `d5deaf6`. Milestone 006 browser acceptance and the security/recovery gates above remain open.
+Milestone 006.1's original pack and checkpoint reconciliation are delivered at `d5deaf6` and `99d84e7`. Milestone 006's owner browser acceptance passed; the remaining security/recovery gates above stay open.
 
-On 2026-10-08, the founder approved local documentation-only reconciliation of the checkpoint, delivery status and historical authorization wording, then approved committing the five corrections. This reconciliation is a local follow-up to `d5deaf6`; push approval remains separate. No application, database, deployment or existing evidence document changes are authorized. Milestone 007 remains proposed, not authorized.
+On 2026-10-08 at 13:28, the founder approved recording this owner-confirmed result in CURRENT_STATE.md and ROADMAP.md, committing and publishing the documentation update, and verifying the automatic Vercel preview. No application, database or existing evidence document changes are authorized. Milestone 007 remains proposed, not authorized.
