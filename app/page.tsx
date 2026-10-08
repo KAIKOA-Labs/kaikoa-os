@@ -21,7 +21,7 @@ export default function Home(){
   const db=getBrowserSupabase();if(!db){setState("unavailable");return;}
   const {data:user,error:authError}=await db.auth.getUser();if(!active)return;
   if(authError||!user.user){setState("signed-out");return;}
-  const [a,o]=await Promise.all([db.from("entities").select("id,slug,name,subtype,status,location").order("name"),db.from("obligations").select("id,title,status,related_entity_id,requires_owner_attention,due_at,next_action").order("title")]);
+  const [a,o]=await Promise.all([db.from("entities").select("id,slug,name,subtype,status,location").neq("status","ARCHIVED").order("name"),db.from("obligations").select("id,title,status,related_entity_id,requires_owner_attention,due_at,next_action").order("title")]);
   if(!active)return;
   if(a.error||o.error){setState("error");return;}
   setAssets(a.data??[]);setObligations(o.data??[]);setNow(Date.now());setState("ready");
