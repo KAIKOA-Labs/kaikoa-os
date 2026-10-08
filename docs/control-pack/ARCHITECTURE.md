@@ -27,7 +27,7 @@ The [documented database schema](../current-database-schema.md) describes eight 
 
 ## Access boundaries
 
-- Supabase email-link authentication establishes identity; sign-in does not create arbitrary new users.
+- Supabase email/password authentication is the primary login, with approved-account email links retained as a fallback. Neither flow creates arbitrary new users.
 - The browser private-session boundary verifies identity, hides/unmounts protected views on sign-out or identity change, and suppresses stale responses.
 - Database RLS and owner guards remain the authority for record access. The browser boundary does not grant ownership.
 - Historical inspections report authenticated SELECT-only table grants, no anon table grants and controlled audited RPC writes.

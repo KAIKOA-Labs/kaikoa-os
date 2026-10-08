@@ -11,6 +11,7 @@ Reviewed: 2026-10-08, Asia/Manila. Phases and implementation milestones are dist
 | 005 | Obligation workflow delivered | 3c0dfee; matching READY deployment |
 | 006 | Session boundary deployed; owner browser acceptance passed | 1e3efe4 then deda760; two-tab clearing without refresh and successful re-entry confirmed by founder 2026-10-08; independent authorization/recovery remain open |
 | 006.1 | Delivered, including session closeout | d5deaf6 then 99d84e7 then 64f600e then 5a9c95e; matching READY preview verified. Original pack's later push approval history unknown |
+| Login refinement | Implemented; live acceptance pending publication | Conventional email/password sign-in is primary with approved-account email-link fallback. Owner identity/RLS unchanged; 20 tests, TypeScript and production build passed locally. Resolve the publication commit and matching preview, then perform one owner browser sign-in. |
 | 007 | Authorization checks passed; recovery unfinished | Runner deployed at 011899a; 16 real-session HTTP checks passed at 14:42:46, and owner workspace re-entry observed at 14:52:34. The first recovery copy used a backup predating current inventory/Auth records; recovery has not passed. Founder deletion and connector cleanup verification completed at 15:37. A current backup/export and isolated validation are next. See CURRENT_STATE.md for evidence limits. |
 
 ## Milestone 006.1 acceptance

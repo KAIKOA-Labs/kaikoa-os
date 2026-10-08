@@ -4,7 +4,7 @@ import Link from "next/link";
 import { getBrowserSupabase } from "@/lib/supabase-browser";
 
 export default function AuthCallback() {
-  const [message, setMessage] = useState("Verifying your invitation…");
+  const [message, setMessage] = useState("Verifying your sign-in link…");
   useEffect(() => {
     let alive = true;
     async function verify() {
@@ -14,14 +14,14 @@ export default function AuthCallback() {
         const { data, error } = await supabase.auth.getSession();
         if (!alive) return;
         if (error || !data.session) {
-          setMessage("This invitation could not be verified. It may have expired or already been used. Request a fresh invitation.");
+          setMessage("This sign-in link could not be verified. It may have expired or already been used. Request a fresh link.");
           return;
         }
         // No private application data is shown until authorization and owner-specific RLS are verified.
         window.history.replaceState(null, "", "/auth/callback");
-        setMessage("Invitation verified. Private account access is being configured; the application remains in safe preview mode.");
+        setMessage("Sign-in verified. Your private workspace is ready.");
       } catch {
-        if (alive) setMessage("Unable to complete verification. Please request a fresh invitation.");
+        if (alive) setMessage("Unable to complete verification. Please request a fresh sign-in link.");
       }
     }
     void verify();

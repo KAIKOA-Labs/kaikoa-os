@@ -5,12 +5,35 @@ import { getBrowserSupabase } from "@/lib/supabase-browser";
 
 export default function SignInScreen() {
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
   const requesting = useRef(false);
-  async function requestLink(event: React.FormEvent<HTMLFormElement>) {
+
+  async function signIn(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (requesting.current) return;
+    const client = getBrowserSupabase();
+    if (!client) { setMessage("Sign-in is temporarily unavailable. Please try again later."); return; }
+    requesting.current = true; setBusy(true); setMessage("");
+    try {
+      const { error } = await client.auth.signInWithPassword({ email: email.trim(), password });
+      if (error) {
+        setMessage(error.message.toLowerCase().includes("rate limit")
+          ? "Please wait before trying again."
+          : "That email or password wasn’t accepted. Try again or use a secure email link.");
+      } else {
+        setMessage("Signed in. Opening your private workspace…");
+      }
+    } catch { setMessage("Unable to sign in right now."); }
+    finally { requesting.current = false; setBusy(false); }
+  }
+
+  async function requestLink() {
+    if (requesting.current || !email.trim()) {
+      if (!email.trim()) setMessage("Enter your approved email address first.");
+      return;
+    }
     const client = getBrowserSupabase();
     if (!client) { setMessage("Sign-in is temporarily unavailable. Please try again later."); return; }
     requesting.current = true; setBusy(true); setMessage("");
@@ -35,13 +58,20 @@ export default function SignInScreen() {
       <Link className="authBrand" href="/">KAIKOA OS</Link>
       <section className="authCard" aria-labelledby="sign-in-title" aria-busy={busy}>
         <header><p className="eyebrow">YOUR PRIVATE OPERATING SYSTEM</p><h1 id="sign-in-title">Welcome back.</h1>
-          <p className="muted">Sign in with your approved email address.</p></header>
-        <form onSubmit={requestLink}>
+          <p className="muted">Sign in to your private workspace.</p></header>
+        <form onSubmit={signIn}>
           <label htmlFor="sign-in-email">Email address</label>
           <input id="sign-in-email" type="email" autoComplete="email" placeholder="you@example.com" required
             value={email} disabled={busy} onChange={event => setEmail(event.target.value)} aria-describedby="sign-in-help" />
-          <button type="submit" disabled={busy}>{busy ? "Sending sign-in link…" : "Email me a sign-in link"}</button>
-          <p id="sign-in-help" className="authHelp">Use Gmail or your usual email. We’ll send you a secure link to sign in.</p>
+          <label htmlFor="sign-in-password">KAIKOA OS password</label>
+          <input id="sign-in-password" type="password" autoComplete="current-password" required
+            value={password} disabled={busy} onChange={event => setPassword(event.target.value)} />
+          <button type="submit" disabled={busy}>{busy ? "Signing in…" : "Sign in"}</button>
+          <div className="authAlternate" aria-hidden="true"><span>or</span></div>
+          <button className="authSecondary" type="button" disabled={busy} onClick={() => { void requestLink(); }}>
+            Email me a secure sign-in link
+          </button>
+          <p id="sign-in-help" className="authHelp">Approved accounts only. The email link remains available as a secure fallback.</p>
           {message && <p role="status" className="authMessage">{message}</p>}
         </form>
       </section>

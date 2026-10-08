@@ -1,5 +1,11 @@
 # KAIKOA OS — Current State
 
+## Conventional login refinement — 2026-10-08 at 17:19 Asia/Manila
+
+The founder authorized upgrading the unusual email-link-only login. Live read-only Auth inspection found one account, one email identity and password authentication already present; no account identifiers or credentials were recorded. The sign-in screen now uses email and password as the primary flow through `signInWithPassword`, while the existing approved-account email link remains available as a fallback. Callback copy now refers to a sign-in link rather than an invitation. The owner UUID, RLS policies, database records and audit history are unchanged. Google OAuth was not enabled because the project has no Google identity and provider credentials/configuration were not available in the authorized connector workflow; no nonfunctional Google button was shipped.
+
+Local verification passed: 20 tests, TypeScript, production build and whitespace checks. The founder must perform one live browser acceptance after publication: sign out, sign in with the existing KAIKOA OS password and confirm the private dashboard appears. Do not enter a Google account password into KAIKOA OS. If the existing application password is unknown, use the email-link fallback; a password-reset/setup flow remains a separate improvement. Publication commit subject: `Auth: add conventional password sign-in`; resolve its SHA and matching READY preview from Git/Vercel after publication.
+
 ## Final workflow refinement — 2026-10-08 at 16:09 Asia/Manila
 
 The founder requested a safe wrap-up, review of the slowdown and a tighter workflow for tomorrow. The existing closeout was directly verified at `2d41a1d870cc51d6eb01f32ed8f514cdae9012e8` with a clean working tree and matching READY preview. Vercel's recorded build intervals for the two latest deliveries were 37.179 seconds and 26.877 seconds. These do not explain the reported 17-minute turn; exact model/tool/platform latency attribution remains unverified. The session did include an avoidable restore from a backup predating current records, repeated manual handoffs and multiple checkpoint publications. Useful authorization/recovery preparation was completed, but restoration of the current application remains unverified.
