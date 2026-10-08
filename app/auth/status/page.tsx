@@ -35,7 +35,7 @@ export default function AuthStatusPage() {
     void inspect();
     return () => { active = false; };
   }, []);
-  return <><div className="workspaceNavWrap"><nav className="workspaceNav" aria-label="Private workspace navigation"><Link className="workspaceBrand" href="/">KAIKOA OS</Link><div className="workspaceNavLinks"><Link className="workspaceNavLink" href="/private-memory">Overview</Link><Link className="workspaceNavLink" href="/private-memory/edit">Edit Assets</Link><Link className="workspaceNavLink" href="/private-memory/history">Change History</Link><Link className="workspaceNavLink active" aria-current="page" href="/auth/status">Account</Link></div></nav></div><main className="shell">
+  return <><div className="workspaceNavWrap"><nav className="workspaceNav" aria-label="Private workspace navigation"><Link className="workspaceBrand" href="/">KAIKOA OS</Link><div className="workspaceNavLinks"><Link className="workspaceNavLink" href="/private-memory">Overview</Link><Link className="workspaceNavLink" href="/private-memory/manage">Manage Records</Link><Link className="workspaceNavLink" href="/private-memory/history">Change History</Link><Link className="workspaceNavLink active" aria-current="page" href="/auth/status">Account</Link></div></nav></div><main className="shell">
     <header>
       <p className="eyebrow">KAIKOA OS · SECURITY CHECK</p>
       <h1>Account status.</h1>

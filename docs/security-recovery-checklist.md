@@ -1,5 +1,11 @@
 # KAIKOA OS — Security and recovery gate (Milestone 003P)
 
+## Milestone 006 — session boundary and expanded denial checks
+
+The shared browser boundary now unmounts private UI on sign-out/identity change and rejects stale verification responses. All eight application-table SELECT checks and all eight public write-RPC denial checks passed with a synthetic non-owner database role/JWT in a rolled-back transaction. Anonymous table/execute permissions and absence of authenticated direct writes were also checked. See database/tests/authorization-boundary.sql and docs/milestone-006-private-session-security.md.
+
+These remain simulated database tests. Real second-account HTTP authorization, the owner's two-tab session acceptance test, isolated restoration and separate document-object recovery are still outstanding. None is marked complete by this milestone.
+
 ## Verified on 2026-10-08
 - All eight application tables have RLS enabled.
 - All eight tables expose owner-restricted SELECT policies to authenticated users; none expose anon table grants.

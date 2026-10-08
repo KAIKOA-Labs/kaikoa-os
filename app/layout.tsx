@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import PrivateSessionBoundary from "./private-session-boundary";
 
 export const metadata: Metadata = {
   title: "KAIKOA OS",
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body><PrivateSessionBoundary>{children}</PrivateSessionBoundary></body>
     </html>
   );
 }
