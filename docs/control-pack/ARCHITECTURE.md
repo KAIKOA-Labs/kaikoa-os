@@ -24,6 +24,8 @@ Milestone 017 extends the existing audited creation RPC to permit a null related
 
 Milestone 018 adds protected `/private-memory/obligations/details`, linked from the workspace/editor, plus a public invoker/private owner-guarded definer correction RPC. It updates title and related_entity_id independently of workflow/deadlines, using shared updated_at stale protection and the creation endpoint's target-scope advisory lock for duplicate checks. Changed fields and required correction context are audited atomically; no-ops preserve history/version. Active new parent links are row-locked; retained archived links are allowed, while completed/archive obligations stay protected. Change History renders current related-record names or General responsibility. No operational records or existing RPCs are changed by the migration.
 
+Milestone 019 adds versioned subscription_review metadata, a protected per-service review form and a filtered Subscriptions workspace. Reads project only summary fields plus billing/review subtrees. The public invoker/private guarded-definer RPC uses expected-subtree stale protection and atomic entity audit, preserves unrelated fields/billing and assigns the review timestamp server-side. Owner usage and keep/review/cancel intention remain distinct from provider/payment state. Invalid/missing reviews stay explicit; existing unsupported mixed-currency/truthy-verification totals are replaced by per-record native billing labels. No operational subscriptions or reviews are imported.
+
 ## Model and persistence
 
 Entities, relationships, events, obligations and evidence form the universal model. Current TypeScript entity types are a narrower implementation subset; conceptual domains are not all separate implemented modules.
