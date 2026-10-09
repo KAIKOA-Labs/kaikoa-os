@@ -1,6 +1,6 @@
 # KAIKOA OS — Control Pack
 
-Reviewed: 2026-10-09, Asia/Manila. Latest accepted milestone is 011: separate Assets, Artwork, Subscriptions and Other Records. Milestone 012 implementation, verification and basic artwork onboarding are delivered; owner browser acceptance remains pending. Source screenshots and founder corrections have been reconciled into the private artwork handoff, with current counts and reference costs kept provisional. CURRENT_STATE.md records the session closeout, evidence limits and proposed Milestone 013 edition extension; older dated sections retain their context.
+Reviewed: 2026-10-09, Asia/Manila. Milestone 012 is accepted within founder-confirmed form-display scope; a browser creation submission is not claimed. Milestone 013 edition/version inventory is implemented and verified, with owner browser acceptance pending. Current State records the guarded metadata save, separate artwork-wide artist proofs, unknown-count semantics and private source limits. Earlier dated sections retain their historical context.
 
 ## Purpose and reading order
 

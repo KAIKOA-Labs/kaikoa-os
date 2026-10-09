@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { getBrowserSupabase } from "@/lib/supabase-browser";
+import ArtworkInventorySummary from "@/app/artwork-inventory-summary";
 import { obligationStatusLabel } from "@/lib/obligation-workflow";
-type Asset={id:string;slug:string;name:string;subtype:string|null;status:string;description:string|null;location:string|null};
+type Asset={id:string;slug:string;name:string;subtype:string|null;status:string;description:string|null;location:string|null;metadata:unknown};
 type Obligation={id:string;title:string;status:string;next_action:string|null;requires_owner_attention:boolean;workflow_note:string|null;scheduled_at:string|null};
 export default function PrivateAssetDetail(){
  const params=useParams();
@@ -20,7 +21,7 @@ export default function PrivateAssetDetail(){
    const {data:user,error:authError}=await db.auth.getUser();
    if(!active)return;
    if(authError||!user.user){setState("Authentication required.");return;}
-   const {data:entity,error:entityError}=await db.from("entities").select("id,slug,name,subtype,status,description,location").eq("slug",slug).maybeSingle();
+   const {data:entity,error:entityError}=await db.from("entities").select("id,slug,name,subtype,status,description,location,metadata").eq("slug",slug).maybeSingle();
    if(!active)return;
    if(entityError){setState("Could not load this asset.");return;}
    if(!entity){setState("Asset not found or access denied.");return;}
@@ -35,6 +36,7 @@ export default function PrivateAssetDetail(){
  {state!=="ready"?<section className="panel"><p role="status">{state}</p>{state==="Authentication required."&&<Link href="/auth/sign-in">Sign in →</Link>}</section>:asset&&<>
  <header><p className="eyebrow">{asset.subtype?.replaceAll("_"," ")??"Asset"} · Private inventory</p><h1>{asset.name}</h1><p className="muted">{asset.status}</p></header>
  <section className="panel"><h2>Asset details</h2><p style={{whiteSpace:"pre-wrap"}}>{asset.description||"No description recorded."}</p>{asset.location&&<p className="muted">Location: {asset.location}</p>}<p><Link href={"/private-memory/edit?asset="+encodeURIComponent(asset.slug)}>Edit description →</Link></p></section>
+ {asset.subtype==="artwork"&&<ArtworkInventorySummary slug={asset.slug} metadata={asset.metadata}/>}
  <section className="panel" id="obligations"><h2>Linked obligations · {items.length}</h2>{items.length===0?<p className="muted">No linked obligations recorded.</p>:items.map(o=><div className="item" key={o.id}><div><strong>{o.title}</strong><p>{o.next_action}</p>{o.workflow_note&&<p className="muted">{o.workflow_note}</p>}{o.scheduled_at&&<p className="muted">Scheduled: {new Date(o.scheduled_at).toLocaleString()}</p>}</div><span className="status">{obligationStatusLabel(o.status,o.requires_owner_attention)}</span><small><Link href={"/private-memory/obligations/edit?id="+encodeURIComponent(o.id)}>Update obligation →</Link></small></div>)}</section>
  </>}
  </main>;
