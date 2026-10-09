@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 
 const sections = [
   { href: "/private-memory", label: "Overview" },
+  { href: "/private-memory/obligations", label: "Obligations" },
   { href: "/private-memory/inventory", label: "Assets" },
   { href: "/private-memory/artwork", label: "Artwork" },
   { href: "/private-memory/subscriptions", label: "Subscriptions" },

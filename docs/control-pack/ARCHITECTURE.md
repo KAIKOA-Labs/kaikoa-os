@@ -16,6 +16,8 @@ Milestone 013 adds protected `/private-memory/artwork/[slug]/editions` and a sum
 
 Milestone 014 exposes compact edition/AP summaries on Artwork cards. Its query adds only the artwork-inventory JSON subtree and an exact artwork subtype filter; other sections retain the seven-column summary projection. It validates the subtree before display, keeps malformed/missing/empty information distinct, and preserves per-version unknowns without aggregating sale availability.
 
+Milestone 015 adds protected `/private-memory/obligations`, linked from Home and private workspace navigation. It uses explicit parallel obligation/entity summary reads through existing RLS, shares workflow/deadline classification, and derives search/filter/priority ordering in the browser. Schedule labels remain distinct from deadlines. Existing audited editor/create routes handle mutations; this milestone adds no endpoint or database field.
+
 ## Model and persistence
 
 Entities, relationships, events, obligations and evidence form the universal model. Current TypeScript entity types are a narrower implementation subset; conceptual domains are not all separate implemented modules.
