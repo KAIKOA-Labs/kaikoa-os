@@ -1,6 +1,7 @@
 export type InventoryRecord = {
   id: string; slug: string; name: string; subtype: string | null;
   status: string; location: string | null; data_quality: string | null;
+  artwork_inventory?: unknown;
 };
 const categoryLabels: Record<string, string> = {
   vessel: "Vessels", property: "Properties", vehicle: "Vehicles",

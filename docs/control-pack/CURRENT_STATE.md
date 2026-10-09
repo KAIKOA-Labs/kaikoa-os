@@ -1,5 +1,21 @@
 # KAIKOA OS — Current State
 
+## Milestone 014 — read-only artwork edition overview, 2026-10-09
+
+At 16:45 Asia/Manila the founder said to keep going and leave refinements for later. This authorizes continued bounded development; the general continuation does not claim a specific Milestone 013 form/save test. Its owner acceptance remains pending rather than invented.
+
+Direct baseline: clean local working tree at `a8b7a018fad69f5db766094a75e2bfb60ba5dc5f`, matching remote development HEAD and READY branch preview `dpl_Gti3mRujYG147sySU5fh62Q73U3T` on the established development alias. Existing Control Pack/authorization and 013 implementation remain the baseline.
+
+Milestone 014 adds a read-only edition overview to the protected Artwork list. Each artwork card shows recorded version labels, image sizes when present, per-version numbered limit/printed/still-to-print values, and separate artwork-wide AP allowance/printed counts. Unknown remains explicit; absent versus malformed versus recorded-empty inventory has distinct display behavior. No aggregate sale stock or verified quantities are inferred. Direct Manage editions links coexist with existing detail links without nested anchors. Existing name/category/location search and filtering are preserved; non-artwork card behavior is unchanged.
+
+The Artwork browser reads only artwork summaries and the `metadata->artwork_inventory` subtree through its existing authenticated client/RLS; unrelated metadata is not requested. The non-artwork seven-column projection is unchanged. Live column types and a count-only SQL projection were verified. Current Supabase JSON selection/alias guidance was inspected. This validates source/schema availability, not owner-browser or real-account HTTP acceptance.
+
+An attempted management-connector read of private artwork names/status/edition bodies was rejected by automatic approval review. That disclosure was abandoned; no alternative route retrieved those private bodies. The bounded read-only interface extension was completed using schema-only and count-only verification instead. Operational edition onboarding remains deferred; no records, source counts, financial facts, audit entries, RPCs, grants, Auth settings, paid infrastructure or source documents were changed.
+
+Verification: 34 unit tests, TypeScript and production build passed. Added tests distinguish missing/empty/malformed data and preserve per-version null/zero counts while excluding APs from numbered capacity. Passed 013 write/security tests are reused for the unchanged endpoint, not rerun or described as new evidence. React review confirms native accessible links, stable edition/card keys, source-validation fallback, protected ready-only rendering, fetch cancellation, no nested anchors, responsive wrapping and no dependencies. Documentation privacy, whitespace and relative-link checks pass. No agent-controlled browser was used.
+
+Publication subject: `Milestone 014: show artwork edition overview`. Resolve the exact SHA and matching READY preview after publication. Browser acceptance remains pending. Next owner check: refresh Artwork and confirm each card has an edition-information summary and a Manage editions link. Open one existing artwork's edition form to confirm the version fields and separate artwork-wide AP section. If no edition inventory is saved, the list should show information not recorded/Unknown; do not create samples or infer stock. Broader polish and operational source reconciliation remain later work. Sensitive-import/file-recovery and governance limits are unchanged.
+
 ## Milestone 013 — artwork edition inventory, 2026-10-09
 
 The founder explicitly confirmed that the Milestone 012 Add artwork form opens and shows title/description fields, then authorized proceeding with Milestone 013. This closes 012 owner acceptance within that form-display scope; it does not claim a browser submission, separate mobile acceptance or edition-source certification. Earlier pending-acceptance statements below are historical.

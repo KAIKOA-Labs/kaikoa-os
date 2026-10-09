@@ -16,3 +16,5 @@
 .inventoryControls{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:16px}.inventoryControls label{display:block;font-size:.85rem;margin-bottom:8px}.inventoryControls input,.inventoryControls select{width:100%;min-height:46px;padding:12px;border:1px solid #343e49;border-radius:10px;background:#0a0c0f;color:#f4f6f8;font:inherit;font-size:16px}.inventoryControls :focus-visible{outline:2px solid #aab4c0;outline-offset:3px}@media(max-width:700px){.inventoryControls{grid-template-columns:1fr}}
 
 .editionFieldset{border:0;padding:0;margin:0;min-width:0}.editionFieldset .panel{overflow-wrap:anywhere}
+
+.artworkInventoryCard{overflow-wrap:anywhere;min-width:0}.artworkCardTitle{text-decoration:none}.artworkCardTitle:hover{text-decoration:underline}.artworkEditionOverview{display:flex;flex-direction:column;gap:10px;border-top:1px solid #242a31;margin:8px 0;padding-top:14px}.artworkEditionRow{display:flex;flex-direction:column;gap:5px}.artworkInventoryCard a:focus-visible{outline:2px solid #aab4c0;outline-offset:3px}

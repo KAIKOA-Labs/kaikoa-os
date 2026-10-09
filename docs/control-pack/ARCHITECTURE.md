@@ -14,6 +14,8 @@ Milestone 012 adds `/private-memory/artwork/new`, a protected title/description 
 
 Milestone 013 adds protected `/private-memory/artwork/[slug]/editions` and a summary on existing artwork detail routes. Versioned `entities.metadata.artwork_inventory` contains edition entries and one separate artwork-wide artist-proof object. No new entity subtype or table is required for this bounded extension. `update_artwork_inventory(uuid,jsonb,jsonb)` follows the established fixed-owner, guarded SECURITY DEFINER write pattern with empty search path and no anonymous execute. Expected-subtree comparison, row locking and atomic `entity_change_history` before/after entries protect edits while preserving unrelated metadata and review/visibility fields. Unknown counts remain null; remaining-to-print is a display calculation and never sale stock. No source counts, costs or payment data were imported.
 
+Milestone 014 exposes compact edition/AP summaries on Artwork cards. Its query adds only the artwork-inventory JSON subtree and an exact artwork subtype filter; other sections retain the seven-column summary projection. It validates the subtree before display, keeps malformed/missing/empty information distinct, and preserves per-version unknowns without aggregating sale availability.
+
 ## Model and persistence
 
 Entities, relationships, events, obligations and evidence form the universal model. Current TypeScript entity types are a narrower implementation subset; conceptual domains are not all separate implemented modules.

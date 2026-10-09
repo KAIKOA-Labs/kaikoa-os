@@ -1,6 +1,6 @@
 # KAIKOA OS — Control Pack
 
-Reviewed: 2026-10-09, Asia/Manila. Milestone 012 is accepted within founder-confirmed form-display scope; a browser creation submission is not claimed. Milestone 013 edition/version inventory is implemented and verified, with owner browser acceptance pending. Current State records the guarded metadata save, separate artwork-wide artist proofs, unknown-count semantics and private source limits. Earlier dated sections retain their historical context.
+Reviewed: 2026-10-09, Asia/Manila. Milestone 012 is accepted within founder-confirmed form-display scope. Milestones 013 (edition editor) and 014 (read-only Artwork edition overview) are implemented and verified; specific owner browser acceptance remains pending. Current State records the latest continuation, private-data inspection rejection and safe read-only delivery. Earlier dated sections retain their historical context.
 
 ## Purpose and reading order
 
