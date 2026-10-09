@@ -1,5 +1,21 @@
 # KAIKOA OS — Current State
 
+## Artwork onboarding and session handoff — 2026-10-09
+
+At 08:43 Asia/Manila the founder requested a big-picture wrap-up before leaving and a durable starting point for the next chat. Milestone 011 remains accepted. Milestone 012 implementation, automated/database verification and basic artwork onboarding are delivered; owner-operated browser acceptance is still pending. The request to finish while away does not establish that acceptance.
+
+Before this documentation closeout, local and remote development HEAD matched `4435a4b22a7efb7a5b979032345eedfc183436da`, with a clean working tree and matching READY deployment `dpl_XRrKmiMSYPstp8zLuyGBseWAAcG6`. The original Supabase source remains ACTIVE_HEALTHY. No new infrastructure, schema, RPC, grant or Auth change was made in this onboarding step.
+
+The founder supplied a shared inventory link, title/version corrections and screenshots, warning that the source may be outdated. The screenshots were read directly and the private handoff updated with corrected artwork/version structure, separate artist proofs, provisional production observations and reference prices, source dates and unresolved discrepancies. The live workbook's current state remains unverified. Private source facts, prices and identifying values stay outside this public repository; no source workbook or Drive file was edited.
+
+Owner-requested basic artwork records were created through the existing audited `create_inventory_asset` RPC after live-definition and duplicate checks. The management connector acted on the owner's behalf, with the database transaction setting the owner role/JWT context; this is not an owner-browser or real-session HTTP test. Creation provenance records this on-behalf action. Assertions verified private/unverified review defaults and creation audit entries, and exact comparisons preserved all pre-existing entity and inventory-audit content. Edition quantities, financial values, payment status and structured edition/cost fields were not imported.
+
+The private **Kaikoa-Artwork-Handoff.pdf** is the source-reconciliation handoff. Reuse the passed Milestone 012 checks for the unchanged application; this closeout requires documentation, privacy and link checks only. Publish subject: `Artwork: save source reconciliation and session checkpoint`; resolve its exact SHA and matching READY preview after publication.
+
+Next chat: read AGENTS.md and the complete Control Pack, verify the development head and matching deployment, and retain any pending owner acceptance. Scope Milestone 013 as the smallest edition inventory extension using the private handoff: distinguish artwork from edition/version, keep artist proofs separate, preserve unknown current counts and source provenance, and distinguish provisional reference prices from invoices/payments. Inspect the live model before choosing the bounded implementation. Sensitive-import/file-recovery gates remain open. Do not repeat accepted login or completed recovery checks without a relevant change or failure.
+
+The older Milestone 012 snapshots below describe their earlier inspection-time state; this section supersedes their unresolved-source and no-operational-import claims for basic artwork onboarding only.
+
 ## Milestone 012 delivery checkpoint — 2026-10-09
 
 At 07:14 Asia/Manila the founder authorized finishing and packaging the milestone while away. Implementation is delivered at `6d593f4a89edf177e364d9e4014726f6ad6d9d92` on `milestone-001-hull`; matching READY feature deployment `dpl_5H4RKgZxetisdfFB5iz3FKdXiiDv` and the development alias are connector-verified. Local and remote exact commit/tree match and the working tree was clean after feature publication. GitHub build and preview-comment checks passed. This closes implementation and automated/database verification; owner-operated browser acceptance remains pending and is not invented from the request to finish while away.
