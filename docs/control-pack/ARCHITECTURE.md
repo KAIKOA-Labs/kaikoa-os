@@ -28,6 +28,8 @@ Milestone 019 adds versioned subscription_review metadata, a protected per-servi
 
 Milestone 020 adds protected `/private-memory/subscriptions/new`, linked from Subscriptions. A blank confirmed service-name/description form uses the existing audited creation RPC with the subscription subtype added to its allowlist. Existing private/Unverified provenance defaults, global slug uniqueness, owner guard and audit remain intact; billing/review/renewal facts are not assigned. No new table or endpoint is introduced.
 
+Milestone 021 adds a protected billing editor and versioned subscription_billing metadata, separate from legacy billing evidence/projections and actual charges/payments. Exact canonical decimal strings, independent null unknowns, native currency-code format, cadence/source note and a server timestamp are saved through a public invoker/private guarded-definer RPC. Expected-subtree comparison, row locking and atomic audit preserve legacy billing, usage review and unrelated fields; no-op saves preserve version/history. Cards expose the owner record and earlier source reference separately, without conversions or totals.
+
 ## Model and persistence
 
 Entities, relationships, events, obligations and evidence form the universal model. Current TypeScript entity types are a narrower implementation subset; conceptual domains are not all separate implemented modules.

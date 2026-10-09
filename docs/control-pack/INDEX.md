@@ -1,6 +1,6 @@
 # KAIKOA OS — Control Pack
 
-Reviewed: 2026-10-09, Asia/Manila. Milestone 020 adds verified owner-entered subscription creation; owner browser acceptance pending. Milestone 019 interface acceptance is founder-confirmed at 22:42, with review saving unclaimed. Earlier acceptance limits remain preserved. Current State records the baseline, guarded allowlist extension, verification and next candidate.
+Reviewed: 2026-10-09, Asia/Manila. Milestone 021 adds verified owner subscription billing entry while preserving legacy source billing. Owner browser acceptance remains pending for 020 and 021; 019 retains its limited founder interface acceptance. Earlier acceptance limits and sensitive-import/file-recovery gates remain preserved. Current State records exact-decimal storage, audit/stale protection and the next candidate.
 
 ## Purpose and reading order
 

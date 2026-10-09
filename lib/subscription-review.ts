@@ -28,7 +28,7 @@ export function subscriptionReviewLabel(value: unknown) {
   if (!review) return value == null ? "Usage: Unknown · Decision: Undecided" : "Review details need attention";
   return `Usage: ${usageOptions.find(option => option.value === review.usage)!.label} · Decision: ${intentionOptions.find(option => option.value === review.intention)!.label}`;
 }
-export type SubscriptionSummary = { id: string; name: string; slug: string; status: string; subscription_review: unknown; billing: unknown };
+export type SubscriptionSummary = { id: string; name: string; slug: string; status: string; subscription_review: unknown; billing: unknown; subscription_billing?: unknown };
 export function subscriptionRows<T extends SubscriptionSummary>(rows: T[], query: string, filter: string): T[] {
   const search = query.trim().toLowerCase();
   return rows.filter(row => {

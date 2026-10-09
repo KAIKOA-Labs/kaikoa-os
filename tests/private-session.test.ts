@@ -80,6 +80,6 @@ test("missing and expired sessions never mount private records", async () => {
   }
 });
 test("all record routes are guarded while sign-in and callbacks remain reachable", () => {
-  for (const path of ["/", "/auth/status", "/private-memory", "/private-memory/history", "/private-memory/inventory", "/private-memory/artwork", "/private-memory/artwork/new", "/private-memory/artwork/example/editions", "/private-memory/records", "/private-memory/subscriptions", "/private-memory/subscriptions/new", "/private-memory/subscriptions/example/review", "/private-memory/obligations", "/private-memory/obligations/edit", "/private-memory/obligations/deadline", "/private-memory/obligations/details", "/private-memory/assets/example"]) assert.equal(needsPrivateSession(path), true);
+  for (const path of ["/", "/auth/status", "/private-memory", "/private-memory/history", "/private-memory/inventory", "/private-memory/artwork", "/private-memory/artwork/new", "/private-memory/artwork/example/editions", "/private-memory/records", "/private-memory/subscriptions", "/private-memory/subscriptions/new", "/private-memory/subscriptions/example/review", "/private-memory/subscriptions/example/billing", "/private-memory/obligations", "/private-memory/obligations/edit", "/private-memory/obligations/deadline", "/private-memory/obligations/details", "/private-memory/assets/example"]) assert.equal(needsPrivateSession(path), true);
   for (const path of ["/auth/sign-in", "/auth/callback", "/assets", "/operations", "/private-memory-other"]) assert.equal(needsPrivateSession(path), false);
 });
