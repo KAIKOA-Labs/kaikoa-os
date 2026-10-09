@@ -2,10 +2,12 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import InventorySectionLinks from "@/app/inventory-section-links";
+import CommandCenterReview from "@/app/command-center-review";
+import type { CommandCenterRecord } from "@/lib/command-center-review";
 import ObligationDeadline from "@/app/obligation-deadline";
 import { getBrowserSupabase } from "@/lib/supabase-browser";
 import { classifyObligation as classify, obligationFilters, obligationStatusLabel, visibleObligations, type ObligationFilter as Filter } from "@/lib/obligation-workflow";
-type Asset={id:string;slug:string;name:string;subtype:string|null;status:string;location:string|null};
+type Asset=CommandCenterRecord & {location:string|null};
 type Obligation={id:string;title:string;status:string;related_entity_id:string|null;requires_owner_attention:boolean;due_at:string|null;next_action:string|null};
 const Nav=()=> <nav className="nav"><Link className="brand" href="/">KAIKOA OS</Link><div><Link href="/">Home</Link><Link href="/assets">Assets</Link><Link href="/operations">Operations</Link><Link href="/private-memory">Private OS →</Link></div></nav>;
 export default function Home(){
@@ -18,7 +20,7 @@ export default function Home(){
   const db=getBrowserSupabase();if(!db){setState("unavailable");return;}
   const {data:user,error:authError}=await db.auth.getUser();if(!active)return;
   if(authError||!user.user){setState("signed-out");return;}
-  const [a,o]=await Promise.all([db.from("entities").select("id,slug,name,subtype,status,location").neq("status","ARCHIVED").order("name"),db.from("obligations").select("id,title,status,related_entity_id,requires_owner_attention,due_at,next_action").neq("status","ARCHIVED").order("title")]);
+  const [a,o]=await Promise.all([db.from("entities").select("id,slug,name,subtype,status,location,data_quality,artwork_inventory_version:metadata->artwork_inventory->>version,subscription_review_version:metadata->subscription_review->>version,subscription_billing_version:metadata->subscription_billing->>version").neq("status","ARCHIVED").order("name"),db.from("obligations").select("id,title,status,related_entity_id,requires_owner_attention,due_at,next_action").neq("status","ARCHIVED").order("title")]);
   if(!active)return;
   if(a.error||o.error){setState("error");return;}
   setAssets(a.data??[]);setObligations(o.data??[]);setNow(Date.now());setState("ready");
@@ -32,6 +34,7 @@ export default function Home(){
  <section className="panel" id="home-obligations"><div className="sectionHead"><h2>{filter?metrics.find(m=>m.key===filter)?.label:"Active obligations"} · {visible.length}</h2>{filter&&<button type="button" onClick={()=>setFilter(null)}>Show All</button>}</div>
  {visible.length===0?<p className="muted">No obligations in this category.</p>:visible.map(o=>{const asset=assets.find(a=>a.id===o.related_entity_id);return <Link key={o.id} className="item itemLink" href={"/private-memory/obligations/edit?id="+encodeURIComponent(o.id)}><div><strong>{o.title} →</strong><p>{asset?.name??(o.related_entity_id?"Related record unavailable":"General responsibility")} · {obligationStatusLabel(o.status,o.requires_owner_attention)}</p></div><ObligationDeadline record={o} now={now}/>{o.next_action&&<small>{o.next_action}</small>}</Link>})}</section>
  <p><Link className="back" href="/private-memory/obligations">Open Obligations workspace →</Link></p>
+ <CommandCenterReview records={assets}/>
  <InventorySectionLinks records={assets}/></>}
  </main>;
 }
