@@ -1,6 +1,6 @@
 # KAIKOA OS — Control Pack
 
-Reviewed: 2026-10-09, Asia/Manila. Milestone 016 adds verified owner-entered obligation deadlines with required reason/confirmation, stale protection and atomic audit history. Owner browser acceptance remains pending, alongside the specific 013/014/015 checks; 012 retains its recorded form-display acceptance. Current State records the latest baseline, implementation, verification limits and next candidate. Earlier dated sections retain their historical context.
+Reviewed: 2026-10-09, Asia/Manila. Milestone 017 delivers verified general and linked obligation capture with audited creation and scoped duplicate protection. Its owner browser acceptance remains pending. Milestone 016 interface acceptance is founder-confirmed at 21:10; exact save/clear testing is not claimed. Specific 013/014/015 checks remain pending, and 012 retains form-display acceptance. Current State records the baseline, verification limits and next candidate.
 
 ## Purpose and reading order
 

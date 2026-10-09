@@ -20,6 +20,8 @@ Milestone 015 adds protected `/private-memory/obligations`, linked from Home and
 
 Milestone 016 adds protected `/private-memory/obligations/deadline`, linked from workspace rows and the workflow editor. It edits only active obligations' existing due_at through a public invoker RPC over a private owner-guarded definer, sharing updated_at stale protection with workflow writes. Required reason/source and confirmation accompany changes; deadline before/after and context are audited atomically. No-op saves preserve version/history; completed/archive deadlines are read-only. New local times validate round trips and show an explicit browser timezone; unchanged instants preserve precision. No deadline is inferred from a schedule. The client reads six explicit summary fields; the RPC returns only the updated deadline/version summary.
 
+Milestone 017 extends the existing audited creation RPC to permit a null related entity or an active linked record, preserving private/Unverified defaults and no inferred dates. A shared parent row lock protects active-link validation; an advisory transaction lock plus null-safe scoped title comparison protects duplicate submissions. The general Add obligation form replaces hardcoded domain drafts and reads only entity summaries. Home, Overview and the workspace label general responsibilities explicitly; every item can reach workflow/deadline management. No new endpoint, table or record is introduced by the migration.
+
 ## Model and persistence
 
 Entities, relationships, events, obligations and evidence form the universal model. Current TypeScript entity types are a narrower implementation subset; conceptual domains are not all separate implemented modules.

@@ -52,7 +52,7 @@ export default function ObligationsPage() {
       <div className="obligationControls">
         <div><label htmlFor="obligation-search">Search obligations</label><input id="obligation-search" type="search" maxLength={160} placeholder="Title, next action, note or linked record" value={query} onChange={event => setQuery(event.target.value)} /></div>
         <div><label htmlFor="obligation-view">View</label><select id="obligation-view" value={filter ?? ""} onChange={event => setFilter((event.target.value || null) as ObligationFilter)}><option value="">All active</option>{obligationFilters.map(item => <option key={item.key} value={item.key}>{item.label}</option>)}</select></div>
-        <div><label htmlFor="obligation-record">Related record</label><select id="obligation-record" value={related} onChange={event => setRelated(event.target.value)}><option value="">All records</option>{linked.filter(record => relatedIds.has(record.id)).map(record => <option key={record.id} value={record.id}>{record.name}{record.status === "ARCHIVED" ? " (archived record)" : ""}</option>)}<option value={unlinkedFilter}>Unlinked / unavailable record</option></select></div>
+        <div><label htmlFor="obligation-record">Related record</label><select id="obligation-record" value={related} onChange={event => setRelated(event.target.value)}><option value="">All records</option>{linked.filter(record => relatedIds.has(record.id)).map(record => <option key={record.id} value={record.id}>{record.name}{record.status === "ARCHIVED" ? " (archived record)" : ""}</option>)}<option value={unlinkedFilter}>General / unavailable record</option></select></div>
       </div>
       <div className="sectionHead"><p className="muted" role="status">Showing {visible.length} of {records.length} non-archived obligations</p>{(query || filter || related) && <button type="button" onClick={reset}>Clear filters</button>}</div>
       <p className="muted">Overdue, due within 14 days, then Requires You and Needs Review. Dates display in your browser timezone. Scheduled dates remain separate from deadlines.</p>
@@ -62,7 +62,7 @@ export default function ObligationsPage() {
         return <article className="item obligationWorkspaceItem" key={record.id}>
           <div><Link href={"/private-memory/obligations/edit?id=" + encodeURIComponent(record.id)}><strong>{record.title} →</strong></Link>
             <p className="muted">{obligationStatusLabel(record.status, record.requires_owner_attention)}</p>
-            <p>{entity ? <Link href={"/private-memory/assets/" + encodeURIComponent(entity.slug)}>{entity.name}{entity.status === "ARCHIVED" ? " (archived record)" : ""}</Link> : "Unlinked / related record unavailable"}</p></div>
+            <p>{entity ? <Link href={"/private-memory/assets/" + encodeURIComponent(entity.slug)}>{entity.name}{entity.status === "ARCHIVED" ? " (archived record)" : ""}</Link> : record.related_entity_id ? "Related record unavailable" : "General responsibility"}</p></div>
           <ObligationDeadline record={record} now={now} />
           {record.status !== "COMPLETED" && <small><Link href={"/private-memory/obligations/deadline?id=" + encodeURIComponent(record.id)}>Manage deadline →</Link></small>}
           <small style={{ whiteSpace: "pre-wrap" }}>Next action: {record.next_action || "Not recorded"}</small>

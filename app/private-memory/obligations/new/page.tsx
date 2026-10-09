@@ -1,60 +1,78 @@
 "use client";
-import {useEffect,useState} from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import Link from "next/link";
-import {getBrowserSupabase} from "@/lib/supabase-browser";
-type Asset={id:string;name:string;status:string};
-const vesselDrafts=[
- {title:"KAIKOA — Hatch and window leak repairs",action:"Specialist inspecting aboard on 8 October 2026. Await written repair quotation (devis), review scope and cost, then approve work only after funding and owner authorization."},
- {title:"KAIKOA — Windlass engagement repair",action:"Issue remains unresolved. Request assessment of clutch/gypsy engagement and a targeted repair quotation before authorizing parts or labor; schedule when funding permits."},
- {title:"KAIKOA — Propeller anode replacement",action:"Replacement remains outstanding. Obtain inspection and replacement quotation; plan safe access/haul-out or diver intervention as appropriate when funding permits."},
- {title:"KAIKOA — Dinghy line replacement",action:"Lines remain worn. Confirm sizes and quantities, obtain replacement cost and arrange replacement when funds permit."}
-] as const;
-export default function NewObligation(){
- const [assets,setAssets]=useState<Asset[]>([]);
- const [entityId,setEntityId]=useState("");
- const [title,setTitle]=useState("");
- const [nextAction,setNextAction]=useState("");
- const [requiresOwner,setRequiresOwner]=useState(true);
- const [busy,setBusy]=useState(false);
- const [created,setCreated]=useState(false);
- const [savedCount,setSavedCount]=useState(0);
- const [existingTitles,setExistingTitles]=useState<string[]>([]);
- const [message,setMessage]=useState("Checking access…");
- useEffect(()=>{let active=true;(async()=>{
-  const db=getBrowserSupabase();if(!db){setMessage("Authentication unavailable.");return;}
-  const {data:user,error:authError}=await db.auth.getUser();if(!active)return;
-  if(authError||!user.user){setMessage("Sign in required.");return;}
-  const {data,error}=await db.from("entities").select("id,name,status").neq("status","ARCHIVED").order("name");
-  if(!active)return;
-  if(error){setMessage("Unable to load assets.");return;}
-  setAssets(data??[]);
-  const {data:existing,error:existingError}=await db.from("obligations").select("title").neq("status","ARCHIVED");
-  if(!active)return;
-  if(existingError){setMessage("Unable to verify existing obligations. Draft creation is paused.");return;}
-  setExistingTitles((existing??[]).map(o=>o.title));setMessage("");
- })().catch(()=>{if(active)setMessage("Unable to load assets.");});return()=>{active=false};},[]);
- async function save(){
-  if(busy||created||!entityId||title.trim().length<4||nextAction.trim().length<4)return;
-  setBusy(true);setMessage("Saving…");
-  const db=getBrowserSupabase();
-  if(!db){setMessage("Authentication unavailable.");setBusy(false);return;}
-  const {error}=await db.rpc("create_inventory_obligation",{p_entity_id:entityId,p_title:title,p_next_action:nextAction,p_requires_owner_attention:requiresOwner});
-  if(error){setMessage("Not saved. Check for duplicate titles, invalid input or authorization.");setBusy(false);return;}
-  setExistingTitles(v=>[...v,title]);setCreated(true);setSavedCount(n=>n+1);setMessage("Obligation created as Unverified. No due date assigned. Change History updated.");setBusy(false);
- }
- return <main className="shell"><header><p className="eyebrow">KAIKOA OS · OBLIGATIONS</p><h1>Add an obligation.</h1><p className="muted">Controlled entry · owner-only · no assumed deadlines</p></header>
- <section className="panel" style={{maxWidth:800}}>
- <div style={{marginBottom:24}}><h2>KAIKOA maintenance drafts</h2><p className="muted">Reported 8 October 2026. Choose a draft to review; nothing is saved until you click Create.</p>
- {vesselDrafts.filter(d=>!existingTitles.some(t=>t.toLowerCase()===d.title.toLowerCase())).map(d=><button type="button" key={d.title} disabled={busy} onClick={()=>{setEntityId(assets.find(a=>a.name==="KAIKOA")?.id??"");setTitle(d.title);setNextAction(d.action);setRequiresOwner(false);setCreated(false);setMessage("");}} style={{display:"block",width:"100%",textAlign:"left",padding:"12px 14px",marginBottom:8,borderRadius:8,border:"1px solid #343b44",background:"#15191f",color:"white",cursor:"pointer"}}>{d.title} →</button>)}</div>
- {vesselDrafts.every(d=>existingTitles.some(t=>t.toLowerCase()===d.title.toLowerCase()))&&<p className="muted">All four KAIKOA maintenance drafts are already recorded.</p>}
- <label htmlFor="related-asset">Related asset</label><select id="related-asset" value={entityId} onChange={e=>setEntityId(e.target.value)} disabled={busy||created} style={{display:"block",margin:"12px 0 24px",padding:12,background:"#15191f",color:"white",border:"1px solid #3a404a",borderRadius:8}}><option value="">Select an asset…</option>{assets.map(a=><option value={a.id} key={a.id}>{a.name}</option>)}</select>
- <label htmlFor="obligation-title">What needs attention?</label><input id="obligation-title" maxLength={160} value={title} onChange={e=>setTitle(e.target.value)} disabled={busy||created} placeholder="Describe the obligation" style={{display:"block",width:"100%",margin:"12px 0 24px",padding:12,background:"#15191f",color:"white",border:"1px solid #3a404a",borderRadius:8}}/>
- <label htmlFor="next-action">Next action</label><textarea id="next-action" maxLength={1000} rows={5} value={nextAction} onChange={e=>setNextAction(e.target.value)} disabled={busy||created} placeholder="What needs to happen next?" style={{display:"block",width:"100%",margin:"12px 0 20px",padding:14,background:"#15191f",color:"white",border:"1px solid #3a404a",borderRadius:8}}/>
- <label style={{display:"flex",alignItems:"center",gap:10,marginBottom:20}}><input type="checkbox" checked={requiresOwner} onChange={e=>setRequiresOwner(e.target.checked)} disabled={busy||created}/>Requires your attention</label>
- <p className="muted">Starts as Needs Attention / Unverified. No payment state, due date or completion is inferred. Avoid sensitive information.</p>
- <button type="button" disabled={busy||created||!entityId||title.trim().length<4||nextAction.trim().length<4} onClick={()=>void save()} style={{padding:"12px 20px",borderRadius:8,border:0,fontWeight:700}}>{busy?"Saving…":"Create unverified obligation"}</button>
- {message&&<p role="status" className="muted">{message}</p>}
- {created&&<p><button type="button" onClick={()=>{setCreated(false);setTitle("");setNextAction("");setMessage("");}} style={{padding:"10px 14px",borderRadius:8}}>Add another obligation</button> <Link href="/private-memory">View obligations →</Link></p>}
- {savedCount>0&&<p className="muted">Saved this session: {savedCount}</p>}
- </section></main>;
+import { getBrowserSupabase } from "@/lib/supabase-browser";
+type RelatedRecord = { id: string; name: string; status: string };
+export default function NewObligation() {
+  const [records, setRecords] = useState<RelatedRecord[]>([]);
+  const [entityId, setEntityId] = useState("");
+  const [title, setTitle] = useState("");
+  const [nextAction, setNextAction] = useState("");
+  const [requiresOwner, setRequiresOwner] = useState(true);
+  const [ready, setReady] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [createdId, setCreatedId] = useState<string | null>(null);
+  const [message, setMessage] = useState("Checking access…");
+  const saving = useRef(false);
+  const mounted = useRef(false);
+  useEffect(() => {
+    mounted.current = true;
+    let active = true;
+    (async () => {
+      const db = getBrowserSupabase();
+      if (!db) { setMessage("Authentication unavailable."); return; }
+      const { data: user, error: authError } = await db.auth.getUser();
+      if (!active) return;
+      if (authError || !user.user) { setMessage("Sign in required."); return; }
+      const { data, error } = await db.from("entities").select("id,name,status").neq("status", "ARCHIVED").order("name");
+      if (!active) return;
+      if (error) { setMessage("Unable to load related records. Reload to try again."); return; }
+      setRecords(data ?? []); setReady(true); setMessage("");
+    })().catch(() => { if (active) setMessage("Unable to check access. Reload to try again."); });
+    return () => { active = false; mounted.current = false; };
+  }, []);
+  async function save(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!ready || saving.current || createdId || title.trim().length < 4 || nextAction.trim().length < 4) return;
+    const db = getBrowserSupabase();
+    if (!db) { setMessage("Authentication unavailable."); return; }
+    saving.current = true; setBusy(true); setMessage("Saving…");
+    try {
+      const { data, error } = await db.rpc("create_inventory_obligation", {
+        p_entity_id: entityId || null, p_title: title, p_next_action: nextAction,
+        p_requires_owner_attention: requiresOwner,
+      });
+      if (!mounted.current) return;
+      if (error) {
+        setMessage(error.code === "23505" ? "An obligation with this title already exists for this record or general responsibilities. Check existing obligations, including completed or archived entries, before creating another." : error.code === "P0002" ? "This related record is unavailable or archived. Reload and choose an active record." : "Not saved. Check access and the required fields.");
+        return;
+      }
+      if (typeof data !== "string" || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(data)) throw new Error("Unconfirmed response");
+      setCreatedId(data); setMessage(`Obligation created as Unverified in ${requiresOwner ? "Requires You" : "Needs Review"}. No deadline assigned. Creation recorded in Change History.`);
+    } catch { if (mounted.current) setMessage("Creation could not be confirmed. Check the Obligations workspace before retrying."); }
+    finally { saving.current = false; if (mounted.current) setBusy(false); }
+  }
+  function reset() {
+    setCreatedId(null); setEntityId(""); setTitle(""); setNextAction(""); setRequiresOwner(true); setMessage("");
+  }
+  return <main className="shell"><header><p className="eyebrow">KAIKOA OS · OBLIGATIONS</p><h1>Add an obligation.</h1><p className="muted">Capture a responsibility and its next action.</p></header>
+    <section className="panel workflowForm" aria-busy={busy}>
+      {ready && <form onSubmit={event => void save(event)}>
+        <label htmlFor="related-record">Related record (optional)</label>
+        <select id="related-record" value={entityId} disabled={busy || !!createdId} onChange={event => setEntityId(event.target.value)} aria-describedby="related-record-help">
+          <option value="">General responsibility — no linked record</option>{records.map(record => <option key={record.id} value={record.id}>{record.name}</option>)}
+        </select>
+        <p id="related-record-help" className="muted">Link it to an existing record when relevant, or leave it as a general responsibility.</p>
+        <label htmlFor="obligation-title">What needs attention?</label>
+        <input id="obligation-title" required minLength={4} maxLength={160} value={title} disabled={busy || !!createdId} onChange={event => setTitle(event.target.value)} />
+        <label htmlFor="next-action">Next action</label>
+        <textarea id="next-action" required minLength={4} maxLength={1000} rows={5} value={nextAction} disabled={busy || !!createdId} onChange={event => setNextAction(event.target.value)} />
+        <label className="confirmCompletion"><input type="checkbox" checked={requiresOwner} disabled={busy || !!createdId} onChange={event => setRequiresOwner(event.target.checked)} />Requires your attention</label>
+        <p className="muted">{requiresOwner ? "Starts in Requires You." : "Starts in Needs Review until you choose its workflow."} New entries are Unverified. You can add a confirmed deadline or update the workflow after creation. Use only the context needed for this responsibility.</p>
+        <button type="submit" disabled={busy || !!createdId || title.trim().length < 4 || nextAction.trim().length < 4}>{busy ? "Saving…" : "Create obligation"}</button>
+      </form>}
+      {message && <p role="status" className="muted">{message}</p>}
+      {createdId && <><p><Link href={`/private-memory/obligations/edit?id=${encodeURIComponent(createdId)}`}>Update workflow →</Link> · <Link href={`/private-memory/obligations/deadline?id=${encodeURIComponent(createdId)}`}>Manage deadline →</Link></p><button type="button" onClick={reset}>Add another obligation</button></>}
+      <p><Link href="/private-memory/obligations">Back to Obligations →</Link> · <Link href="/private-memory/history">Change History →</Link></p>
+    </section></main>;
 }
