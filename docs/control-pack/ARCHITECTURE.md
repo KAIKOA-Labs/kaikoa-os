@@ -26,6 +26,8 @@ Milestone 018 adds protected `/private-memory/obligations/details`, linked from 
 
 Milestone 019 adds versioned subscription_review metadata, a protected per-service review form and a filtered Subscriptions workspace. Reads project only summary fields plus billing/review subtrees. The public invoker/private guarded-definer RPC uses expected-subtree stale protection and atomic entity audit, preserves unrelated fields/billing and assigns the review timestamp server-side. Owner usage and keep/review/cancel intention remain distinct from provider/payment state. Invalid/missing reviews stay explicit; existing unsupported mixed-currency/truthy-verification totals are replaced by per-record native billing labels. No operational subscriptions or reviews are imported.
 
+Milestone 020 adds protected `/private-memory/subscriptions/new`, linked from Subscriptions. A blank confirmed service-name/description form uses the existing audited creation RPC with the subscription subtype added to its allowlist. Existing private/Unverified provenance defaults, global slug uniqueness, owner guard and audit remain intact; billing/review/renewal facts are not assigned. No new table or endpoint is introduced.
+
 ## Model and persistence
 
 Entities, relationships, events, obligations and evidence form the universal model. Current TypeScript entity types are a narrower implementation subset; conceptual domains are not all separate implemented modules.

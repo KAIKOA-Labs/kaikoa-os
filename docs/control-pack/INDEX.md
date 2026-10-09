@@ -1,6 +1,6 @@
 # KAIKOA OS — Control Pack
 
-Reviewed: 2026-10-09, Asia/Manila. Milestone 019 adds verified subscription usage and keep/review/cancel-intention review; owner browser acceptance pending. Milestone 018 form/interface acceptance is founder-confirmed at 22:20, with saving unclaimed. Earlier 016/017 acceptance limits and specific 013/014/015 pending checks are preserved. Current State records the baseline, safe billing-display correction, verification limits and next candidate.
+Reviewed: 2026-10-09, Asia/Manila. Milestone 020 adds verified owner-entered subscription creation; owner browser acceptance pending. Milestone 019 interface acceptance is founder-confirmed at 22:42, with review saving unclaimed. Earlier acceptance limits remain preserved. Current State records the baseline, guarded allowlist extension, verification and next candidate.
 
 ## Purpose and reading order
 
