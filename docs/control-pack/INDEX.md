@@ -1,6 +1,6 @@
 # KAIKOA OS — Control Pack
 
-Reviewed: 2026-10-09, Asia/Manila. Milestone 015 adds a verified protected Obligations workspace for finding and acting on responsibilities across domains. Its owner browser acceptance remains pending, alongside the specific 013/014 checks; 012 retains its recorded form-display acceptance. Current State records the latest objective, priority display semantics, verification limits and next candidate. Earlier dated sections retain their historical context.
+Reviewed: 2026-10-09, Asia/Manila. Milestone 016 adds verified owner-entered obligation deadlines with required reason/confirmation, stale protection and atomic audit history. Owner browser acceptance remains pending, alongside the specific 013/014/015 checks; 012 retains its recorded form-display acceptance. Current State records the latest baseline, implementation, verification limits and next candidate. Earlier dated sections retain their historical context.
 
 ## Purpose and reading order
 

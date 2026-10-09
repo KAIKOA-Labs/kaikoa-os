@@ -64,6 +64,7 @@ export default function ObligationsPage() {
             <p className="muted">{obligationStatusLabel(record.status, record.requires_owner_attention)}</p>
             <p>{entity ? <Link href={"/private-memory/assets/" + encodeURIComponent(entity.slug)}>{entity.name}{entity.status === "ARCHIVED" ? " (archived record)" : ""}</Link> : "Unlinked / related record unavailable"}</p></div>
           <ObligationDeadline record={record} now={now} />
+          {record.status !== "COMPLETED" && <small><Link href={"/private-memory/obligations/deadline?id=" + encodeURIComponent(record.id)}>Manage deadline →</Link></small>}
           <small style={{ whiteSpace: "pre-wrap" }}>Next action: {record.next_action || "Not recorded"}</small>
           {record.workflow_note && <small style={{ whiteSpace: "pre-wrap" }}>Context: {record.workflow_note}</small>}
           {(record.scheduled_at || record.status === "SCHEDULED") && <small>{schedule.dateTime ? <time dateTime={schedule.dateTime}>{schedule.label}</time> : schedule.label}</small>}

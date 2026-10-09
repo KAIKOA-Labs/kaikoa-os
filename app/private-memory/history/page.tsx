@@ -9,7 +9,7 @@ function displayValue(change:Change,value:string|null){
  if(value===null||value==="")return "(empty)";
  if(change.kind==="obligation"&&change.field_name==="status")return obligationStatusLabel(value);
  if(change.field_name==="requires_owner_attention")return value==="true"?"Yes":"No";
- if(["scheduled_at","completed_at"].includes(change.field_name))return new Date(value).toLocaleString();
+ if(["due_at","scheduled_at","completed_at"].includes(change.field_name))return new Date(value).toLocaleString(undefined,{timeZoneName:"short"});
  return value;
 }
 export default function HistoryPage(){

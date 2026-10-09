@@ -18,6 +18,8 @@ Milestone 014 exposes compact edition/AP summaries on Artwork cards. Its query a
 
 Milestone 015 adds protected `/private-memory/obligations`, linked from Home and private workspace navigation. It uses explicit parallel obligation/entity summary reads through existing RLS, shares workflow/deadline classification, and derives search/filter/priority ordering in the browser. Schedule labels remain distinct from deadlines. Existing audited editor/create routes handle mutations; this milestone adds no endpoint or database field.
 
+Milestone 016 adds protected `/private-memory/obligations/deadline`, linked from workspace rows and the workflow editor. It edits only active obligations' existing due_at through a public invoker RPC over a private owner-guarded definer, sharing updated_at stale protection with workflow writes. Required reason/source and confirmation accompany changes; deadline before/after and context are audited atomically. No-op saves preserve version/history; completed/archive deadlines are read-only. New local times validate round trips and show an explicit browser timezone; unchanged instants preserve precision. No deadline is inferred from a schedule. The client reads six explicit summary fields; the RPC returns only the updated deadline/version summary.
+
 ## Model and persistence
 
 Entities, relationships, events, obligations and evidence form the universal model. Current TypeScript entity types are a narrower implementation subset; conceptual domains are not all separate implemented modules.
