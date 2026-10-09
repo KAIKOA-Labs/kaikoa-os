@@ -22,6 +22,8 @@ Milestone 016 adds protected `/private-memory/obligations/deadline`, linked from
 
 Milestone 017 extends the existing audited creation RPC to permit a null related entity or an active linked record, preserving private/Unverified defaults and no inferred dates. A shared parent row lock protects active-link validation; an advisory transaction lock plus null-safe scoped title comparison protects duplicate submissions. The general Add obligation form replaces hardcoded domain drafts and reads only entity summaries. Home, Overview and the workspace label general responsibilities explicitly; every item can reach workflow/deadline management. No new endpoint, table or record is introduced by the migration.
 
+Milestone 018 adds protected `/private-memory/obligations/details`, linked from the workspace/editor, plus a public invoker/private owner-guarded definer correction RPC. It updates title and related_entity_id independently of workflow/deadlines, using shared updated_at stale protection and the creation endpoint's target-scope advisory lock for duplicate checks. Changed fields and required correction context are audited atomically; no-ops preserve history/version. Active new parent links are row-locked; retained archived links are allowed, while completed/archive obligations stay protected. Change History renders current related-record names or General responsibility. No operational records or existing RPCs are changed by the migration.
+
 ## Model and persistence
 
 Entities, relationships, events, obligations and evidence form the universal model. Current TypeScript entity types are a narrower implementation subset; conceptual domains are not all separate implemented modules.

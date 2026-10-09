@@ -97,7 +97,7 @@ export default function EditObligation() {
         <button type="button" disabled={busy || !valid} onClick={() => void save()}>{busy ? "Saving…" : "Save obligation"}</button>
       </>}
       {message && <p role="status" className="muted">{message}</p>}
-      {item && item.status !== "COMPLETED" && <p><Link href={`/private-memory/obligations/deadline?id=${encodeURIComponent(item.id)}`}>Manage deadline →</Link></p>}
+      {item && item.status !== "COMPLETED" && <p><Link href={`/private-memory/obligations/deadline?id=${encodeURIComponent(item.id)}`}>Manage deadline →</Link> · <Link href={`/private-memory/obligations/details?id=${encodeURIComponent(item.id)}`}>Edit title / related record →</Link></p>}
       <p><Link href="/private-memory/history">Change History →</Link></p>
     </section></main>;
 }

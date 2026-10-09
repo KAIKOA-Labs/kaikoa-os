@@ -5,7 +5,8 @@ import { getBrowserSupabase } from "@/lib/supabase-browser";
 import { obligationStatusLabel } from "@/lib/obligation-workflow";
 type Change={id:string;record_id:string;kind:"asset"|"obligation";field_name:string;previous_value:string|null;new_value:string|null;changed_at:string};
 type Named={id:string;name?:string;title?:string};
-function displayValue(change:Change,value:string|null){
+function displayValue(change:Change,value:string|null,names:Record<string,string>){
+ if(change.kind==="obligation"&&change.field_name==="related_entity_id")return value?names[value]??"Related record unavailable":"General responsibility";
  if(value===null||value==="")return "(empty)";
  if(change.kind==="obligation"&&change.field_name==="status")return obligationStatusLabel(value);
  if(change.field_name==="requires_owner_attention")return value==="true"?"Yes":"No";
@@ -41,7 +42,7 @@ export default function HistoryPage(){
  <section className="panel"><h2>Recorded changes · {changes.length}</h2>{changes.length===0?<p className="muted">No changes recorded yet.</p>:changes.map(change=><div className="item" key={change.kind+change.id}>
  <strong>{names[change.record_id]??"Unknown record"} · {change.field_name.replaceAll("_"," ")}</strong>
  <p className="muted">{new Date(change.changed_at).toLocaleString()}</p>
- <p><small>Before</small></p><p style={{whiteSpace:"pre-wrap"}}>{displayValue(change,change.previous_value)}</p>
- <p><small>After</small></p><p style={{whiteSpace:"pre-wrap"}}>{displayValue(change,change.new_value)}</p>
+ <p><small>Before</small></p><p style={{whiteSpace:"pre-wrap"}}>{displayValue(change,change.previous_value,names)}</p>
+ <p><small>After</small></p><p style={{whiteSpace:"pre-wrap"}}>{displayValue(change,change.new_value,names)}</p>
  </div>)}</section>}</main>;
 }
