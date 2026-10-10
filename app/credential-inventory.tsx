@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { getBrowserSupabase } from "@/lib/supabase-browser";
-import { credentialFromMetadata, credentialTypeLabels, renewalAttention, credentialStateLabel, type CredentialRecord } from "@/lib/credential-record";
+import { credentialFromMetadata, credentialTypeLabels, credentialGroups, credentialGroup, renewalAttention, credentialStateLabel, type CredentialRecord } from "@/lib/credential-record";
 
 type Row = { id: string; slug: string; name: string; subtype: string | null; status: string; data_quality: string | null; credential_record: unknown };
 export default function CredentialInventory() {
@@ -54,7 +54,12 @@ export default function CredentialInventory() {
       </div>
       <p className="muted" role="status">Showing {visible.length} of {rows.length} records. Only the last four digits are stored.</p>
       {visible.length === 0 ? <p className="muted">{rows.length ? "No records match these filters." : "No IDs or licenses recorded yet."}</p> :
-        <div className="assetGrid">{visible.map(row => {
+        <div>{credentialGroups.map(group => {
+          const members = visible.filter(row => credentialGroup(credentialFromMetadata(row.credential_record)?.credential_type, row.subtype) === group.key);
+          if (members.length === 0) return null;
+          return <section className="inventoryCategoryGroup" key={group.key} aria-labelledby={`credential-group-${group.key}`}>
+            <div className="sectionHead"><h2 id={`credential-group-${group.key}`}>{group.label}</h2><span className="muted">{members.length} {members.length === 1 ? "record" : "records"}</span></div>
+            <div className="assetGrid">{members.map(row => {
           const record: CredentialRecord | null = credentialFromMetadata(row.credential_record);
           const attention = record ? renewalAttention(record, today) : "Details need setup";
           return <article className="asset credentialCard" key={row.id}>
@@ -69,6 +74,8 @@ export default function CredentialInventory() {
             {record?.source_note && <small className="muted">Source: {record.source_note}</small>}
             <Link href={`/private-memory/credentials/${encodeURIComponent(row.slug)}/edit`}>Update record →</Link>
           </article>;
+            })}</div>
+          </section>;
         })}</div>}
       <p className="muted">Dates from older sources need checking against the current credential. This workspace records dates; it does not send notifications.</p>
     </section>}

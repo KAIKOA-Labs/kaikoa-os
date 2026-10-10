@@ -1,6 +1,6 @@
 # KAIKOA OS — Control Pack
 
-Reviewed: 2026-10-10, Asia/Manila. Milestone 027 adds protected bulk inventory entry through the existing owner-audited credential endpoint. Prepared metadata is private and is not committed. Actual authenticated entry and visible card acceptance remain pending. The active Current State is concise; its previously truncated historical file is preserved as an archive. See Current State for the exact import path, verification and remaining gates.
+Reviewed: 2026-10-10, Asia/Manila. Milestone 027 is deployed and its initial authenticated inventory entries/audits are now read-only verified. Milestone 028 groups the existing credential cards and prepares one owner-requested addition through the same protected importer. Private source values are not committed; the additional save and new grouped-layout acceptance remain pending. The active Current State is concise; its previously truncated historical file is preserved as an archive. See Current State for the exact import path, verification and remaining gates.
 
 ## Purpose and reading order
 

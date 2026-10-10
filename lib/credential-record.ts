@@ -11,6 +11,22 @@ export const credentialTypeLabels = {
 } as const;
 
 export type CredentialType = keyof typeof credentialTypeLabels;
+export const credentialGroups = [
+  { key: "passports", label: "Passports" },
+  { key: "ids", label: "IDs & Other Credentials" },
+  { key: "licenses", label: "Licenses" },
+  { key: "certificates", label: "Certificates" },
+] as const;
+export type CredentialGroup = typeof credentialGroups[number]["key"];
+
+export function credentialGroup(type: CredentialType | undefined, subtype?: string | null): CredentialGroup {
+  if (type === "passport" || type === undefined && subtype === "passport") return "passports";
+  if (type === "certification") return "certificates";
+  if (type === "driver_license" || type === "pilot_license" || type === "radio_license" ||
+      type === "boating_license" || type === "professional_license") return "licenses";
+  return "ids";
+}
+
 export type CredentialState = "needs_review" | "owner_confirmed" | "in_progress" | "unknown";
 export type CredentialRecord = {
   version: 1;
