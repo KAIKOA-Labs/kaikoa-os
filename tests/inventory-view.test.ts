@@ -31,7 +31,7 @@ test("asset cards are grouped by subtype with counts and archived records exclud
     record("Home two", "property", "Port C"),
     record("Former home", "property", "Port B", "ARCHIVED"),
   ]);
-  assert.deepEqual(groups.map(group => [group.key, group.count]), [["Properties", 2], ["Vessels", 1]]);
+  assert.deepEqual(groups.map(group => [group.label, group.count]), [["Properties", 2], ["Vessels", 1]]);
   assert.deepEqual(groups.find(group => group.label === "Properties")?.records.map(item => item.name), ["Home one", "Home two"]);
   assert.equal(groups.reduce((total, group) => total + group.records.length, 0), 3);
 });
