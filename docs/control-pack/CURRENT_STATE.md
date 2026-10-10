@@ -1,8 +1,31 @@
 # KAIKOA OS — Current State
 
-Reviewed: 2026-10-11, Asia/Manila. Milestone 031 vessel evidence is the active checkpoint; earlier milestone narratives below are dated evidence.
+Reviewed: 2026-10-11, Asia/Manila. Milestone 032 vehicle evidence is the active checkpoint; earlier milestone narratives below are dated evidence.
 
-## Milestone 031 — scoped vessel document evidence
+## Milestone 032 — vehicle evidence and annual service plan
+
+The founder requests registration and latest insurance for one existing vehicle, with annual service at the official dealer and an owner-reported completed service without a receipt. The founder subsequently supplies a readable registration photograph. This is a bounded manual copy/extraction request; registration provenance is the upload, while insurance provenance is scoped Gmail correspondence. No registration email copy or dealer appointment is falsely claimed.
+
+The baseline is `5decb9ebd036b436a3a0227751e0cb172cb3a55a`, tree `d697067cd5855f8be276dccd7d59853c9fe32a30`, with prior matching READY preview `dpl_9sPhKMoezPFykBJiqoWQUyxVdwv8`. The existing protected Documents and vehicle detail show registration, insurance and Service history & annual plan. The service card clearly identifies the owner report, missing receipt and unknown next appointment; its Drive link opens a generated owner statement, rather than labelling it an original dealer certificate. Insurance identifier/registration confirmation and full-policy wording remain review points. Source dates, first circulation and printed balance remain document statements, with manufacture year/current payment balance left unknown.
+
+Three private copies comprise the supplied photograph, latest located insurer renewal PDF and generated service transcription. Owner-only permission metadata, expected parent/size and exact Drive byte readback pass for all three. A separately saved archive restores into an isolated local directory with exact archive/member checksums, a readable recovered PDF/JPG and a private association manifest mapping planned document IDs to source/provider/recovery members. Saved IDs match that manifest. This verifies only selected file-byte recovery; coordinated current database/Auth restoration and independent provider-denial gates remain open.
+
+A conflict-stopping atomic management transaction adds three NEEDS_REVIEW documents, three links to the existing vehicle and six creation/link audits explicitly attributed to the agent with null changed_by. Exact metadata/ID/link/audit readback and a rolled-back matching no-op retry pass. Totals are 13 documents, ten links and 23 document audits. Existing 26 entities/38 entity audits and eight obligations/15 obligation audits are preserved by full-content transaction comparisons, together with all prior documents/links/history. No owner identity is used for writes. Asset and obligation audit contracts require a named actor, so annual service is recorded as source evidence rather than misattributing an operational write to the owner. No appointment, service obligation, exact future date, notification or dealer message is created.
+
+Verification: 74 unit tests, TypeScript and production build pass; all three private summaries pass the application parser. React review retains native disclosure/labels, escaped strings, safe links, existing protected projections and identity guards. Access catalog inspection confirms RLS, owner-only read policies, authenticated SELECT with no direct INSERT/UPDATE/DELETE, and no anonymous SELECT on document/link/history tables. Automatic approval review rejected a fresh role/JWT simulation as owner impersonation; it was not retried. Fresh simulated or real-session authorization acceptance is not claimed. Schema, RPC, grants, RLS, Auth and protection settings are unchanged.
+
+Publication follows under `Milestone 032: add vehicle evidence and annual service plan`; resolve its exact branch head and matching READY preview. Private values, source files and provider/database identifiers remain outside Git.
+
+## Current next starting point
+
+1. Recheck the development head and matching READY preview; do not repeat the three-file import or completed vessel copy.
+2. Open the vehicle’s Linked documents or Documents in the founder’s normal authenticated browser. Record visible acceptance if supplied.
+3. Confirm the insurer has the updated registration and obtain full terms when needed. Retain the owner-reported service and annual plan; enter a future appointment only when the founder supplies or authorizes a concrete booking.
+4. Wider sensitive imports, provider automation and coordinated current database/Auth recovery keep their existing gates.
+
+See [Milestone 032](../milestone-032-vehicle-document-evidence.md).
+
+## Historical Milestone 031 — scoped vessel document evidence
 
 The founder explicitly requests Gmail review and digital copies of the vessel registration, Tahiti import paperwork and latest insurance, delegates the summary layout, corrects the recorded weight and identifies automatic insurance payments throughout the year. This authorizes a bounded manual copy/extraction into the existing private Drive and KAIKOA OS records. It does not authorize broader ID/scanned-document imports or automatic provider access. Baseline was clean and aligned at `e7b62fb6db1299396d474f64d3ecad68dd7ef04c`, with matching READY preview `dpl_6m3dAyGQV9YhnTg7La5grhXkLUbZ`.
 
@@ -14,7 +37,7 @@ Six original PDFs and one clearly labelled payment-email transcript were copied 
 
 Verification: 73 tests, TypeScript and production build passed. Rolled-back role/JWT read assertions confirm owner summary visibility, zero non-owner rows, anonymous denial and no direct browser writes; these are simulations, not real sessions. React review confirms explicit private projections, existing identity/stale-response guards, native disclosure/labels and escaped, allowlisted external links. No agent-controlled browser or visible mobile acceptance is claimed. Publication follows under `Milestone 031: add vessel document evidence summaries`; resolve its exact head and matching READY development deployment.
 
-## Current next starting point
+## Historical next starting point after 031
 
 1. Recheck the development head and matching READY preview; do not repeat the completed seven-file copy or extraction.
 2. Open the vessel's Linked documents section or `/private-memory/documents` in the founder's normal authenticated browser. Record visible acceptance when supplied.

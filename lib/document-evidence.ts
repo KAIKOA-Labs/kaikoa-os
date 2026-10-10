@@ -1,4 +1,4 @@
-export const evidenceCategories = { registration: "Registration", import: "Import & customs", insurance: "Insurance" } as const;
+export const evidenceCategories = { registration: "Registration", import: "Import & customs", insurance: "Insurance", maintenance: "Service history & annual plan" } as const;
 export type EvidenceCategory = keyof typeof evidenceCategories;
 export type EvidenceSummary = {
   version: 1; category: EvidenceCategory; bundle_id: string; role: "primary" | "supporting"; extracted_on: string;

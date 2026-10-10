@@ -26,3 +26,10 @@ test("ambiguous primaries, orphan support and invalid metadata never hide origin
     assert.deepEqual(new Set(groups.flatMap(g=>[g.primary.id,...g.supporting.map(r=>r.id)])),new Set(rows.map(r=>r.id)));
   }
 });
+test("owner service notes preserve a missing booking and stay separate from insurance", () => {
+  const service = { ...summary(), category: "maintenance", bundle_id: "00000000-0000-0000-0000-000000000002", fields: [{ label: "Next appointment", value: null, source: "Owner has not confirmed a booking" }], sources: [] };
+  assert.equal(parseEvidenceSummary(service)?.fields[0].value, null);
+  const groups=groupEvidence([row("insurance"),row("service",service,"Annual service owner note")]);
+  assert.equal(groups.length,2);
+  assert.equal(filterEvidenceGroups(groups,"annual")[0].summary?.category,"maintenance");
+});

@@ -10,18 +10,18 @@ export default function DocumentEvidenceCard({ group, related }: { group: Eviden
   return <article className="asset evidenceCard">
     {summary && <span className="eyebrow">{evidenceCategories[summary.category]}</span>}
     <h3>{primary.title}</h3>
-    <span className="status">{summary ? "Source summary · review pending" : primary.status === "NEEDS_REVIEW" ? "Needs review" : "Reference only"}</span>
+    <span className="status">{summary?.category === "maintenance" ? "Owner-reported · no service receipt" : summary ? "Source summary · review pending" : primary.status === "NEEDS_REVIEW" ? "Needs review" : "Reference only"}</span>
     {summary ? <>
       <dl className="evidenceFacts">{summary.fields.slice(0, 4).map(field => <div key={field.label}><dt>{field.label}</dt><dd>{field.value ?? "Not recorded"}</dd></div>)}</dl>
       {summary.notes.filter(note => note.kind !== "source").map((note, index) => <div className={note.kind === "review" ? "evidenceNote review" : "evidenceNote"} key={index}><strong>{note.kind === "owner" ? "Your note" : "Review point"}</strong><p>{note.text}</p><small>{note.source}</small></div>)}
       <details className="evidenceDetails"><summary>More facts and sources</summary>
         <dl className="evidenceFacts">{summary.fields.map(field => <div key={field.label}><dt>{field.label}</dt><dd>{field.value ?? "Not recorded"}<small>Source: {field.source}</small></dd></div>)}</dl>
         {summary.notes.filter(note => note.kind === "source").map((note, index) => <p className="muted" key={index}>{note.text}<small className="evidenceSource">{note.source}</small></p>)}
-        <p className="muted">Extracted {summary.extracted_on}. Source statements remain subject to your review; dates shown do not certify current validity or coverage.</p>
+        <p className="muted">Recorded {summary.extracted_on}. {summary.category === "maintenance" ? "Owner-reported service history. An annual plan does not confirm a dealer appointment." : "Source statements remain subject to your review; dates shown do not certify current validity or coverage."}</p>
         {summary.sources.map(source => <p key={source.url}><a href={safeGmailSource(source.url)!} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer">{source.label} in Gmail ↗</a></p>)}
       </details>
     </> : <small>{primary.evidence_summary != null ? "Saved summary needs review; open the original." : "File contents have not been imported"}</small>}
-    <DriveFile row={primary} label={summary ? "Open digital original in Drive" : "Open file in Drive"} />
+    <DriveFile row={primary} label={summary?.category === "maintenance" ? "Open owner service note in Drive" : summary ? "Open digital original in Drive" : "Open file in Drive"} />
     {supporting.length > 0 && <details className="evidenceDetails"><summary>Supporting files · {supporting.length}</summary><ul className="evidenceFiles">{supporting.map(row => <li key={row.id}><DriveFile row={row} /></li>)}</ul></details>}
     {related}
     {typeof primary.source_note === "string" && <small>Source: {primary.source_note}</small>}
