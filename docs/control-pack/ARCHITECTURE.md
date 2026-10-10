@@ -30,6 +30,8 @@ Milestone 020 adds protected `/private-memory/subscriptions/new`, linked from Su
 
 Milestone 021 adds a protected billing editor and versioned subscription_billing metadata, separate from legacy billing evidence/projections and actual charges/payments. Exact canonical decimal strings, independent null unknowns, native currency-code format, cadence/source note and a server timestamp are saved through a public invoker/private guarded-definer RPC. Expected-subtree comparison, row locking and atomic audit preserve legacy billing, usage review and unrelated fields; no-op saves preserve version/history. Cards expose the owner record and earlier source reference separately, without conversions or totals.
 
+Milestones 026–027 add a protected IDs & Licenses workspace, audited masked credential metadata and a generic JSON inventory importer using existing universal entities. The importer previews and validates the entire list, requires owner confirmation, writes sequentially through `create_credential_record`, rechecks identity and verifies each saved subtree. Matching retry records are skipped; conflicts stop without updates. Partial success is explicit. No imported file/personal list is committed or persisted in public pages/URLs; no new import RPC or database schema is introduced by 027.
+
 ## Model and persistence
 
 Entities, relationships, events, obligations and evidence form the universal model. Current TypeScript entity types are a narrower implementation subset; conceptual domains are not all separate implemented modules.

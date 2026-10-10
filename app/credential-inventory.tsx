@@ -43,7 +43,8 @@ export default function CredentialInventory() {
   }), [rows, query, kind]);
   return <main className="shell"><header><p className="eyebrow">KAIKOA OS · PRIVATE INVENTORY</p><h1>IDs & Licenses.</h1>
     <p className="muted">Masked identity and license records, with recorded expiry and reminder dates.</p>
-    <Link className="back" href="/private-memory/credentials/new">Add ID or license →</Link></header>
+    <Link className="back" href="/private-memory/credentials/new">Add ID or license →</Link>
+    <p><Link href="/private-memory/credentials/import">Import listed inventory →</Link></p></header>
     {stage === "loading" && <p role="status">Loading IDs and licenses…</p>}
     {stage === "signed-out" && <section className="panel"><p>Sign in to view private credentials.</p><Link href="/auth/sign-in">Sign in →</Link></section>}
     {stage === "error" && <section className="panel" role="alert"><h2>Unable to load IDs and licenses</h2><p>Check your connection and try again.</p></section>}

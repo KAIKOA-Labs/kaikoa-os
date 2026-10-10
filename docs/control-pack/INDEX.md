@@ -1,6 +1,6 @@
 # KAIKOA OS — Control Pack
 
-Reviewed: 2026-10-10, Asia/Manila. Milestone 026 adds the masked IDs & Licenses workspace with expiry/reminder metadata and owner-audited create/update. Its preview is READY; owner browser acceptance and personal record entry remain pending. The older source tracker remains unimported, and file-image imports remain gated. Current State records the precise checkpoint and authentication handoff.
+Reviewed: 2026-10-10, Asia/Manila. Milestone 027 adds protected bulk inventory entry through the existing owner-audited credential endpoint. Prepared metadata is private and is not committed. Actual authenticated entry and visible card acceptance remain pending. The active Current State is concise; its previously truncated historical file is preserved as an archive. See Current State for the exact import path, verification and remaining gates.
 
 ## Purpose and reading order
 
