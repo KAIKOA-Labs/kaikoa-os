@@ -2,10 +2,10 @@
 import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from "react";
 import Link from "next/link";
 import { getBrowserSupabase } from "@/lib/supabase-browser";
-import { credentialTypeLabels } from "@/lib/credential-record";
+import { credentialTypeLabels, credentialGroups } from "@/lib/credential-record";
 import { maxCredentialImportBytes, parseCredentialImport, runCredentialImport, type CredentialImportRow, type ExistingCredential, type ImportProgress } from "@/lib/credential-import";
 
-const projection = "id,slug,subtype,status,credential_record:metadata->credential_record";
+const projection = "id,slug,subtype,status,credential_record:metadata->credential_record,credential_group:metadata->credential_group";
 export default function CredentialImporter() {
   const [rows, setRows] = useState<CredentialImportRow[]>([]);
   const [confirmed, setConfirmed] = useState(false);
@@ -81,9 +81,13 @@ export default function CredentialImporter() {
           if (error) throw new Error("A record may be saved, but confirmation failed. Check IDs & Licenses before retrying.");
           return data as ExistingCredential | null;
         },
+        setGroup: async (id, expectedGroup, group) => {
+          const { data, error } = await db.rpc("update_credential_group", { p_entity_id: id, p_expected_group: expectedGroup, p_group: group, p_confirm: true });
+          if (error || !data || data.credential_group !== group) throw new Error(error?.code === "40001" ? "A group changed in another session. Reload before continuing." : "Group save could not be confirmed. Check IDs & Licenses before retrying.");
+        },
       }, value => { if (mounted.current && request === generation.current) setProgress(value); });
       if (mounted.current && request === generation.current) {
-        setComplete(true); setMessage(`Inventory confirmed: ${result.added} added, ${result.skipped} already recorded. Open IDs & Licenses to view your cards.`);
+        setComplete(true); setMessage(`Inventory confirmed: ${result.added} added, ${result.skipped} already recorded, ${result.grouped ?? 0} groups updated. Open IDs & Licenses to view your cards.`);
       }
     } catch (error) {
       if (mounted.current && request === generation.current) setMessage(error instanceof Error ? error.message : "Import stopped. Check IDs & Licenses before retrying.");
@@ -98,12 +102,12 @@ export default function CredentialImporter() {
       <input id="credential-import-file" type="file" accept=".json,application/json" disabled={busy} onChange={event => void chooseFile(event)} aria-describedby="credential-import-help" />
       <p id="credential-import-help" className="muted">Up to 50 records. All entries start as Needs verification. Unknown dates remain blank; only an optional four-digit number suffix is accepted.</p>
       {rows.length > 0 && <><h2>Review {rows.length} records</h2><div className="credentialImportTable" role="region" aria-label="Inventory preview" tabIndex={0}><table>
-        <thead><tr><th scope="col">Record</th><th scope="col">Type</th><th scope="col">Issuer</th><th scope="col">Number</th><th scope="col">Expiry</th><th scope="col">Reminder</th></tr></thead>
-        <tbody>{rows.map(row => <tr key={row.name}><td>{row.name}<small className="muted">{row.source_note}</small></td><td>{credentialTypeLabels[row.credential_type]}</td><td>{row.issuer ?? "Unknown"}</td><td>{row.last_four ? `···· ${row.last_four}` : "Not recorded"}</td><td>{row.expires_on ?? "Not recorded"}</td><td>{row.reminder_on ?? "Not set"}</td></tr>)}</tbody>
-      </table></div><p className="muted">Matching entries are skipped. Conflicting entries stop the import for review. If it stops, records already saved remain in your inventory.</p>
-        <label className="checkboxLabel"><input type="checkbox" checked={confirmed} disabled={busy || complete} onChange={event => setConfirmed(event.target.checked)} />I reviewed this list and want to add these records as Needs verification.</label>
+        <thead><tr><th scope="col">Record</th><th scope="col">Type</th><th scope="col">Group</th><th scope="col">Issuer</th><th scope="col">Number</th><th scope="col">Expiry</th><th scope="col">Reminder</th></tr></thead>
+        <tbody>{rows.map(row => <tr key={row.name}><td>{row.name}<small className="muted">{row.source_note}</small></td><td>{credentialTypeLabels[row.credential_type]}</td><td>{row.group ? credentialGroups.find(group => group.key === row.group)?.label : "Keep current / automatic"}</td><td>{row.issuer ?? "Unknown"}</td><td>{row.last_four ? `···· ${row.last_four}` : "Not recorded"}</td><td>{row.expires_on ?? "Not recorded"}</td><td>{row.reminder_on ?? "Not set"}</td></tr>)}</tbody>
+      </table></div><p className="muted">Matching records are kept and listed group changes are applied. Conflicting details stop the import for review. If it stops, changes already saved remain in your inventory.</p>
+        <label className="checkboxLabel"><input type="checkbox" checked={confirmed} disabled={busy || complete} onChange={event => setConfirmed(event.target.checked)} />I reviewed this list and want to add missing records as Needs verification and apply its listed groups.</label>
         <button type="submit" disabled={busy || complete || !confirmed}>{busy ? "Importing…" : complete ? "Inventory confirmed" : `Import ${rows.length} records`}</button></>}
-      {progress && <p role="status">{progress.added} added · {progress.skipped} already recorded · {progress.total} in this list</p>}
+      {progress && <p role="status">{progress.added} added · {progress.skipped} already recorded · {progress.grouped ?? 0} groups updated · {progress.total} in this list</p>}
       {message && <p role="status">{message}</p>}
       {complete && <p><Link href="/private-memory/credentials">View your IDs & Licenses →</Link></p>}
     </form></section></main>;

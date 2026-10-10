@@ -1,4 +1,4 @@
-import { credentialFromMetadata, credentialTypeLabels, isIsoDate, type CredentialRecord, type CredentialType } from "./credential-record.ts";
+import { credentialFromMetadata, credentialTypeLabels, isCredentialGroup, isIsoDate, type CredentialGroup, type CredentialRecord, type CredentialType } from "./credential-record.ts";
 
 export type CredentialImportRow = {
   name: string;
@@ -9,6 +9,7 @@ export type CredentialImportRow = {
   reminder_on: string | null;
   record_state: "needs_review";
   source_note: string;
+  group?: CredentialGroup;
 };
 export const maxCredentialImportBytes = 64 * 1024;
 const keys = ["name", "credential_type", "issuer", "last_four", "expires_on", "reminder_on", "record_state", "source_note"];
@@ -32,7 +33,8 @@ export function parseCredentialImport(text: string): CredentialImportRow[] {
   const slugs = new Set<string>();
   return value.records.map((row: unknown, index: number) => {
     const invalid = () => new Error(`Record ${index + 1} needs correction. Use supported fields, descriptive text, four digits only, valid dates and Needs verification.`);
-    if (!object(row) || keys.some(key => !Object.hasOwn(row, key)) || Object.keys(row).some(key => !keys.includes(key)) ||
+    if (!object(row) || keys.some(key => !Object.hasOwn(row, key)) || Object.keys(row).some(key => !keys.includes(key) && key !== "group") ||
+        (Object.hasOwn(row, "group") && !isCredentialGroup(row.group)) ||
         !safeText(row.name, 2, 120) || !safeText(row.source_note, 4, 1000) ||
         !(row.issuer === null || safeText(row.issuer, 1, 120)) ||
         typeof row.credential_type !== "string" || !Object.hasOwn(credentialTypeLabels, row.credential_type) ||
@@ -47,13 +49,14 @@ export function parseCredentialImport(text: string): CredentialImportRow[] {
   });
 }
 
-export type ExistingCredential = { id: string; slug: string; subtype: string | null; status: string; credential_record: unknown };
-export type ImportProgress = { added: number; skipped: number; total: number };
+export type ExistingCredential = { id: string; slug: string; subtype: string | null; status: string; credential_record: unknown; credential_group?: unknown };
+export type ImportProgress = { added: number; skipped: number; total: number; grouped?: number };
 export type CredentialImportAdapter = {
   checkSession: () => Promise<void>;
   findBySlug: (slug: string) => Promise<ExistingCredential | null>;
   create: (row: CredentialImportRow) => Promise<string>;
   readById: (id: string) => Promise<ExistingCredential | null>;
+  setGroup?: (id: string, expectedGroup: unknown, group: CredentialGroup) => Promise<void>;
 };
 function matches(row: CredentialImportRow, stored: ExistingCredential | null) {
   if (!stored || stored.status === "ARCHIVED" || !["credential", "passport"].includes(stored.subtype ?? "") || stored.slug !== credentialSlug(row.name)) return false;
@@ -62,10 +65,11 @@ function matches(row: CredentialImportRow, stored: ExistingCredential | null) {
 }
 // Individual owner-audited saves; a failed batch never silently retries a write.
 export async function runCredentialImport(rows: CredentialImportRow[], adapter: CredentialImportAdapter, progress: (value: ImportProgress) => void) {
-  const result = { added: 0, skipped: 0, total: rows.length };
+  const result: ImportProgress = { added: 0, skipped: 0, total: rows.length };
   for (const row of rows) {
     await adapter.checkSession();
     const existing = await adapter.findBySlug(credentialSlug(row.name));
+    let current = existing;
     await adapter.checkSession();
     if (existing) {
       if (!matches(row, existing)) throw new Error("A name already exists with different details. Review IDs & Licenses before continuing; nothing was overwritten.");
@@ -78,6 +82,17 @@ export async function runCredentialImport(rows: CredentialImportRow[], adapter: 
       await adapter.checkSession();
       if (!saved || saved.id !== id || !matches(row, saved)) throw new Error("A record may be saved, but its details could not be confirmed. Check IDs & Licenses before retrying.");
       result.added++;
+      current = saved;
+    }
+    if (row.group !== undefined && current?.credential_group !== row.group) {
+      if (!current || !adapter.setGroup) throw new Error("Grouping is unavailable. No credential details were overwritten.");
+      await adapter.checkSession();
+      await adapter.setGroup(current.id, current.credential_group ?? null, row.group);
+      await adapter.checkSession();
+      const grouped = await adapter.readById(current.id);
+      await adapter.checkSession();
+      if (!grouped || grouped.id !== current.id || !matches(row, grouped) || grouped.credential_group !== row.group) throw new Error("A group change could not be confirmed. Check IDs & Licenses before retrying.");
+      result.grouped = (result.grouped ?? 0) + 1;
     }
     progress({ ...result });
   }

@@ -72,3 +72,5 @@ Workflow saves use validation, stale-version protection and atomic audit entries
 Operational database, authoritative document repository and secret vault are separate. Captain AI is a future interpreter of evidence, not storage authority. Database backup availability does not prove restoration or document-object recovery.
 
 Sources: inspected package.json, model and workflow/session source; existing architecture, schema, milestone and security documents. See [Current State](CURRENT_STATE.md) for verification limits.
+
+Milestone 029 separates display grouping from credential facts with optional `entities.metadata.credential_group`. Automatic groups come from type; valid explicit groups take precedence. The public invoker/private guarded-definer RPC validates confirmation/allowlist, locks active credentials, checks the expected group and audits actual changes atomically while preserving credential metadata. The importer can apply optional listed memberships after exact-match/read-back checks in the authenticated browser; absent assignments leave saved groups untouched. No private names or source inventories are compiled into the application.

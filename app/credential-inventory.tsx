@@ -4,7 +4,7 @@ import Link from "next/link";
 import { getBrowserSupabase } from "@/lib/supabase-browser";
 import { credentialFromMetadata, credentialTypeLabels, credentialGroups, credentialGroup, renewalAttention, credentialStateLabel, type CredentialRecord } from "@/lib/credential-record";
 
-type Row = { id: string; slug: string; name: string; subtype: string | null; status: string; data_quality: string | null; credential_record: unknown };
+type Row = { id: string; slug: string; name: string; subtype: string | null; status: string; data_quality: string | null; credential_record: unknown; credential_group: unknown };
 export default function CredentialInventory() {
   const [rows, setRows] = useState<Row[]>([]);
   const [stage, setStage] = useState<"loading" | "ready" | "error" | "signed-out">("loading");
@@ -19,7 +19,7 @@ export default function CredentialInventory() {
       if (!active) return;
       if (authError || !identity.user) { setStage("signed-out"); return; }
       const { data, error } = await db.from("entities")
-        .select("id,slug,name,subtype,status,data_quality,credential_record:metadata->credential_record")
+        .select("id,slug,name,subtype,status,data_quality,credential_record:metadata->credential_record,credential_group:metadata->credential_group")
         .in("subtype", ["credential", "passport"]).neq("status", "ARCHIVED").order("name");
       if (!active) return;
       if (error) { setStage("error"); return; }
@@ -32,7 +32,8 @@ export default function CredentialInventory() {
   const visible = useMemo(() => rows.filter(row => {
     const record = credentialFromMetadata(row.credential_record);
     const label = record ? credentialTypeLabels[record.credential_type] : "Needs setup";
-    const text = `${row.name} ${label} ${record?.issuer ?? ""}`.toLowerCase();
+    const group = credentialGroups.find(group => group.key === credentialGroup(record?.credential_type, row.subtype, row.credential_group));
+    const text = `${row.name} ${label} ${record?.issuer ?? ""} ${group?.label ?? ""}`.toLowerCase();
     return (!query.trim() || text.includes(query.trim().toLowerCase())) && (!kind || record?.credential_type === kind);
   }).sort((a, b) => {
     const aRecord = credentialFromMetadata(a.credential_record);
@@ -55,10 +56,11 @@ export default function CredentialInventory() {
       <p className="muted" role="status">Showing {visible.length} of {rows.length} records. Only the last four digits are stored.</p>
       {visible.length === 0 ? <p className="muted">{rows.length ? "No records match these filters." : "No IDs or licenses recorded yet."}</p> :
         <div>{credentialGroups.map(group => {
-          const members = visible.filter(row => credentialGroup(credentialFromMetadata(row.credential_record)?.credential_type, row.subtype) === group.key);
+          const members = visible.filter(row => credentialGroup(credentialFromMetadata(row.credential_record)?.credential_type, row.subtype, row.credential_group) === group.key);
           if (members.length === 0) return null;
           return <section className="inventoryCategoryGroup" key={group.key} aria-labelledby={`credential-group-${group.key}`}>
             <div className="sectionHead"><h2 id={`credential-group-${group.key}`}>{group.label}</h2><span className="muted">{members.length} {members.length === 1 ? "record" : "records"}</span></div>
+            {group.key === "philippines_ppl" && <p className="muted">Private Pilot Licence · related pilot, radio and medical records.</p>}
             <div className="assetGrid">{members.map(row => {
           const record: CredentialRecord | null = credentialFromMetadata(row.credential_record);
           const attention = record ? renewalAttention(record, today) : "Details need setup";

@@ -1,6 +1,6 @@
 # KAIKOA OS — Control Pack
 
-Reviewed: 2026-10-10, Asia/Manila. Milestone 027 is deployed and its initial authenticated inventory entries/audits are now read-only verified. Milestone 028 groups the existing credential cards and prepares one owner-requested addition through the same protected importer. Private source values are not committed; the additional save and new grouped-layout acceptance remain pending. The active Current State is concise; its previously truncated historical file is preserved as an archive. See Current State for the exact import path, verification and remaining gates.
+Reviewed: 2026-10-10, Asia/Manila. Milestone 028 is deployed and ten credential records are now count/type verified. Milestone 029 separates National IDs and Driving Licenses and supports audited explicit grouping under Philippines PPL through the protected importer. Three private source memberships are prepared; applying them in the owner browser and accepting the refined layout remain pending. Private source values are not committed. See Current State for the exact checkpoint, safe completion path and preserved gates.
 
 ## Purpose and reading order
 

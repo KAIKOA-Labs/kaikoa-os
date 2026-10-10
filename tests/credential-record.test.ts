@@ -24,15 +24,17 @@ test("renewal labels preserve unknown and review states without asserting validi
   assert.equal(renewalAttention({ ...record, record_state: "in_progress" }, "2026-10-10"), "In progress");
 });
 
-test("grouping keeps every supported kind visible, with driver and pilot licenses together", () => {
+test("grouping separates national IDs/driving licenses and respects explicit aviation bundles", () => {
   assert.equal(credentialGroup("passport"), "passports");
-  assert.equal(credentialGroup("driver_license"), "licenses");
+  assert.equal(credentialGroup("driver_license"), "driving_licenses");
   assert.equal(credentialGroup("pilot_license"), "licenses");
   assert.equal(credentialGroup("certification"), "certificates");
-  assert.equal(credentialGroup("national_id"), "ids");
-  assert.equal(credentialGroup("other"), "ids");
+  assert.equal(credentialGroup("national_id"), "national_ids");
+  assert.equal(credentialGroup("other"), "other");
   assert.equal(credentialGroup(undefined, "passport"), "passports");
-  assert.equal(credentialGroup(undefined, "credential"), "ids");
+  assert.equal(credentialGroup(undefined, "credential"), "other");
+  for (const type of ["other", "pilot_license", "radio_license", "certification"] as const) assert.equal(credentialGroup(type, "credential", "philippines_ppl"), "philippines_ppl");
+  assert.equal(credentialGroup("national_id", "credential", { group: "philippines_ppl" }), "national_ids");
   const groups = new Set(credentialGroups.map(group => group.key));
   for (const type of Object.keys(credentialTypeLabels)) assert.ok(groups.has(credentialGroup(type as keyof typeof credentialTypeLabels)));
 });

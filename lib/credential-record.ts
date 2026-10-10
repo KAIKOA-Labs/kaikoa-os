@@ -13,18 +13,27 @@ export const credentialTypeLabels = {
 export type CredentialType = keyof typeof credentialTypeLabels;
 export const credentialGroups = [
   { key: "passports", label: "Passports" },
-  { key: "ids", label: "IDs & Other Credentials" },
-  { key: "licenses", label: "Licenses" },
+  { key: "national_ids", label: "National IDs" },
+  { key: "driving_licenses", label: "Driving Licenses" },
+  { key: "philippines_ppl", label: "Philippines PPL" },
+  { key: "licenses", label: "Other Licenses" },
   { key: "certificates", label: "Certificates" },
+  { key: "other", label: "Other Credentials" },
 ] as const;
 export type CredentialGroup = typeof credentialGroups[number]["key"];
 
-export function credentialGroup(type: CredentialType | undefined, subtype?: string | null): CredentialGroup {
+export function isCredentialGroup(value: unknown): value is CredentialGroup {
+  return typeof value === "string" && credentialGroups.some(group => group.key === value);
+}
+export function credentialGroup(type: CredentialType | undefined, subtype?: string | null, savedGroup?: unknown): CredentialGroup {
+  if (isCredentialGroup(savedGroup)) return savedGroup;
   if (type === "passport" || type === undefined && subtype === "passport") return "passports";
+  if (type === "national_id") return "national_ids";
+  if (type === "driver_license") return "driving_licenses";
   if (type === "certification") return "certificates";
-  if (type === "driver_license" || type === "pilot_license" || type === "radio_license" ||
+  if (type === "pilot_license" || type === "radio_license" ||
       type === "boating_license" || type === "professional_license") return "licenses";
-  return "ids";
+  return "other";
 }
 
 export type CredentialState = "needs_review" | "owner_confirmed" | "in_progress" | "unknown";

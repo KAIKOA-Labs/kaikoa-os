@@ -80,3 +80,27 @@ test("an uncertain response or read-back stops before writing the next row", asy
     assert.ok(h.writes() <= 1);
   }
 });
+
+test("optional explicit groups validate without changing credential details", () => {
+  assert.equal(parseCredentialImport(encode([{ ...row, group: "philippines_ppl" }]))[0].group, "philippines_ppl");
+  for (const group of [null, "unsupported", { group: "philippines_ppl" }]) assert.throws(() => parseCredentialImport(encode([{ ...row, group }])));
+});
+test("grouping an existing record uses its expected value, verifies read-back and retries without writes", async () => {
+  const h = harness(); h.entries.set(credentialSlug(row.name), stored(row)); let changes = 0;
+  h.adapter.setGroup = async (entityId, expectedGroup, group) => {
+    assert.equal(entityId, id); assert.equal(expectedGroup, null); changes++;
+    h.entries.set(credentialSlug(row.name), { ...stored(row), credential_group: group });
+  };
+  const grouped = { ...row, group: "philippines_ppl" as const };
+  assert.deepEqual(await runCredentialImport([grouped], h.adapter, () => {}), { added: 0, skipped: 1, total: 1, grouped: 1 });
+  assert.deepEqual(await runCredentialImport([grouped], h.adapter, () => {}), { added: 0, skipped: 1, total: 1 });
+  assert.equal(changes, 1); assert.equal(h.writes(), 0);
+});
+test("failed group read-back and stale group saves stop the remaining batch", async () => {
+  for (const stale of [true, false]) {
+    const h = harness(); h.entries.set(credentialSlug(row.name), stored(row));
+    h.adapter.setGroup = async () => { if (stale) throw new Error("stale group"); };
+    await assert.rejects(runCredentialImport([{ ...row, group: "philippines_ppl" }, { ...row, name: "Example Beta" }], h.adapter, () => {}), stale ? /stale group/ : /could not be confirmed/);
+    assert.equal(h.writes(), 0);
+  }
+});
