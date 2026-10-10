@@ -1,6 +1,6 @@
 # KAIKOA OS — Control Pack
 
-Reviewed: 2026-10-09, Asia/Manila. Milestone 021 adds verified owner subscription billing entry while preserving legacy source billing. Owner browser acceptance remains pending for 020 and 021; 019 retains its limited founder interface acceptance. Earlier acceptance limits and sensitive-import/file-recovery gates remain preserved. Current State records exact-decimal storage, audit/stale protection and the next candidate.
+Reviewed: 2026-10-10, Asia/Manila. Milestone 026 adds the masked IDs & Licenses workspace with expiry/reminder metadata and owner-audited create/update. Its preview is READY; owner browser acceptance and personal record entry remain pending. The older source tracker remains unimported, and file-image imports remain gated. Current State records the precise checkpoint and authentication handoff.
 
 ## Purpose and reading order
 
