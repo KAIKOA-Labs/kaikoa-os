@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { filterInventory, inventoryCategories, inventoryQualityLabel, type InventoryRecord } from "../lib/inventory-view.ts";
+import { filterInventory, groupInventoryByCategory, inventoryCategories, inventoryQualityLabel, type InventoryRecord } from "../lib/inventory-view.ts";
 const record = (name: string, subtype: string | null, location: string | null, status = "ACTIVE"): InventoryRecord =>
   ({ id: name, slug: name, name, subtype, location, status, data_quality: null });
 const rows = [record("Sample boat", "vessel", "Port A"), record("Sample home", "property", "Port B"), record("Former home", "property", "Port B", "ARCHIVED"), record("Unknown category", null, null)];
@@ -22,4 +22,16 @@ test("categories reflect only present active records and missing quality is neve
   assert.equal(inventoryQualityLabel("PARTIAL"), "Partial");
   assert.equal(inventoryQualityLabel("unverified"), "Unverified");
   assert.equal(inventoryQualityLabel("pending-source"), "pending-source");
+});
+
+test("asset cards are grouped by subtype with counts and archived records excluded", () => {
+  const groups = groupInventoryByCategory([
+    record("Home one", "property", "Port B"),
+    record("Boat", "vessel", "Port A"),
+    record("Home two", "property", "Port C"),
+    record("Former home", "property", "Port B", "ARCHIVED"),
+  ]);
+  assert.deepEqual(groups.map(group => [group.key, group.count]), [["Properties", 2], ["Vessels", 1]]);
+  assert.deepEqual(groups.find(group => group.label === "Properties")?.records.map(item => item.name), ["Home one", "Home two"]);
+  assert.equal(groups.reduce((total, group) => total + group.records.length, 0), 3);
 });

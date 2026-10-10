@@ -29,6 +29,13 @@ export function inventoryCategories(records: InventoryRecord[]) {
   }
   return [...categories.values()].sort((a, b) => a.label.localeCompare(b.label));
 }
+export function groupInventoryByCategory(records: InventoryRecord[]) {
+  const active = records.filter(record => record.status !== "ARCHIVED");
+  return inventoryCategories(active).map(category => ({
+    ...category,
+    records: active.filter(record => inventoryCategoryKey(record.subtype) === category.key),
+  }));
+}
 export function filterInventory(records: InventoryRecord[], query: string, category: string | null) {
   const search = query.trim().toLowerCase();
   return records.filter(record => record.status !== "ARCHIVED" &&

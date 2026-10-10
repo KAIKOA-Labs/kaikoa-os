@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import ArtworkEditionOverview from "@/app/artwork-edition-overview";
 import { getBrowserSupabase } from "@/lib/supabase-browser";
-import { filterInventory, inventoryCategories, inventoryCategoryLabel, inventoryQualityLabel, type InventoryRecord } from "@/lib/inventory-view";
+import { filterInventory, groupInventoryByCategory, inventoryCategories, inventoryCategoryLabel, inventoryQualityLabel, type InventoryRecord } from "@/lib/inventory-view";
 
 import { inventorySections, recordsForInventorySection, type InventorySection } from "@/lib/inventory-sections";
 
@@ -36,6 +36,7 @@ export default function InventoryBrowser({ section }: { section: Exclude<Invento
   const sectionRecords = recordsForInventorySection(records, section);
   const visible = filterInventory(sectionRecords, query, category);
   const categories = inventoryCategories(sectionRecords);
+  const categoryGroups = groupInventoryByCategory(visible);
   function clearFilters() { setQuery(""); setCategory(null); }
   return <main className="shell">
     <header><p className="eyebrow">KAIKOA OS · INVENTORY</p><h1>{definition.title}.</h1>
@@ -57,18 +58,22 @@ export default function InventoryBrowser({ section }: { section: Exclude<Invento
       <div className="sectionHead"><p className="muted" role="status">Showing {visible.length} of {sectionRecords.length} records</p>
         {(query || category !== null) && <button type="button" onClick={clearFilters}>Clear filters</button>}</div>
       {visible.length === 0 ? <p className="muted">{sectionRecords.length === 0 ? definition.empty : "No records match your search and category. Clear the filters to see this section."}</p> :
-        <div className="assetGrid">{visible.map(record => section === "artwork" ? <article className="asset artworkInventoryCard" key={record.id}>
+        section === "artwork" ? <div className="assetGrid">{visible.map(record => <article className="asset artworkInventoryCard" key={record.id}>
           <span className="eyebrow">Artwork</span>
           <Link className="artworkCardTitle" href={"/private-memory/assets/" + encodeURIComponent(record.slug)}><strong>{record.name} →</strong></Link>
           <span>{record.status}</span><small>{record.location || "Location not recorded"}</small>
           <small>Data quality: {inventoryQualityLabel(record.data_quality)}</small>
           <ArtworkEditionOverview inventory={record.artwork_inventory} />
           <Link className="back" href={"/private-memory/artwork/" + encodeURIComponent(record.slug) + "/editions"}>Manage editions →</Link>
-        </article> : <Link className="asset assetLink" key={record.id} href={"/private-memory/assets/" + encodeURIComponent(record.slug)}>
-          <span className="eyebrow">{inventoryCategoryLabel(record.subtype)}</span><strong>{record.name} →</strong>
-          <span>{record.status}</span><small>{record.location || "Location not recorded"}</small>
-          <small>Data quality: {inventoryQualityLabel(record.data_quality)}</small>
-        </Link>)}</div>}
+        </article>)}</div> :
+        <div className="inventoryCategoryGroups">{categoryGroups.map(group => <div className="inventoryCategoryGroup" key={group.key}>
+          <div className="sectionHead"><h2>{group.label}</h2><span className="muted">{group.count} {group.count === 1 ? "record" : "records"}</span></div>
+          <div className="assetGrid">{group.records.map(record => <Link className="asset assetLink" key={record.id} href={"/private-memory/assets/" + encodeURIComponent(record.slug)}>
+            <span className="eyebrow">{inventoryCategoryLabel(record.subtype)}</span><strong>{record.name} →</strong>
+            <span>{record.status}</span><small>{record.location || "Location not recorded"}</small>
+            <small>Data quality: {inventoryQualityLabel(record.data_quality)}</small>
+          </Link>)}</div>
+        </div>)}</div>}
     </section>}
   </main>;
 }
