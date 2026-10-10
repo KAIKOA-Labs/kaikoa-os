@@ -31,8 +31,13 @@ Reviewed: 2026-10-10, Asia/Manila. Phases and implementation milestones are dist
 | 027 | Deployed; initial inventory entries and audits verified, general founder interface feedback received | JSON list preview/confirmation, existing owner-audited RPC, sequential saves and exact read-back, matching-record retry skip, conflict/cancellation handling and direct navigation. 62 tests, TypeScript/build and private file validation passed. No schema/Auth/protection changes or agent data writes. Delivered at 9498af4 with READY preview; later read-only comparison verifies nine matching source rows and nine creation/metadata audits. |
 | 028 | Deployed; owner-requested addition now saved by count/type evidence | Four initial credential groups delivered at c26e1b9 with matching READY preview; 63 tests, TypeScript/build passed. Ten saved credentials now counted. New taxonomy is refined in 029. |
 | 029 | Complete within implementation and saved-membership scope; closeout recorded | Delivered at 064e7f2 with matching READY preview dpl_89wRt3LxMuYvteJn8xkJNNHagUKJ. Automatic National IDs/Driving Licenses and explicit Philippines PPL grouping; guarded audited stale/no-op-protected RPC and optional import membership. 66 tests, TypeScript/build and rolled-back role/JWT/preservation assertions passed. At closeout: ten saved credentials, three aviation memberships and three consistent owner-attributed group audits. Refined-layout/mobile acceptance not independently certified; dates/validity remain subject to verification. |
+| 030 | Private reference connection implemented; publication follows checkpoint | Protected Documents workspace, two private folder locations and one benign file reference with three explicit agent audits; reviewed owner-only add-link RPC and asset evidence links. 69 tests, TypeScript/build and rolled-back role/JWT assertions passed; Drive text/access verified. Owner-browser acceptance, app-specific Google authorization/automatic reads and file recovery remain pending. |
 
-## Next session after 029
+## Next session after 030
+
+Follow CURRENT_STATE.md: verify the matching preview, inspect the two connected folder cards and harmless file in the founder browser, then scope app-specific read-only Google authorization and a reviewed non-sensitive read path. No sensitive import, paid service or automatic extraction is authorized by this checkpoint.
+
+## Historical next-session direction after 029
 
 Resume from the latest development checkpoint in CURRENT_STATE.md. Confirm the refined inventory in the founder browser when available, then scope the next bounded increment as Milestone 030 from the mission, roadmap and current priorities. No new 030 feature is selected or authorized by this closeout. Do not repeat the completed inventory import or unchanged passed security/recovery checks. Reminder delivery, full identifiers/scans and provider/financial automation retain their existing gates.
 

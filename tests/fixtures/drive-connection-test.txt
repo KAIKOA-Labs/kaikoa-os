@@ -1,0 +1,6 @@
+KAIKOA OS — Drive connection test
+
+This is a synthetic, non-sensitive test document.
+It contains no personal identity, health, financial or vessel registration details.
+Its purpose is to verify a private Google Drive file reference in the Documents workspace.
+No operational facts, deadlines or obligations should be inferred from this file.

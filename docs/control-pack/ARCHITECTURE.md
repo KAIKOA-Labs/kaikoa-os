@@ -36,7 +36,7 @@ Milestones 026–027 add a protected IDs & Licenses workspace, audited masked cr
 
 Entities, relationships, events, obligations and evidence form the universal model. Current TypeScript entity types are a narrower implementation subset; conceptual domains are not all separate implemented modules.
 
-The [documented database schema](../current-database-schema.md) describes eight tables:
+The [documented database schema](../current-database-schema.md) describes the original eight tables; Milestone 030 adds a ninth audit table:
 
 | Table | Responsibility |
 | --- | --- |
@@ -48,6 +48,7 @@ The [documented database schema](../current-database-schema.md) describes eight 
 | events | Dated occurrences |
 | entity_change_history | Inventory audit |
 | obligation_change_history | Obligation audit |
+| document_change_history | Document-reference creation/link audit |
 
 `database/schema.sql` is conceptual. Repository migrations are incremental and do not yet form a complete clean-room restoration set.
 
@@ -74,3 +75,6 @@ Operational database, authoritative document repository and secret vault are sep
 Sources: inspected package.json, model and workflow/session source; existing architecture, schema, milestone and security documents. See [Current State](CURRENT_STATE.md) for verification limits.
 
 Milestone 029 separates display grouping from credential facts with optional `entities.metadata.credential_group`. Automatic groups come from type; valid explicit groups take precedence. The public invoker/private guarded-definer RPC validates confirmation/allowlist, locks active credentials, checks the expected group and audits actual changes atomically while preserving credential metadata. The importer can apply optional listed memberships after exact-match/read-back checks in the authenticated browser; absent assignments leave saved groups untouched. No private names or source inventories are compiled into the application.
+
+
+Milestone 030 connects private Google Drive references through the existing `documents` and `document_links` tables, adds a protected Documents workspace and owner-confirmed non-sensitive reference form, and shows linked evidence on asset details. Canonical safe link rendering never fetches arbitrary user URLs. The public invoker/private guarded-definer RPC validates source/confirmation/declaration, locks active parents, serializes provider-ref duplicates, stops conflicts, and atomically appends owner-attributed reference/link audits. `document_change_history` denies direct browser writes and has owner-only SELECT RLS. Three exact requested folder/test references are separately seeded with explicit agent attribution and provenance. No owner impersonation, Google credentials, file contents, OAuth connection or automatic extraction is introduced. Folder privacy and ChatGPT connector access remain distinct from future app-provider authorization.

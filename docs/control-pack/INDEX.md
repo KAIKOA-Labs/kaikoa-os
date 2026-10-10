@@ -1,6 +1,6 @@
 # KAIKOA OS — Control Pack
 
-Reviewed: 2026-10-10 at session close, Asia/Manila. Milestone 029 is deployed at 064e7f2 with a matching READY preview. Ten saved credentials and all three Philippines PPL assignments with consistent owner-attributed audits are aggregate verified. The Control Pack records the completed checkpoint, normal login/inventory links and Milestone 030 planning as the next starting point. Refined-layout/mobile acceptance is not independently certified; credential dates/validity and document-recovery gates remain unchanged. Private source values are not committed.
+Reviewed: 2026-10-11, Asia/Manila. Milestone 030 delivers a protected Documents workspace and private Drive folder/file references using the existing document model and an audited owner-only save path. Three explicitly agent-attributed connections are verified; 69 tests, TypeScript, build and rolled-back access assertions passed. Publication subject is `Milestone 030: connect private Drive document references`; resolve its latest branch SHA and matching READY preview. Owner-browser acceptance, app-specific Google authorization/automatic reading and independent file recovery remain pending. Milestone 029 credential completion remains preserved below. Private provider references and source values are not committed.
 
 ## Purpose and reading order
 

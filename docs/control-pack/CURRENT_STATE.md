@@ -1,8 +1,31 @@
 # KAIKOA OS — Current State
 
-Reviewed: 2026-10-10 at session close, Asia/Manila. This is the active checkpoint; historical narratives are linked below.
+Reviewed: 2026-10-11, Asia/Manila. Milestone 030 reference connection is the active checkpoint; earlier milestone narratives below are dated evidence.
 
-## Verified baseline
+## Milestone 030 — private Drive reference connection
+
+The founder authorizes connecting the prepared personal Drive document foundation on 2026-10-11. The exact connected locations are kept in the private database, never compiled into the app or committed. Baseline inspected at branch head `3dfc81d23e197f845d368897e7f216abad7e9f6e`, clean local clone and matching READY preview `dpl_5jJvFf9sspFBd7nzrAUWYPbMvjxm`. Publication follows this checkpoint under subject `Milestone 030: connect private Drive document references`; resolve its current SHA and matching deployment before resuming.
+
+Delivered scope: protected `/private-memory/documents`, workspace navigation, connected operational-library/private-vault folder cards, a benign test-file reference, source notes and recent reference history. The confirmed add-link form optionally associates a non-sensitive file with an active universal entity. Asset details show linked references. Drive retains the files; the database stores reference metadata and links. No contents, extracted dates, renewals or operational facts were imported.
+
+Migration `milestone_030_document_references` was created with Supabase CLI 2.120.0 and applied through the supported connector. It preserves the existing documents/document_links model, adds owner-readable append-only `document_change_history`, provider-reference/link uniqueness and a public invoker/private owner-guarded definer RPC. The inspected existing owner guard is checksum-validated and resolved at migration time; no owner identifier is committed. Direct browser writes remain denied. Confirmation, a non-sensitive declaration, canonical Google links, active parent locking, serialized duplicate handling, conflict stops, no-op retries and atomic creation/link audits are independently enforced in SQL.
+
+The three founder-requested connections were saved through a narrowly scoped management transaction with `actor_kind=agent` and null `changed_by`; they are not represented as owner browser saves or created by impersonating the owner's JWT. Aggregate readback confirms one library folder, one separate private-vault folder, one benign file reference and three consistent agent creation audits. Existing counts remain 26 entities/38 entity audits and eight obligations/15 obligation audits; no actual asset evidence link was invented.
+
+Verification: 69 unit tests, TypeScript and the final production build passed. `tests/document-reference-access.sql` passed synthetic, rolled-back owner/non-owner/anonymous role/JWT assertions for access, confirmation, validation, conflicts, no-op retries, optional links, attribution and preservation. These are simulations, not real browser-session certification. The actual synthetic text file was uploaded to the prepared operational inbox and its text matched exactly on Drive readback. Both folder roots and the file report shared=false with only the established owner permission; the file's inbox parent was verified. This is connector file/reference verification, not independent backup/restore or owner-browser acceptance. Security advisors retain the previous eight public definer and password-protection warnings, with no new reference-RPC warning. React review covered parallel independent reads, explicit projections, mounted-response guards, existing session boundary, native labels/confirmations and safe external-link rendering.
+
+**Connection limit:** this is a link/reference connection. No Google provider credentials, app OAuth grant, automatic Drive listing/reading, ingestion, extraction or notifications were configured. The team's Vercel connector inventory is empty. ChatGPT's Drive connection is separate from the app's authorization. Folder privacy does not enforce narrow OAuth scopes. Independent file recovery and sensitive-import gates stay open.
+
+## Current next starting point
+
+1. Recheck this development branch head and its matching READY preview. Read the Control Pack; do not recreate the Drive folders, restart dedicated Gmail registration or repeat the completed credential import.
+2. The founder opens `/private-memory/documents` in their normal authenticated browser and confirms the two folder cards and benign test reference. Check their Open in Drive links. Browser acceptance remains pending until that confirmation.
+3. Scope app-specific read-only Google authorization, exact folder/file allowlisting and a non-sensitive read/review flow as the next increment. A Vercel-managed Google connection or registered Google OAuth client still requires provider setup/consent; do not transfer ChatGPT credentials, ask for secrets in chat or invent a configured connection. Verify availability and cost before choosing additional infrastructure.
+4. Keep source documents unverified until reviewed; complete the documented private backup/isolated file recovery before sensitive import. Future database recovery coverage must include the newly added document audit table as well as the prior eight tables.
+
+Documents: `https://kaikoa-os-git-milestone-001-hull-ehzobel-4943.vercel.app/private-memory/documents`
+
+## Historical Milestone 029 verified baseline
 
 - Development branch: `milestone-001-hull`; `main` remains protected from this work.
 - Local and remote were clean and aligned at feature commit `064e7f25670ef29f159ab8b923e2eafe78b804da`, with matching READY preview `dpl_89wRt3LxMuYvteJn8xkJNNHagUKJ` at closeout inspection. The documentation-only closeout follows this feature; resolve the latest branch head and its matching preview by subject `Milestone 029: record completed inventory checkpoint`.
@@ -42,7 +65,7 @@ Milestone 027 was published at `9498af431896cf972f8f773a2de35657e38eeeb0`, with 
 
 `https://kaikoa-os-git-milestone-001-hull-ehzobel-4943.vercel.app/private-memory/credentials/import`
 
-## Session close and next starting point
+## Historical Milestone 029 session close and next starting point (superseded by 030)
 
 At 14:02 Asia/Manila on 2026-10-10 the founder requests milestone wrap-up and a durable checkpoint for continuing in a new chat. This closeout updates only the Control Pack, records observed completion, publishes verified documentation and confirms its preview. It creates no new feature, operational data, provider setting or restoration.
 
