@@ -27,8 +27,10 @@ export function commandCenterReviewItems(records: CommandCenterRecord[]): Comman
     if (record.status === "ARCHIVED") continue;
     const section = inventorySectionForRecord(record);
     const detail = `/private-memory/assets/${encodeURIComponent(record.slug)}`;
-    if ((section === "assets" || section === "other") && record.data_quality?.toLowerCase() !== "verified") {
-      items.push({ id: `${record.id}:quality`, name: record.name, section: section === "assets" ? "Assets" : "Other Records", reason: `Record quality: ${inventoryQualityLabel(record.data_quality)}`, href: detail });
+    if ((section === "assets" || section === "credentials" || section === "other") && record.data_quality?.toLowerCase() !== "verified") {
+      const sectionName = section === "assets" ? "Assets" : section === "credentials" ? "IDs & Licenses" : "Other Records";
+      const href = section === "credentials" ? `/private-memory/credentials/${encodeURIComponent(record.slug)}/edit` : detail;
+      items.push({ id: `${record.id}:quality`, name: record.name, section: sectionName, reason: `Record quality: ${inventoryQualityLabel(record.data_quality)}`, href });
     }
     if (section === "artwork") {
       if (record.artwork_inventory_version !== "1") items.push({ id: `${record.id}:editions`, name: record.name, section: "Artwork", reason: "Edition inventory not recorded or needs review", href: `/private-memory/artwork/${encodeURIComponent(record.slug)}/editions` });

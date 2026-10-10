@@ -34,9 +34,10 @@ test("subscription coverage surfaces missing review and billing markers without 
   assert.deepEqual(present, []);
 });
 
-test("other records with unknown quality remain visible through the fallback section", () => {
+test("credentials with unknown quality appear in the ID and license review path", () => {
   const items = commandCenterReviewItems([make({ subtype: "credential", data_quality: null })]);
   assert.equal(items.length, 1);
-  assert.equal(items[0].section, "Other Records");
+  assert.equal(items[0].section, "IDs & Licenses");
   assert.equal(items[0].reason, "Record quality: Not recorded");
+  assert.equal(items[0].href, "/private-memory/credentials/record/edit");
 });

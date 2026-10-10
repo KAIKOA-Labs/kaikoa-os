@@ -7,7 +7,7 @@ const record = (id: string, subtype: string | null, status = "ACTIVE"): Inventor
 const rows = [
   record("Rental home", "property", "OPPORTUNITY"), record("Boat", "vessel"), record("Car", "vehicle"),
   record("Domain", "digital_asset"), record("Camera", "equipment"), record("Creative work", "artwork"),
-  record("Streaming service", "subscription"), record("Passport", "passport"), record("Business", "business"),
+  record("Streaming service", "subscription"), record("Passport", "passport"), record("License", "credential"), record("Business", "business"),
   record("Person", "person"), record("Unclassified", null), record("New category", "future_category"),
   record("Archived art", "artwork", "ARCHIVED"),
 ];
@@ -16,12 +16,13 @@ test("every non-archived record has exactly one home; creative work and services
   assert.deepEqual(sections[0].map(r => r.id), ["Rental home", "Boat", "Car", "Domain", "Camera"]);
   assert.deepEqual(sections[1].map(r => r.id), ["Creative work"]);
   assert.deepEqual(sections[2].map(r => r.id), ["Streaming service"]);
-  assert.deepEqual(sections[3].map(r => r.id), ["Passport", "Business", "Person", "Unclassified", "New category"]);
+  assert.deepEqual(sections[3].map(r => r.id), ["Passport", "License"]);
+  assert.deepEqual(sections[4].map(r => r.id), ["Business", "Person", "Unclassified", "New category"]);
   const ids = sections.flat().map(r => r.id);
   assert.equal(ids.length, rows.length - 1);
   assert.equal(new Set(ids).size, ids.length);
   assert.equal(sections[0][0].status, "OPPORTUNITY");
-  assert.equal(rows.length, 13);
+  assert.equal(rows.length, 14);
 });
 test("section-local categories and search cannot expose records from another section, even after clearing filters", () => {
   const assets = recordsForInventorySection(rows, "assets");
