@@ -1,8 +1,29 @@
 # KAIKOA OS — Current State
 
-Reviewed: 2026-10-11, Asia/Manila. Milestone 030 reference connection is the active checkpoint; earlier milestone narratives below are dated evidence.
+Reviewed: 2026-10-11, Asia/Manila. Milestone 031 vessel evidence is the active checkpoint; earlier milestone narratives below are dated evidence.
 
-## Milestone 030 — private Drive reference connection
+## Milestone 031 — scoped vessel document evidence
+
+The founder explicitly requests Gmail review and digital copies of the vessel registration, Tahiti import paperwork and latest insurance, delegates the summary layout, corrects the recorded weight and identifies automatic insurance payments throughout the year. This authorizes a bounded manual copy/extraction into the existing private Drive and KAIKOA OS records. It does not authorize broader ID/scanned-document imports or automatic provider access. Baseline was clean and aligned at `e7b62fb6db1299396d474f64d3ecad68dd7ef04c`, with matching READY preview `dpl_6m3dAyGQV9YhnTg7La5grhXkLUbZ`.
+
+Delivered: three grouped source-summary cards, digital-original links, supporting files, per-field provenance, source-email links, visible owner corrections/review conflicts, more-facts disclosure and search across each complete bundle. The same component appears in Documents and the existing vessel detail. Actual weight stays unknown; registration tonnage is kept separate from mass. Automatic instalments are owner-confirmed, with located payment emails kept as evidence rather than assumed current balances, paid-in-full status or future charge dates. Printed invoice and broker-message conflicts and insurance endorsement/mooring review points remain visible. Dates are document statements, not certified current validity or coverage.
+
+Seven records and seven vessel links were atomically added using a conflict-stopping, duplicate-serialized management transaction with explicit `actor_kind=agent`, null `changed_by` and 14 creation/link audits. This is not an owner JWT save or a false non-sensitive declaration through the reference-only RPC. Exact seven-row metadata comparison and a rolled-back no-op retry passed. Aggregate totals are 10 documents, seven links and 17 document audits. Existing entities/entity audits remain 26/38; obligations/obligation audits remain eight/15, with full-content preservation checked inside the transaction. No asset facts, obligations, payment ledger entries, schema, RPC, grants, RLS, Auth or protection settings were changed.
+
+Six original PDFs and one clearly labelled payment-email transcript were copied into the existing private vessel folders. Each Drive copy reports only the established owner permission and shared=false, and all seven downloaded Drive copies match source size/checksum. Separate file recovery restores a checksum-preserving archive into an isolated local location: every member matches exact bytes, and all six recovered PDFs reopen. A private association manifest maps database/provider references to recovery members. Individual PDF materialization changed bytes for some copies; the verified archive is the byte-preserving recovery artifact. This closes only bounded file-byte recovery for this selected set. It does not certify a coordinated current nine-table database/Auth restoration, independent provider non-owner denial, retention policy or recurring backup.
+
+Verification: 73 tests, TypeScript and production build passed. Rolled-back role/JWT read assertions confirm owner summary visibility, zero non-owner rows, anonymous denial and no direct browser writes; these are simulations, not real sessions. React review confirms explicit private projections, existing identity/stale-response guards, native disclosure/labels and escaped, allowlisted external links. No agent-controlled browser or visible mobile acceptance is claimed. Publication follows under `Milestone 031: add vessel document evidence summaries`; resolve its exact head and matching READY development deployment.
+
+## Current next starting point
+
+1. Recheck the development head and matching READY preview; do not repeat the completed seven-file copy or extraction.
+2. Open the vessel's Linked documents section or `/private-memory/documents` in the founder's normal authenticated browser. Record visible acceptance when supplied.
+3. Resolve the visible owner/source conflicts with authoritative evidence before changing operational facts. Keep actual mass, current insurance payment balance and next debit unknown. Do not create payment/renewal obligations from these summaries automatically.
+4. New document requests can be scoped individually. App-specific Google consent/allowlisting, wider sensitive imports, current coordinated database/Auth recovery and automation retain their existing gates. No paid infrastructure or provider credential transfer is introduced.
+
+See [Milestone 031](../milestone-031-vessel-document-evidence.md). Stable Documents link and historical checkpoints remain below.
+
+## Historical Milestone 030 — private Drive reference connection
 
 The founder authorizes connecting the prepared personal Drive document foundation on 2026-10-11. The exact connected locations are kept in the private database, never compiled into the app or committed. Baseline inspected at branch head `3dfc81d23e197f845d368897e7f216abad7e9f6e`, clean local clone and matching READY preview `dpl_5jJvFf9sspFBd7nzrAUWYPbMvjxm`. Feature published at `3036900874bbcab6dcc8f81ca59e40382b1d1fef`, with matching READY development preview `dpl_78JSSdb8JYfSSuqKk2SGGwbXjwGG` and the stable branch alias. The initial automatic deployment failed before build with `git_info_fail`; an exact-commit redeploy succeeded without code or protection changes. The documentation-only closeout follows under subject `Milestone 030: record connected Drive reference checkpoint`; resolve its latest branch SHA and matching preview before resuming.
 
@@ -16,7 +37,7 @@ Verification: 69 unit tests, TypeScript and the final production build passed. `
 
 **Connection limit:** this is a link/reference connection. No Google provider credentials, app OAuth grant, automatic Drive listing/reading, ingestion, extraction or notifications were configured. The team's Vercel connector inventory is empty. ChatGPT's Drive connection is separate from the app's authorization. Folder privacy does not enforce narrow OAuth scopes. Independent file recovery and sensitive-import gates stay open.
 
-## Current next starting point
+## Historical next starting point after 030 (superseded by 031)
 
 1. Recheck this development branch head and its matching READY preview. Read the Control Pack; do not recreate the Drive folders, restart dedicated Gmail registration or repeat the completed credential import.
 2. The founder opens `/private-memory/documents` in their normal authenticated browser and confirms the two folder cards and benign test reference. Check their Open in Drive links. Browser acceptance remains pending until that confirmation.
