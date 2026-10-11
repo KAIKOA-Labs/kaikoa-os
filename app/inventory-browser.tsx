@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import ArtworkEditionOverview from "@/app/artwork-edition-overview";
+import VehicleSummary from "@/app/vehicle-summary";
+import { parseVehicleProfile, vehicleProfilesByEntity } from "@/lib/vehicle-profile";
 import { getBrowserSupabase } from "@/lib/supabase-browser";
 import { filterInventory, groupInventoryByCategory, inventoryCategories, inventoryCategoryLabel, inventoryQualityLabel, type InventoryRecord } from "@/lib/inventory-view";
 
@@ -25,10 +27,15 @@ export default function InventoryBrowser({ section }: { section: Exclude<Invento
       const request = section === "artwork"
         ? db.from("entities").select("id,slug,name,subtype,status,location,data_quality,artwork_inventory:metadata->artwork_inventory").eq("subtype", "artwork")
         : db.from("entities").select("id,slug,name,subtype,status,location,data_quality");
-      const { data, error } = await request.neq("status", "ARCHIVED").order("name");
+      const [inventory, profiles, links] = await Promise.all([
+        request.neq("status", "ARCHIVED").order("name"),
+        section === "assets" ? db.from("documents").select("id,vehicle_profile:metadata->vehicle_profile").eq("document_type", "vehicle_profile").neq("status", "ARCHIVED") : Promise.resolve({ data: [], error: null }),
+        section === "assets" ? db.from("document_links").select("document_id,entity_id").is("obligation_id", null) : Promise.resolve({ data: [], error: null }),
+      ]);
       if (!active) return;
-      if (error) { setStage("error"); return; }
-      setRecords(data ?? []);
+      if (inventory.error || profiles.error || links.error) { setStage("error"); return; }
+      const byEntity = vehicleProfilesByEntity(profiles.data ?? [], links.data ?? []);
+      setRecords((inventory.data ?? []).map(record => ({...record,vehicle_profile: record.subtype === "vehicle" ? byEntity.get(record.id) : undefined})));
       setStage("ready");
     })().catch(() => { if (active) setStage("error"); });
     return () => { active = false; };
@@ -69,9 +76,8 @@ export default function InventoryBrowser({ section }: { section: Exclude<Invento
         <div className="inventoryCategoryGroups">{categoryGroups.map(group => <div className="inventoryCategoryGroup" key={group.key}>
           <div className="sectionHead"><h2>{group.label}</h2><span className="muted">{group.count} {group.count === 1 ? "record" : "records"}</span></div>
           <div className="assetGrid">{group.records.map(record => <Link className="asset assetLink" key={record.id} href={"/private-memory/assets/" + encodeURIComponent(record.slug)}>
-            <span className="eyebrow">{inventoryCategoryLabel(record.subtype)}</span><strong>{record.name} →</strong>
-            <span>{record.status}</span><small>{record.location || "Location not recorded"}</small>
-            <small>Data quality: {inventoryQualityLabel(record.data_quality)}</small>
+            <span className="eyebrow">{inventoryCategoryLabel(record.subtype)}</span><strong>{record.subtype === "vehicle" ? parseVehicleProfile(record.vehicle_profile)?.display_name ?? record.name : record.name} →</strong>
+            {record.subtype === "vehicle" ? <VehicleSummary profile={record.vehicle_profile} location={record.location} compact /> : <><span>{record.status}</span><small>{record.location || "Location not recorded"}</small><small>Data quality: {inventoryQualityLabel(record.data_quality)}</small></>}
           </Link>)}</div>
         </div>)}</div>}
     </section>}

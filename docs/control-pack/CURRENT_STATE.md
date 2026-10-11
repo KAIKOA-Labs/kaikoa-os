@@ -1,8 +1,35 @@
 # KAIKOA OS — Current State
 
-Reviewed: 2026-10-11, Asia/Manila. Milestone 032 vehicle evidence is the active checkpoint; earlier milestone narratives below are dated evidence.
+Reviewed: 2026-10-11, Asia/Manila. Milestone 033 vehicle identity/readiness is the active checkpoint; earlier milestone narratives below are dated evidence.
 
-## Milestone 032 — vehicle evidence and annual service plan
+## Milestone 033 — consistent vehicle identity and readiness
+
+The founder supplies an inventory screenshot, requests a visible registration plate, identifies the title/base discrepancy across vehicles and requests a simple green readiness check. The founder confirms the selected vehicle is in excellent condition, registration is good, insurance is paid and annual service is done. Base remains the earlier owner-reported location; a registration/service jurisdiction is not substituted for the current base.
+
+Baseline is clean/aligned at `c135a5266e4599ee570027bdabc548867a44f473`, tree `907bd3c3441b8479f25ba10f249a2874154f69f3`, with matching READY preview `dpl_4QDt4rDpF8HbfAyaQwsVWar1Npu2`. Shared vehicle cards now show a clean model name, one base tag, one plate tag and a textual/color readiness indicator. All six existing vehicles have consistently presented owner-source base records. Exactly one has the four newly confirmed checks; the other five retain unknown readiness/plates. Search includes the displayed name, plate and base. The vehicle detail uses the same component and keeps earlier inventory prose behind a labelled disclosure.
+
+Versioned vehicle profiles are owner-statement evidence in existing documents.metadata.vehicle_profile, with one link to each existing vehicle. Current base and display name have one shared source in these profiles; legacy entity name/location/description fields are preserved. Profiles are not represented as Drive files or official certificates. File-oriented Documents and linked-original views exclude these internal statement profiles while retaining every original file reference and its review notes.
+
+Six snapshots, six links and 12 explicit agent creation/link audits are atomically saved using the existing documents/link/history model. No owner impersonation is used. Exact six-row metadata/ID/link/audit readback, full-content preservation of prior inventory/history/documents and a rolled-back matching no-op retry pass. Totals: 19 documents, 16 links, 35 document audits; existing 26 entities/38 entity audits and eight obligations/15 obligation audits remain unchanged.
+
+Green means four owner-confirmed checks, with a recorded check date. Missing/malformed/ambiguous profiles never produce green. Known past registration/insurance expiry and the next annual service anniversary remove green on display. Annual review is a display calculation, not a booked appointment or notification. Unknown registration expiry is preserved; source insurance periods and owner payment confirmation remain distinct from insurer amendments, coverage wording and bank reconciliation. Existing missing-service-receipt and insurer-registration review points are retained.
+
+Automatic approval review rejected the proposed audit-column/write-endpoint migration because it would relax a shared audit field and change authenticated execute permissions outside the exact authorized infrastructure scope. The migration was not applied or retried. The prepared editor/migration were removed. The delivered alternative completes the requested tags/readiness using existing read-only evidence access: no new schema, RPC, grants, RLS, Auth, protection or Drive mutation. Live inspection confirms the original non-null audit actor and no proposed endpoint. Owner-only policies/RLS and SELECT-only grants/no anonymous reads remain inspected; no fresh identity simulation or real browser test is claimed.
+
+Verification: 80 tests, final production build and TypeScript pass. The private six-profile source validates with the production parser, and only the owner-confirmed vehicle classifies as ready. React review retains explicit private projections, parallel independent reads, identity/mounted-response guards, native disclosures, escaped values and labels/symbols accompanying color. A stale generated-type reference from the discarded editor was cleared by the final production build. Founder acceptance of the new display remains pending.
+
+Publication follows under `Milestone 033: clarify vehicle identity and readiness`; resolve the exact head and matching READY preview. All private source values, provider/record IDs and statements remain outside Git.
+
+## Current next starting point
+
+1. Recheck the development head and matching READY preview. Open Assets in the founder’s normal browser to inspect all vehicle tags and the four confirmed readiness checks.
+2. Do not repeat completed source-file imports, snapshot creation or rejected schema/identity tests. Read existing profiles before any future owner-authorized update, preserve audit attribution and stop conflicting/ambiguous records.
+3. Collect the other vehicles’ plates/checks when the founder supplies them. Keep unreported states unknown. Retain selected-vehicle insurer/full-policy/service-receipt review points separately.
+4. A future interactive vehicle editor requires its own concrete approved write/audit contract. Provider automation, wider sensitive imports and coordinated current database/Auth recovery retain existing gates.
+
+See [Milestone 033](../milestone-033-vehicle-identity-readiness.md).
+
+## Historical Milestone 032 — vehicle evidence and annual service plan
 
 The founder requests registration and latest insurance for one existing vehicle, with annual service at the official dealer and an owner-reported completed service without a receipt. The founder subsequently supplies a readable registration photograph. This is a bounded manual copy/extraction request; registration provenance is the upload, while insurance provenance is scoped Gmail correspondence. No registration email copy or dealer appointment is falsely claimed.
 
@@ -16,7 +43,7 @@ Verification: 74 unit tests, TypeScript and production build pass; all three pri
 
 Publication follows under `Milestone 032: add vehicle evidence and annual service plan`; resolve its exact branch head and matching READY preview. Private values, source files and provider/database identifiers remain outside Git.
 
-## Current next starting point
+## Historical next starting point after 032
 
 1. Recheck the development head and matching READY preview; do not repeat the three-file import or completed vessel copy.
 2. Open the vehicle’s Linked documents or Documents in the founder’s normal authenticated browser. Record visible acceptance if supplied.

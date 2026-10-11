@@ -33,10 +33,12 @@ export default function DocumentsPage() {
       ]);
       if (!active) return;
       if (results.some(result => result.error)) throw new Error("Unavailable");
-      setRows(results[0].data as DocumentRow[] ?? []);
+      const fileRows = (results[0].data as DocumentRow[] ?? []).filter(row => row.document_type !== "vehicle_profile");
+      setRows(fileRows);
       setLinks(results[1].data as LinkRow[] ?? []);
       setEntities(results[2].data as EntityRow[] ?? []);
-      setHistory(results[3].data as AuditRow[] ?? []);
+      const visibleIds = new Set(fileRows.map(row => row.id));
+      setHistory((results[3].data as AuditRow[] ?? []).filter(row => visibleIds.has(row.document_id)));
       setStage("ready");
     })().catch(() => { if (active) setStage("error"); });
     return () => { active = false; };

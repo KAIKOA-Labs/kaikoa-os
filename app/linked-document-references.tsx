@@ -21,10 +21,10 @@ export default function LinkedDocumentReferences({ entityId }: { entityId: strin
       if (linkError) throw new Error("Unavailable");
       const ids = [...new Set((links ?? []).map(link => link.document_id))];
       if (ids.length) {
-        const { data, error } = await db.from("documents").select("id,title,status,source_url,evidence_summary:metadata->evidence_summary,source_note:metadata->source_note,recorded_by:metadata->recorded_by").in("id", ids).neq("status", "ARCHIVED").order("title");
+        const { data, error } = await db.from("documents").select("id,title,document_type,status,source_url,evidence_summary:metadata->evidence_summary,source_note:metadata->source_note,recorded_by:metadata->recorded_by").in("id", ids).neq("status", "ARCHIVED").order("title");
         if (!active) return;
         if (error) throw new Error("Unavailable");
-        setRows(data ?? []);
+        setRows((data ?? []).filter(row => row.document_type !== "vehicle_profile"));
       }
       setState("ready");
     })().catch(() => { if (active) setState("error"); });
