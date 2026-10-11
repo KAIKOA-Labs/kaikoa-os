@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import ArtworkEditionOverview from "@/app/artwork-edition-overview";
 import VehicleSummary from "@/app/vehicle-summary";
+import AssetYearTag from "@/app/asset-year-tag";
+import { assetYearsByEntity } from "@/lib/asset-year";
 import { parseVehicleProfile, vehicleProfilesByEntity } from "@/lib/vehicle-profile";
 import { getBrowserSupabase } from "@/lib/supabase-browser";
 import { filterInventory, groupInventoryByCategory, inventoryCategories, inventoryCategoryLabel, inventoryQualityLabel, type InventoryRecord } from "@/lib/inventory-view";
@@ -29,13 +31,14 @@ export default function InventoryBrowser({ section }: { section: Exclude<Invento
         : db.from("entities").select("id,slug,name,subtype,status,location,data_quality");
       const [inventory, profiles, links] = await Promise.all([
         request.neq("status", "ARCHIVED").order("name"),
-        section === "assets" ? db.from("documents").select("id,vehicle_profile:metadata->vehicle_profile").eq("document_type", "vehicle_profile").neq("status", "ARCHIVED") : Promise.resolve({ data: [], error: null }),
+        section === "assets" ? db.from("documents").select("id,document_type,vehicle_profile:metadata->vehicle_profile,evidence_summary:metadata->evidence_summary").in("document_type", ["vehicle_profile", "vehicle_registration", "vessel_registration"]).neq("status", "ARCHIVED") : Promise.resolve({ data: [], error: null }),
         section === "assets" ? db.from("document_links").select("document_id,entity_id").is("obligation_id", null) : Promise.resolve({ data: [], error: null }),
       ]);
       if (!active) return;
       if (inventory.error || profiles.error || links.error) { setStage("error"); return; }
-      const byEntity = vehicleProfilesByEntity(profiles.data ?? [], links.data ?? []);
-      setRecords((inventory.data ?? []).map(record => ({...record,vehicle_profile: record.subtype === "vehicle" ? byEntity.get(record.id) : undefined})));
+      const byEntity = vehicleProfilesByEntity((profiles.data ?? []).filter(document => document.document_type === "vehicle_profile"), links.data ?? []);
+      const years = assetYearsByEntity(inventory.data ?? [], profiles.data ?? [], links.data ?? []);
+      setRecords((inventory.data ?? []).map(record => ({...record,asset_year: years.get(record.id),vehicle_profile: record.subtype === "vehicle" ? byEntity.get(record.id) : undefined})));
       setStage("ready");
     })().catch(() => { if (active) setStage("error"); });
     return () => { active = false; };
@@ -77,7 +80,7 @@ export default function InventoryBrowser({ section }: { section: Exclude<Invento
           <div className="sectionHead"><h2>{group.label}</h2><span className="muted">{group.count} {group.count === 1 ? "record" : "records"}</span></div>
           <div className="assetGrid">{group.records.map(record => <Link className="asset assetLink" key={record.id} href={"/private-memory/assets/" + encodeURIComponent(record.slug)}>
             <span className="eyebrow">{inventoryCategoryLabel(record.subtype)}</span><strong>{record.subtype === "vehicle" ? parseVehicleProfile(record.vehicle_profile)?.display_name ?? record.name : record.name} →</strong>
-            {record.subtype === "vehicle" ? <VehicleSummary profile={record.vehicle_profile} location={record.location} compact /> : <><span>{record.status}</span><small>{record.location || "Location not recorded"}</small><small>Data quality: {inventoryQualityLabel(record.data_quality)}</small></>}
+            {record.subtype === "vehicle" ? <VehicleSummary profile={record.vehicle_profile} location={record.location} year={record.asset_year} compact /> : <><span>{record.status}</span>{record.subtype === "vessel" && record.asset_year && <div className="vehicleTags"><AssetYearTag year={record.asset_year}/></div>}<small>{record.location || "Location not recorded"}</small><small>Data quality: {inventoryQualityLabel(record.data_quality)}</small></>}
           </Link>)}</div>
         </div>)}</div>}
     </section>}

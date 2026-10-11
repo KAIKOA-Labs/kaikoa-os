@@ -2,7 +2,7 @@ import { parseVehicleProfile } from "./vehicle-profile.ts";
 export type InventoryRecord = {
   id: string; slug: string; name: string; subtype: string | null;
   status: string; location: string | null; data_quality: string | null;
-  artwork_inventory?: unknown; vehicle_profile?: unknown;
+  artwork_inventory?: unknown; vehicle_profile?: unknown; asset_year?: number;
 };
 const categoryLabels: Record<string, string> = {
   vessel: "Vessels", property: "Properties", vehicle: "Vehicles",
@@ -41,7 +41,7 @@ export function filterInventory(records: InventoryRecord[], query: string, categ
   const search = query.trim().toLowerCase();
   return records.filter(record => record.status !== "ARCHIVED" &&
     (category === null || inventoryCategoryKey(record.subtype) === category) &&
-    (!search || [record.name, record.location ?? "", record.subtype ?? "", inventoryCategoryLabel(record.subtype),
+    (!search || [record.name, record.location ?? "", record.subtype ?? "", inventoryCategoryLabel(record.subtype), record.asset_year?.toString() ?? "",
       ...(record.subtype === "vehicle" ? [parseVehicleProfile(record.vehicle_profile)?.registration_plate ?? "", parseVehicleProfile(record.vehicle_profile)?.display_name ?? "", parseVehicleProfile(record.vehicle_profile)?.current_base ?? ""] : [])]
       .some(value => value.toLowerCase().includes(search))));
 }

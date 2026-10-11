@@ -1,6 +1,6 @@
 # KAIKOA OS — Control Pack
 
-Reviewed: 2026-10-11, Asia/Manila. Milestone 033 gives all six vehicles one consistent base/plate layout and displays four owner-confirmed readiness checks for the selected vehicle. Six private source profiles/six links/12 agent audits are saved with exact readback, preservation and no-op checks. All 80 tests, TypeScript and final production build pass. The proposed write/audit migration was blocked by automatic review and not applied; the delivered alternative uses existing private read-only evidence access without schema/permission changes. Resolve `Milestone 033: clarify vehicle identity and readiness` and its matching READY preview. New display acceptance, other vehicles’ checks, source-document review and coordinated recovery gates remain open. See [Milestone 033](../milestone-033-vehicle-identity-readiness.md).
+Reviewed: 2026-10-11, Asia/Manila. Milestone 034 adds available model/build years to vehicle/vessel cards and details, using existing protected registration evidence. One vessel year is recorded; all six vehicle years remain unknown. First circulation and document dates are excluded. All 84 tests, TypeScript and production build pass. Resolve `Milestone 034: show available vehicle and vessel years` and its matching READY preview. Vehicle readiness from 033 is preserved; no database/provider or access change is made. Display acceptance, source review and coordinated recovery gates remain open. See [Milestone 034](../milestone-034-asset-year-tags.md).
 
 ## Purpose and reading order
 

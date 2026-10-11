@@ -1,8 +1,24 @@
 # KAIKOA OS — Current State
 
-Reviewed: 2026-10-11, Asia/Manila. Milestone 033 vehicle identity/readiness is the active checkpoint; earlier milestone narratives below are dated evidence.
+Reviewed: 2026-10-11, Asia/Manila. Milestone 034 available vehicle/vessel years is the active checkpoint; earlier milestone narratives below are dated evidence.
 
-## Milestone 033 — consistent vehicle identity and readiness
+## Milestone 034 — available vehicle and vessel years
+
+The founder requests the vehicle or boat year on its tag when available. Shared cards/details now display a wrapping `Year · YYYY` tag from explicit model/manufacture or build fields in existing linked registration summaries. Asset search includes displayed years. First circulation and document/service/insurance dates are excluded; unknown or conflicting years are omitted. No private year, inventory identifier or provider reference is compiled into the app.
+
+Baseline is clean/aligned at `9be9aa4b83a937fc9922cbc851409e3d270d833e`, tree `4e9ae49108cb928c50e4a5b279e643f7c1218329`, with matching READY preview `dpl_BcQNobpp8BCjpk9BupNY54yX93nH`. Live protected source inspection covers seven vehicle/vessel entities and two registration summaries. Production helper readback finds one vessel build year and no confirmed vehicle model/manufacture years. Existing readiness/base/plate profiles are preserved and registration evidence is kept out of the profile ambiguity resolver.
+
+Verification: 84 tests, production build and TypeScript pass. New coverage distinguishes model/build years from first circulation, checks link/type/category boundaries and malformed/missing sources, suppresses conflicting years and verifies year search. React review preserves explicit protected projections, parallel independent reads, identity/mounted-response guards and escaped wrapping tags. There are no database/provider writes, migrations or access changes. Browser acceptance and wider recovery gates remain open.
+
+Publication follows under `Milestone 034: show available vehicle and vessel years`; resolve the exact head and matching READY preview. See [Milestone 034](../milestone-034-asset-year-tags.md).
+
+## Current next starting point
+
+1. Recheck the development head and matching READY preview; inspect year/base/plate/readiness tags in Assets in the founder's browser.
+2. Accept additional explicit model/build year evidence when supplied. Preserve unknown years and never replace them with first-registration dates.
+3. Retain existing source review, unreported readiness and coordinated database/Auth/provider recovery gates. Do not repeat imports or previously rejected migration/identity tests.
+
+## Historical Milestone 033 — consistent vehicle identity and readiness
 
 The founder supplies an inventory screenshot, requests a visible registration plate, identifies the title/base discrepancy across vehicles and requests a simple green readiness check. The founder confirms the selected vehicle is in excellent condition, registration is good, insurance is paid and annual service is done. Base remains the earlier owner-reported location; a registration/service jurisdiction is not substituted for the current base.
 
@@ -20,7 +36,7 @@ Verification: 80 tests, final production build and TypeScript pass. The private 
 
 Publication follows under `Milestone 033: clarify vehicle identity and readiness`; resolve the exact head and matching READY preview. All private source values, provider/record IDs and statements remain outside Git.
 
-## Current next starting point
+## Historical next starting point after 033
 
 1. Recheck the development head and matching READY preview. Open Assets in the founder’s normal browser to inspect all vehicle tags and the four confirmed readiness checks.
 2. Do not repeat completed source-file imports, snapshot creation or rejected schema/identity tests. Read existing profiles before any future owner-authorized update, preserve audit attribution and stop conflicting/ambiguous records.
