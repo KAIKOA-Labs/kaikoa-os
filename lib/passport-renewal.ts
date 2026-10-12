@@ -6,8 +6,8 @@ export type PassportRecord = {
   version: 1; issued_on: string; expires_on: string; recorded_on: string; source_note: string;
   notification: { provider: "chatgpt_tasks"; task_id: string; configured_on: string } | null;
 };
-export type PassportDocument = { id: string; document_type: string; status: string; source_url: string | null; passport_record: unknown; evidence_summary: unknown };
-export type PassportPlan = { record: PassportRecord; renew_on: string; travel_review_on: string; source_url: string; conflict: boolean };
+export type PassportDocument = { id: string; document_type: string; status: string; source_url: string | null; passport_record: unknown; evidence_summary: unknown; renewal_notifications?: unknown };
+export type PassportPlan = { record: PassportRecord; renew_on: string; travel_review_on: string; source_url: string; conflict: boolean; renewal_notifications?: unknown };
 export const passportRenewalMonths = 12;
 
 export function monthsBefore(date: string, months: number): string {
@@ -49,7 +49,7 @@ export function passportPlansByEntity(
     if (expiryFields.length !== 1 || expiryFields[0].value !== record.expires_on) continue;
     for (const link of links) {
       if (link.document_id !== document.id || !link.entity_id || link.obligation_id !== null || !eligible.has(link.entity_id)) continue;
-      const plan = { record, source_url: source, renew_on: monthsBefore(record.expires_on, passportRenewalMonths), travel_review_on: monthsBefore(record.expires_on, 6), conflict: false };
+      const plan = { record, source_url: source, renew_on: monthsBefore(record.expires_on, passportRenewalMonths), travel_review_on: monthsBefore(record.expires_on, 6), conflict: false, renewal_notifications: document.renewal_notifications };
       candidates.set(link.entity_id, [...(candidates.get(link.entity_id) ?? []), plan]);
     }
   }

@@ -5,6 +5,7 @@ import { getBrowserSupabase } from "@/lib/supabase-browser";
 import { credentialFromMetadata, credentialTypeLabels, credentialGroups, credentialGroup, renewalAttention, credentialStateLabel, type CredentialRecord } from "@/lib/credential-record";
 import { passportPlansByEntity, passportAttention, type PassportPlan } from "@/lib/passport-renewal";
 import PassportReadiness from "./passport-readiness";
+import RenewalNotifications from "./renewal-notifications";
 import { credentialEvidenceByEntity, type CredentialEvidence } from "@/lib/credential-evidence";
 
 type Row = { id: string; slug: string; name: string; subtype: string | null; status: string; data_quality: string | null; credential_record: unknown; credential_group: unknown };
@@ -26,7 +27,7 @@ export default function CredentialInventory() {
       const [entities, documents, links] = await Promise.all([
         db.from("entities").select("id,slug,name,subtype,status,data_quality,credential_record:metadata->credential_record,credential_group:metadata->credential_group")
           .in("subtype", ["credential", "passport"]).neq("status", "ARCHIVED").order("name"),
-        db.from("documents").select("id,document_type,status,source_url,passport_record:metadata->passport_record,credential_source_record:metadata->credential_source_record,evidence_summary:metadata->evidence_summary")
+        db.from("documents").select("id,document_type,status,source_url,passport_record:metadata->passport_record,credential_source_record:metadata->credential_source_record,evidence_summary:metadata->evidence_summary,renewal_notifications:metadata->renewal_notifications")
           .in("document_type", ["passport_evidence", "credential_evidence"]).neq("status", "ARCHIVED"),
         db.from("document_links").select("document_id,entity_id,obligation_id").is("obligation_id", null),
       ]);
@@ -101,6 +102,7 @@ export default function CredentialInventory() {
               <small>Start renewal: {plan.renew_on}</small>
               <small>Six-month travel threshold: {plan.travel_review_on}</small>
               <small>{plan.record.notification ? "ChatGPT reminders set up · monthly checks" : "Notifications not configured"}</small>
+              <RenewalNotifications value={plan.renewal_notifications}/>
               <small className="muted">{plan.record.source_note}</small>
               <a href={plan.source_url} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer">Open passport in Drive ↗</a>
             </> : <small>Reminder: {record?.reminder_on ?? "Not set"}</small>}

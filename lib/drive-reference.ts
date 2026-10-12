@@ -39,5 +39,5 @@ export function safeDriveLink(value: unknown): string | null {
 }
 
 export const referenceKindLabels: Record<string, string> = {
-  drive_library: "Document Library", drive_private_vault: "Private Vault", drive_reference: "Document reference",
+  drive_library: "Document Library", drive_private_vault: "Private Vault", drive_reference: "Document reference", medical_folder: "Medical records",
 };

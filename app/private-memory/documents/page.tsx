@@ -33,7 +33,7 @@ export default function DocumentsPage() {
       ]);
       if (!active) return;
       if (results.some(result => result.error)) throw new Error("Unavailable");
-      const fileRows = (results[0].data as DocumentRow[] ?? []).filter(row => row.document_type !== "vehicle_profile");
+      const fileRows = (results[0].data as DocumentRow[] ?? []).filter(row => !["vehicle_profile","medical_year_folder"].includes(row.document_type));
       setRows(fileRows);
       setLinks(results[1].data as LinkRow[] ?? []);
       setEntities(results[2].data as EntityRow[] ?? []);
@@ -43,8 +43,8 @@ export default function DocumentsPage() {
     })().catch(() => { if (active) setStage("error"); });
     return () => { active = false; };
   }, []);
-  const locations = rows.filter(row => ["drive_library", "drive_private_vault"].includes(row.document_type));
-  const references = useMemo(() => filterEvidenceGroups(groupEvidence(rows.filter(row => !["drive_library", "drive_private_vault"].includes(row.document_type))), query), [rows, query]);
+  const locations = rows.filter(row => ["drive_library", "drive_private_vault", "medical_folder"].includes(row.document_type));
+  const references = useMemo(() => filterEvidenceGroups(groupEvidence(rows.filter(row => !["drive_library", "drive_private_vault", "medical_folder"].includes(row.document_type))), query), [rows, query]);
   return <main className="shell">
     <header><p className="eyebrow">KAIKOA OS · DOCUMENTS</p><h1>Documents.</h1><p className="muted">Your Drive locations and reviewed file references, connected to your records.</p></header>
     {stage === "loading" && <p role="status">Loading private documents…</p>}

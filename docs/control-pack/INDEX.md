@@ -1,10 +1,10 @@
 # KAIKOA OS — Control Pack
 
-Reviewed: 2026-10-12, Asia/Manila. Current increment is Milestone 037: eight selected ID/licence originals, four grouped source records and photo-backed expiry/front-back links. Milestone 036 passport readiness/alerts and previous file evidence are retained. Read Current State for the latest publication, acceptance limits and preserved source/year/recovery gates.
+Reviewed: 2026-10-12, Asia/Manila. Current increment is Milestone 038: Medical, selected vaccination evidence and two-channel renewal reminders. Prior credential/passport evidence and the founder ownership correction are retained. Read Current State for notification-receipt and other preserved gates.
 
 ## Purpose and reading order
 
-Current continuation, 2026-10-12: the founder requests adding the eight selected ID/licence photos. Read CURRENT_STATE.md and [Milestone 037](../milestone-037-credential-evidence.md), then resolve `Milestone 037: link selected ID and licence originals` and its matching preview. Existing passport settings, source review, browser acceptance and broader recovery/provider-denial are retained. This selected copy does not infer medical/radio validity or flying/driving readiness.
+Current continuation, 2026-10-12: read CURRENT_STATE.md and [Milestone 038](../milestone-038-medical-renewal-reminders.md), then resolve `Milestone 038: add medical records and Calendar renewal reminders` and its matching preview. Next is founder receipt confirmation and Medical/card acceptance. Preserve earlier source/year/readiness and broader recovery/provider-denial gates; do not repeat completed imports or infer notification delivery.
 
 Resume development from durable evidence rather than a long conversation.
 

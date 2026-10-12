@@ -8,6 +8,6 @@ export default function InventorySectionLinks({ records }: { records: SectionRec
       <strong>{section.title} →</strong>
       <span>{recordsForInventorySection(records, section.key).length} recorded</span>
       <small>{section.description}</small>
-    </Link>)}</div>
+    </Link>)}<Link className="asset assetLink" href="/private-memory/medical"><strong>Medical →</strong><small>Vaccination dates and private records by year.</small></Link></div>
   </section>;
 }
