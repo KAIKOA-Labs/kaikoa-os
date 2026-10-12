@@ -1,6 +1,20 @@
 # KAIKOA OS — Current State
 
-Reviewed: 2026-10-12, Asia/Manila. Milestone 034 is closed within the delivered display scope. Ready for a fresh founder-selected task; earlier narratives below are dated evidence.
+Reviewed: 2026-10-12, Asia/Manila. Milestone 034 remains closed. Milestone 035 prepares linked ID evidence and a scoped safety review; sensitive import has not run. Earlier narratives below are dated evidence.
+
+## Milestone 035 — personal-ID test preparation
+
+The founder selects a first test with two supplied identity photographs and asks for proportionate security. Root AGENTS.md and the complete Control Pack were read. Baseline `ff8372de3e7ead72908e65f8057db41aecbd5695` is clean/aligned with the fetched development head and matching READY preview `dpl_BmiQwsWibfgJY97E3c881pnSfTtB`.
+
+Both supplied images open locally. Live inspection verifies two existing active matching credential records, unknown expiry/suffix/reminder fields and no linked passport evidence. The existing private-vault passport destination is empty and its folder hierarchy has owner-only permission metadata/shared=false. Current entities/documents/links/document-history RLS, owner-only SELECT policies and authenticated SELECT-only grants are inspected; no anonymous reads or direct browser writes. This is not an independent provider-denial or fresh real-session test.
+
+The existing credential editor now reuses the read-only Linked documents panel for its loaded matching credential. No new field, endpoint, schema, access change, embedded scan or provider integration is introduced. All 84 existing tests, TypeScript and production build pass. Publication verification follows in the checkpoint; browser acceptance remains pending.
+
+The exact two-file operation is prepared in [Milestone 035](../milestone-035-personal-id-test.md). One source has an alphabetic final character, unsupported by the current digits-only suffix contract; leave that suffix unknown rather than alter the source. Document dates may be captured as evidence; operational credential changes retain the owner-authenticated audited editor.
+
+**Next step:** founder decision on a narrowly scoped two-file sensitive-import exception with verified private access, exact byte readback, separately tested file recovery, provenance and existing agent-attributed document/link audits. The existing broader independent authorization/coordinated recovery gate is open and has not been waived or certified. No Drive copy, sensitive database import or credential fact update has occurred. Do not pass a false non-sensitive declaration to the reference form or retry rejected owner simulations/migrations.
+
+Publish preparation under `Milestone 035: prepare linked ID evidence and scoped safety review`; resolve its exact head and matching READY preview. Preserve all 034 pending items below, including the deferred vehicle year and source/readiness/recovery limits. Begin copying only after the pending decision and applicable checks are resolved.
 
 ## Session close — 2026-10-12
 
@@ -24,7 +38,7 @@ Verification: 84 tests, production build and TypeScript pass. New coverage disti
 
 Publication follows under `Milestone 034: show available vehicle and vessel years`; resolve the exact head and matching READY preview. See [Milestone 034](../milestone-034-asset-year-tags.md).
 
-## Current next starting point
+## Historical next starting point after 034
 
 1. Read AGENTS.md and the Control Pack, then recheck the latest development head, clean working tree and matching READY preview. Resolve the documentation-closeout subject above; do not use main as the baseline.
 2. Start with the founder's fresh task and scope the next bounded increment. Do not reopen completed imports, repeat accepted selected-card screenshots or start unrelated candidate work automatically.

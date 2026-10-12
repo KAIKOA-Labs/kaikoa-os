@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import Link from "next/link";
 import { getBrowserSupabase } from "@/lib/supabase-browser";
+import LinkedDocumentReferences from "./linked-document-references";
 import { credentialFromMetadata, credentialTypeLabels, type CredentialRecord, type CredentialState, type CredentialType } from "@/lib/credential-record";
 
 const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -109,5 +110,6 @@ export default function CredentialEditor({ slug }: { slug?: string }) {
       {savedSlug && <p><Link href={`/private-memory/credentials/${encodeURIComponent(savedSlug)}/edit`}>Open this record →</Link> · <Link href="/private-memory/credentials">IDs & Licenses →</Link></p>}
       <p><Link href="/private-memory/credentials">Back to IDs & Licenses →</Link> · <Link href="/private-memory/history">Change History →</Link></p>
     </section>
+    {editing && loaded && loaded.slug === slug && <LinkedDocumentReferences key={loaded.id} entityId={loaded.id} />}
   </main>;
 }

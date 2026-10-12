@@ -4,6 +4,8 @@ Reviewed: 2026-10-12, Asia/Manila. Milestone 034 is closed within its delivered 
 
 ## Purpose and reading order
 
+Current continuation, 2026-10-12: Milestone 035 prepares a read-only Linked documents panel on the existing credential editor and a concrete two-file sensitive-import safety review. No sensitive files have been copied or imported. Read CURRENT_STATE.md and [Milestone 035](../milestone-035-personal-id-test.md) for the pending scoped gate decision, then resolve `Milestone 035: prepare linked ID evidence and scoped safety review` and its matching preview. Milestone 034 remains closed and its pending items are retained.
+
 Resume development from durable evidence rather than a long conversation.
 
 1. [Current State](CURRENT_STATE.md): exact checkpoint and open gates.
