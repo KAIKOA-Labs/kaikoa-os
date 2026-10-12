@@ -2,12 +2,14 @@ import { isIsoDate } from "./credential-record.ts";
 import { parseEvidenceSummary } from "./document-evidence.ts";
 import { safeDriveLink } from "./drive-reference.ts";
 import { monthsBefore } from "./passport-renewal.ts";
+import { parseAnnualReview } from "./annual-review.ts";
+import { parseDentalTreatment } from "./dental-treatment.ts";
 
 export type VaccinationRecord = {
   version: 1; vaccine: "tetanus"; product: string; dose_on: string; dose_confirmed: boolean;
   primary_series_complete: boolean | null; recorded_on: string; source_note: string;
 };
-export type MedicalDocument = { id: string; title: string; document_type: string; status: string; source_url: string | null; vaccination_record: unknown; evidence_summary: unknown };
+export type MedicalDocument = { id: string; title: string; document_type: string; status: string; source_url: string | null; vaccination_record: unknown; evidence_summary: unknown; annual_review_record?: unknown; dental_treatment_record?: unknown; archive_folder_url?: unknown };
 export type TetanusPlan = { record: VaccinationRecord; source_url: string; document_id: string; due_on: string; remind_on: string; wound_review_on: string; conflict: boolean };
 function object(value: unknown): value is Record<string, unknown> { return !!value && typeof value === "object" && !Array.isArray(value); }
 export function parseVaccinationRecord(value: unknown): VaccinationRecord | null {
@@ -53,5 +55,5 @@ export function tetanusStatus(plan: TetanusPlan | undefined, today: string) {
 }
 export function medicalYear(document: MedicalDocument): string {
   const record = parseVaccinationRecord(document.vaccination_record);
-  return record?.dose_on.slice(0,4) ?? "Date needs review";
+  return (record?.dose_on ?? parseAnnualReview(document.annual_review_record)?.completed_on ?? parseDentalTreatment(document.dental_treatment_record)?.recorded_on)?.slice(0,4) ?? "Date needs review";
 }

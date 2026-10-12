@@ -1,10 +1,10 @@
 # KAIKOA OS — Control Pack
 
-Reviewed: 2026-10-12, Asia/Manila. Current increment is Milestone 038: Medical, selected vaccination evidence and two-channel renewal reminders. Prior credential/passport evidence and the founder ownership correction are retained. Read Current State for notification-receipt and other preserved gates.
+Reviewed: 2026-10-12, Asia/Manila. Current increment is Milestone 039: annual medical/dental source archives, completed review-cycle cards and separately scheduled treatment. Read Current State for partial reports, clinician attribution, notification receipt and all preserved gates.
 
 ## Purpose and reading order
 
-Current continuation, 2026-10-12: read CURRENT_STATE.md and [Milestone 038](../milestone-038-medical-renewal-reminders.md), then resolve `Milestone 038: add medical records and Calendar renewal reminders` and its matching preview. Next is founder receipt confirmation and Medical/card acceptance. Preserve earlier source/year/readiness and broader recovery/provider-denial gates; do not repeat completed imports or infer notification delivery.
+Current continuation, 2026-10-12: read CURRENT_STATE.md and [Milestone 039](../milestone-039-annual-reviews.md), then resolve `Milestone 039: archive annual reviews and scheduled dental treatment` and its matching preview. Next is founder Medical acceptance, receipt of missing reports and confirmed treatment completion. Later family/unified annual planning remains deferred. Preserve all other gates and do not repeat completed copies, restores or receipt tests.
 
 Resume development from durable evidence rather than a long conversation.
 

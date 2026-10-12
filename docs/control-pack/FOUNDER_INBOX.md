@@ -1,6 +1,6 @@
 # KAIKOA OS — Founder Inbox
 
-Reviewed: 2026-10-10, Asia/Manila. Recovered candidate ideas; not verified obligations.
+Reviewed: 2026-10-12, Asia/Manila. Recovered candidate ideas; not verified obligations.
 
 Capture does not authorize implementation, create an operational obligation or establish current status. Keep private details in an authorized private source. This repository receives only public-safe descriptions.
 
@@ -15,6 +15,7 @@ Capture does not authorize implementation, create an operational obligation or e
 | F07 | Captured 2026-10-09; available Founder's Room excerpt in project context, exact message date unknown | Fuller portfolio coverage: vehicles, properties, rental amounts/schedules and artwork edition inventory | Confirm records, ownership/opportunity distinction, currencies, dates, edition totals/sales and source evidence; preserve sensitive-import gates | Future inventory expansion | Candidate; 010 only improves browsing of existing records, with no new imports |
 | F08 | Captured/source 2026-10-09; 010 acceptance feedback and 06:43 clarification | Separate possessions, creative artwork and recurring services; income can arise from both property and artwork | Inspect subtype semantics, existing views and routing; preserve unclassified records, ownership/opportunity distinctions, financial provenance and access boundaries | Assets, Artwork and Subscriptions; future linked Money views | Direction promoted to D24/D25 and implemented in 011 section browsing after 06:47 continuation; founder navigation acceptance passed at 07:02. Fuller artwork inventory remains F07; organization may be refined later |
 | F09 | Captured/source 2026-10-09 at 07:06; current founder request | Simplify authoritative artwork-production inventory for v1: titles, edition limits, image sizes, printed counts and copies still to print; defer cost detail | Locate the referenced workbook; distinguish image/paper/frame dimensions, artist proofs, replacements, separate editions and sale availability. Preserve source dates and unknown counts | Artwork source reconciliation and a later small edition extension | Source screenshots and founder corrections reconciled in private handoff; live workbook/current quantities remain unverified. 013 delivers an audited version/count editor without operational edition or cost imports |
+| F10 | Captured/source 2026-10-12; current founder direction | Unified annual personal medical/dental, family preventive review and vehicle/asset maintenance structure | First accept the personal Medical/archive/reminder workflow; then scope family consent/source evidence and distinct clinical/asset schedules, preserving unknowns and access boundaries | Later preventive-review and maintenance overview | Deferred direction; no child record or unified annual engine created in 039 |
 
 ## Entry and promotion protocol
 
