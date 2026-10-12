@@ -1,10 +1,10 @@
 # KAIKOA OS — Control Pack
 
-Reviewed: 2026-10-12, Asia/Manila. Current increment is Milestone 039: annual medical/dental source archives, completed review-cycle cards and separately scheduled treatment. Read Current State for partial reports, clinician attribution, notification receipt and all preserved gates.
+Reviewed: 2026-10-12, Asia/Manila. Current increment is Milestone 040: two complete supplied annual report PDFs and reconciliation of physical archive coverage. Prior clinical/review/notification/treatment and broader recovery limits remain preserved.
 
 ## Purpose and reading order
 
-Current continuation, 2026-10-12: read CURRENT_STATE.md and [Milestone 039](../milestone-039-annual-reviews.md), then resolve `Milestone 039: archive annual reviews and scheduled dental treatment` and its matching preview. Next is founder Medical acceptance, receipt of missing reports and confirmed treatment completion. Later family/unified annual planning remains deferred. Preserve all other gates and do not repeat completed copies, restores or receipt tests.
+Current continuation, 2026-10-12: read CURRENT_STATE.md and [Milestone 040](../milestone-040-complete-report-archive.md), then resolve `Milestone 040: complete supplied annual medical report archive` and its matching preview. Previously missing requested report files are received; clinical interpretation, extra testing coverage, procedure completion, browser acceptance and other pending items remain separate. Do not repeat completed imports/recovery or notification tests.
 
 Resume development from durable evidence rather than a long conversation.
 
