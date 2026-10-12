@@ -1,10 +1,10 @@
 # KAIKOA OS — Control Pack
 
-Reviewed: 2026-10-12, Asia/Manila. Current increment is Milestone 036: twelve-month passport renewal alerts and visibly qualified date readiness. Milestone 035 originals/evidence links are retained and Milestone 034 remains closed, with the deferred vehicle year still pending suitable source evidence. Read Current State for the exact latest publication, acceptance limits and preserved recovery/source gates.
+Reviewed: 2026-10-12, Asia/Manila. Current increment is Milestone 037: eight selected ID/licence originals, four grouped source records and photo-backed expiry/front-back links. Milestone 036 passport readiness/alerts and previous file evidence are retained. Read Current State for the latest publication, acceptance limits and preserved source/year/recovery gates.
 
 ## Purpose and reading order
 
-Current continuation, 2026-10-12: the founder requests Milestone 036 implementation. The two existing watches/planning summaries move to twelve months, and passport cards show green above the six-month threshold with a visible date-check qualifier. Read CURRENT_STATE.md and [Milestone 036](../milestone-036-passport-readiness.md), then resolve `Milestone 036: show passport date readiness and twelve-month renewal` and its matching preview. Browser acceptance, notification delivery and broader recovery/provider-denial remain open; previous file-copy and recovery checks are retained within their scope.
+Current continuation, 2026-10-12: the founder requests adding the eight selected ID/licence photos. Read CURRENT_STATE.md and [Milestone 037](../milestone-037-credential-evidence.md), then resolve `Milestone 037: link selected ID and licence originals` and its matching preview. Existing passport settings, source review, browser acceptance and broader recovery/provider-denial are retained. This selected copy does not infer medical/radio validity or flying/driving readiness.
 
 Resume development from durable evidence rather than a long conversation.
 

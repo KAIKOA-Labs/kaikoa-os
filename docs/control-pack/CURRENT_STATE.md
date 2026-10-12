@@ -1,6 +1,22 @@
 # KAIKOA OS — Current State
 
-Reviewed: 2026-10-12, Asia/Manila. Milestone 036 implements twelve-month renewal alerts and passport date readiness; earlier file imports and all pending source/recovery items are preserved. Browser acceptance and notification delivery remain unverified. Earlier narratives below are dated evidence.
+Reviewed: 2026-10-12, Asia/Manila. Milestone 037 adds the selected ID/licence originals and photo-backed expiry evidence to existing records. Milestone 036 passport readiness/alerts and all prior pending items are retained. Browser acceptance and broader recovery remain unverified. Earlier narratives below are dated evidence.
+
+## Milestone 037 — selected ID/licence front and back evidence
+
+The founder explicitly requests storing eight uploaded photographs in Drive and the OS. Baseline `1daa374f29ed77a4b8eb583b8c21ab22d2f8a177` is clean/aligned with fetched remote and matching READY preview `dpl_FA2TD8qiizbBao2tTAv5GjfnU1RZ`. All images open from supplied local paths. Four existing active credential records match; there is no duplicate entity creation. The actual new upload request scopes these selected sensitive copies under the established manual file/audit safeguards.
+
+Eight original copies are saved in the existing private identity/driving/PPL folders. Each reports owner-only permission metadata/shared=false, expected parent and size. Downloaded bytes match originals and reopen. A separately saved recovery ZIP and private association manifest restore into isolation with exact archive/member hashes, readability and document-ID mapping. This verifies selected file recovery only; current coordinated database/Auth/provider denial stays open.
+
+Eight NEEDS_REVIEW document references and eight links form four front/back source bundles; sixteen creation/link audits are explicitly attributed to the agent with null changed_by. Exact metadata/link/audit readback, safe matching no-op retry and full prior-record/history preservation pass. Totals: 29 documents, 26 links, 57 document audits; 26 entities/38 entity audits and eight obligations/15 obligation audits unchanged. Original owner credential metadata and PPL group memberships remain intact.
+
+Cards now project issuer/type, printed expiry and a supported masked suffix from validated credential_source_record/evidence_summary metadata, with direct front/back links. Source search/type filtering and current groups are retained. Narrow legacy CAAP/PPL compatibility improves the source label without an operational type write. Invalid/archived/unrelated sources are excluded; conflicting dates/suffixes require review. Full identifiers, birth dates, addresses, signatures, machine-readable text, health/organ details and third-party contact data are not transcribed. Unknown issue dates and unsupported alphabetic suffixes remain null.
+
+The pilot source records its printed expiry, rating/language/radio endorsement and requirement for a current Class 2 medical certificate. Separate medical/radio records remain unknown where evidence is absent; no flight readiness or issuer/current-privilege certification is inferred. This step adds no new notification or renewal cadence for these non-passport credentials. Existing passport watches/date readiness are preserved.
+
+All 96 tests, TypeScript, production build and private production parser/group/resolver checks pass. Matching publication is verified before handover. Current schema/RLS/grants retain owner-only SELECT/no anonymous reads/no direct browser writes. React review retains explicit private projections, parallel independent reads, identity/mounted guards and safe escaped front/back links. No new schema/RPC/access/provider consent, paid infrastructure or operational owner write. Founder-visible card/link acceptance and broader recovery/provider-denial remain pending.
+
+Publish under `Milestone 037: link selected ID and licence originals`; resolve its exact head and matching READY preview. Next: inspect the four cards and grouped front/back originals in the founder's normal browser. Preserve previous vehicle-year, source review, other readiness, source-validity and recovery gates. Do not repeat imports/restoration or rejected identity/migration tests. See [Milestone 037](../milestone-037-credential-evidence.md).
 
 ## Milestone 036 — twelve-month renewal and passport date readiness
 
