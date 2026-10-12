@@ -39,7 +39,7 @@ Reviewed: 2026-10-10, Asia/Manila. Phases and implementation milestones are dist
 
 ## Next session after 034
 
-The founder's fresh task is now Milestone 035 preparation: two selected personal-ID photographs, a verified private passport destination, existing-record linking and proportionate safety. The credential editor reuses read-only linked documents; sensitive copying/import is pending an explicit scoped gate decision and applicable checks. No wider sensitive import, recovery certification or access change is claimed. See [Milestone 035](../milestone-035-personal-id-test.md) and CURRENT_STATE.md. All previously recorded 034 pending items remain.
+Milestone 035 now delivers the founder-approved two-passport pilot: two verified private Drive originals, two evidence links/four agent audits, source-backed expiry cards, nine-/six-month planning and two enabled monthly ChatGPT renewal watches. Exact file/recovery checks, no-op retry, prior-data preservation, 89 tests, TypeScript/build and unchanged access inspection pass. No new schema or owner operational write. Browser acceptance, notification delivery testing and wider recovery/provider-denial remain open. See [Milestone 035](../milestone-035-personal-id-test.md) and CURRENT_STATE.md. All previously recorded 034 pending items remain.
 
 Follow CURRENT_STATE.md: resolve `Milestone 034: record acceptance and close session`, the latest remote development head and matching READY preview. Begin the founder's fresh task; no next feature is automatically selected. Leave the selected vehicle year blank until suitable registration evidence is supplied. Preserve existing readiness, source review and recovery gates; do not repeat imports or the accepted selected-card check.
 

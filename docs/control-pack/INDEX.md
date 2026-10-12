@@ -4,7 +4,7 @@ Reviewed: 2026-10-12, Asia/Manila. Milestone 034 is closed within its delivered 
 
 ## Purpose and reading order
 
-Current continuation, 2026-10-12: Milestone 035 prepares a read-only Linked documents panel on the existing credential editor and a concrete two-file sensitive-import safety review. No sensitive files have been copied or imported. Read CURRENT_STATE.md and [Milestone 035](../milestone-035-personal-id-test.md) for the pending scoped gate decision, then resolve `Milestone 035: prepare linked ID evidence and scoped safety review` and its matching preview. Milestone 034 remains closed and its pending items are retained.
+Current continuation, 2026-10-12: the founder explicitly approved the two-passport exception proposed in Milestone 035. The private originals, linked source dates, nine-/six-month planning display and two enabled monthly ChatGPT renewal watches are delivered. Read CURRENT_STATE.md and [Milestone 035](../milestone-035-personal-id-test.md), then resolve `Milestone 035: link passport evidence and enable renewal watches` and its matching preview. Browser acceptance and broader recovery/provider-denial remain open. Milestone 034 remains closed and its pending items are retained.
 
 Resume development from durable evidence rather than a long conversation.
 

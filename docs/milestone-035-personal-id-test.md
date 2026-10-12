@@ -1,4 +1,16 @@
-# Milestone 035 — bounded personal-ID document test preparation
+# Milestone 035 — bounded personal-ID document and renewal pilot
+
+## Delivered follow-up — 2026-10-12
+
+The founder explicitly approves the concrete two-file exception and prioritizes expiry notifications before the six-month travel planning threshold. Two original photographs are saved in the verified existing owner-only private passport folder and linked to their existing OS credentials, with exact Drive byte readback, separately saved/restored ZIP/association manifest, two document creations/two links/four explicit agent audits, full prior-record preservation and a matching no-op retry. Source-backed expiry and nine-/six-calendar-month planning dates now appear on cards and the linked source summary. Original owner credential metadata remains intact; no owner identity is impersonated.
+
+Two read-only monthly ChatGPT renewal watches are confirmed enabled in Asia/Manila. They remain quiet before nine months, review current linked sources, remind during the renewal window and flag the six-month threshold. A one-off reminder attempt beyond two years failed without creating a task; recurring condition checks are the supported replacement. No email or actual notification-delivery test is claimed. Private task IDs, dates, record IDs and provider locations are not committed. Month-end/leap-day, source-conflict and unrelated/archived/malformed evidence cases are covered by five new meaningful tests; all 89 tests, TypeScript and production build pass.
+
+Current access inspection retains owner-only SELECT RLS, no anonymous reads or direct browser writes. File recovery passes only for this selected set; broader coordinated database/Auth/provider recovery and independent provider denial stay pending. No new migration, RPC, grant, provider credential, Google app consent, paid infrastructure or automated file ingestion is introduced.
+
+Publish under `Milestone 035: link passport evidence and enable renewal watches` and verify its matching development preview. Founder-visible acceptance of cards/original links and notification delivery remain pending. Preserve all earlier vehicle/year/source/readiness items. On renewal, review the new source and reconcile old evidence/watch configuration; do not silently choose between conflicting expiry dates or repeat this completed import.
+
+## Historical preparation and proposal
 
 Prepared 2026-10-12, Asia/Manila. The founder requests a first test with two supplied identity photographs, storage in the correct private Drive location, implementation in the existing OS and proportionate safeguards. The sensitive file-copy/reference step has not run. This is preparation, not completed import or new recovery certification.
 

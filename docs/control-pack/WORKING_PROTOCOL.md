@@ -41,6 +41,8 @@ Inspect live schema, grants, RPC definitions and existing records before changes
 
 No sensitive imports until independent real-account authorization and isolated recovery pass. Managed backup availability is not restoration evidence. Never test restoration against production. Document objects require separate recovery planning.
 
+Bounded exception approved 2026-10-12: the founder authorizes the two selected passport photos under the concrete private-access, exact-byte readback, separate file-recovery and audited-reference safeguards proposed in Milestone 035. That pilot is delivered; its two monthly ChatGPT renewal watches are enabled. Do not repeat the import or treat it as a waiver for other sensitive data or a passed coordinated database/Auth/provider restoration. Source-backed expiry display uses protected linked evidence; operational credential writes still use the existing owner-authenticated editor.
+
 ## Authority and source handling
 
 User instructions determine the current scope. Historical session stop instructions do not cancel newly granted authorization. Ask before actions outside that scope. Additional paid infrastructure and exact Drive mutations require approval as recorded in existing decisions.
