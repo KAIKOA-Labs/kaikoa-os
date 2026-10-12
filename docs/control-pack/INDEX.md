@@ -1,10 +1,10 @@
 # KAIKOA OS — Control Pack
 
-Reviewed: 2026-10-12, Asia/Manila. Current increment is Milestone 040: two complete supplied annual report PDFs and reconciliation of physical archive coverage. Prior clinical/review/notification/treatment and broader recovery limits remain preserved.
+Reviewed: 2026-10-13, Asia/Manila. Current increment is Milestone 041: selected rental agreements and scheduled rent on existing properties. Prior clinical/review/notification/treatment and broader recovery limits remain preserved.
 
 ## Purpose and reading order
 
-Current continuation, 2026-10-12: read CURRENT_STATE.md and [Milestone 040](../milestone-040-complete-report-archive.md), then resolve `Milestone 040: complete supplied annual medical report archive` and its matching preview. Previously missing requested report files are received; clinical interpretation, extra testing coverage, procedure completion, browser acceptance and other pending items remain separate. Do not repeat completed imports/recovery or notification tests.
+Current continuation, 2026-10-13: [Milestone 041](../milestone-041-rental-agreements.md) is the latest rental-feature checkpoint. Read it alongside CURRENT_STATE.md, whose latest detailed entry remains the preceding Milestone 040. Resolve `Milestone 041: link rental agreements and scheduled rent` and its matching preview. Selected original copies, audited links and schedule display are delivered; receipts, current tenancy, renewal exercise, maintenance/insurance fulfilment and browser acceptance remain separate. Older Control Pack files remain unchanged following an automatic publication-review rejection of unrelated sensitive history. Do not repeat completed imports/recovery or prior notification tests.
 
 Resume development from durable evidence rather than a long conversation.
 

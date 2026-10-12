@@ -2,7 +2,7 @@ import { parseVehicleProfile } from "./vehicle-profile.ts";
 export type InventoryRecord = {
   id: string; slug: string; name: string; subtype: string | null;
   status: string; location: string | null; data_quality: string | null;
-  artwork_inventory?: unknown; vehicle_profile?: unknown; asset_year?: number;
+  artwork_inventory?: unknown; vehicle_profile?: unknown; asset_year?: number; lease_record?: import("./lease-record.ts").LeaseRecord;
 };
 const categoryLabels: Record<string, string> = {
   vessel: "Vessels", property: "Properties", vehicle: "Vehicles",

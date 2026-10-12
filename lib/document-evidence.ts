@@ -1,4 +1,4 @@
-export const evidenceCategories = { registration: "Registration", import: "Import & customs", insurance: "Insurance", maintenance: "Service history & annual plan", passport: "Passport dates & renewal", credential: "ID & licence evidence", medical: "Medical record" } as const;
+export const evidenceCategories = { registration: "Registration", import: "Import & customs", insurance: "Insurance", maintenance: "Service history & annual plan", passport: "Passport dates & renewal", credential: "ID & licence evidence", medical: "Medical record", lease: "Rental agreement" } as const;
 export type EvidenceCategory = keyof typeof evidenceCategories;
 export type EvidenceSummary = {
   version: 1; category: EvidenceCategory; bundle_id: string; role: "primary" | "supporting"; extracted_on: string;
@@ -38,7 +38,7 @@ export function parseEvidenceSummary(value: unknown): EvidenceSummary | null {
   if (value.sources.some(source => !object(source) || !exact(source, ["label", "url"]) || !text(source.label, 100) || !safeGmailSource(source.url))) return null;
   return value as EvidenceSummary;
 }
-export type EvidenceRow = { id: string; title: string; status: string; source_url: string | null; evidence_summary?: unknown; source_note?: unknown; recorded_by?: unknown };
+export type EvidenceRow = { id: string; title: string; status: string; source_url: string | null; evidence_summary?: unknown; source_note?: unknown; recorded_by?: unknown; lease_record?: unknown };
 export type EvidenceGroup<T extends EvidenceRow> = { primary: T; supporting: T[]; summary: EvidenceSummary | null };
 export function groupEvidence<T extends EvidenceRow>(rows: T[]): EvidenceGroup<T>[] {
   const parsed = new Map(rows.map(row => [row.id, parseEvidenceSummary(row.evidence_summary)]));

@@ -6,7 +6,7 @@ import { referenceKindLabels, safeDriveLink } from "@/lib/drive-reference";
 import { filterEvidenceGroups, groupEvidence } from "@/lib/document-evidence";
 import DocumentEvidenceCard from "@/app/document-evidence-card";
 
-type DocumentRow = { id: string; title: string; document_type: string; status: string; source_url: string | null; source_note: unknown; recorded_by: unknown; evidence_summary: unknown };
+type DocumentRow = { id: string; title: string; document_type: string; status: string; source_url: string | null; source_note: unknown; recorded_by: unknown; evidence_summary: unknown; lease_record: unknown };
 type EntityRow = { id: string; slug: string; name: string };
 type LinkRow = { document_id: string; entity_id: string | null };
 type AuditRow = { id: string; document_id: string; actor_kind: string; field_name: string; changed_at: string };
@@ -26,7 +26,7 @@ export default function DocumentsPage() {
       if (!active) return;
       if (authError || !identity.user) { setStage("signed-out"); return; }
       const results = await Promise.all([
-        db.from("documents").select("id,title,document_type,status,source_url,source_note:metadata->source_note,recorded_by:metadata->recorded_by,evidence_summary:metadata->evidence_summary").neq("status", "ARCHIVED").order("title"),
+        db.from("documents").select("id,title,document_type,status,source_url,source_note:metadata->source_note,recorded_by:metadata->recorded_by,evidence_summary:metadata->evidence_summary,lease_record:metadata->lease_record").neq("status", "ARCHIVED").order("title"),
         db.from("document_links").select("document_id,entity_id").not("entity_id", "is", null),
         db.from("entities").select("id,slug,name").order("name"),
         db.from("document_change_history").select("id,document_id,actor_kind,field_name,changed_at").order("changed_at", { ascending: false }).limit(20),

@@ -1,3 +1,5 @@
+import LeaseSummary from "./lease-summary";
+import { parseLeaseRecord } from "@/lib/lease-record";
 import type { ReactNode } from "react";
 import { evidenceCategories, safeGmailSource, type EvidenceGroup, type EvidenceRow } from "@/lib/document-evidence";
 import { safeDriveLink } from "@/lib/drive-reference";
@@ -7,10 +9,12 @@ function DriveFile({ row, label }: { row: EvidenceRow; label?: string }) {
 }
 export default function DocumentEvidenceCard({ group, related }: { group: EvidenceGroup<EvidenceRow>; related?: ReactNode }) {
   const { primary, supporting, summary } = group;
+  const lease=summary?.category==="lease" && summary.role==="primary" && safeDriveLink(primary.source_url)?parseLeaseRecord(primary.lease_record):null;
   return <article className="asset evidenceCard">
     {summary && <span className="eyebrow">{evidenceCategories[summary.category]}</span>}
     <h3>{primary.title}</h3>
     <span className="status">{summary?.category === "maintenance" ? "Owner-reported · no service receipt" : summary ? "Source summary · review pending" : primary.status === "NEEDS_REVIEW" ? "Needs review" : "Reference only"}</span>
+    {lease && <LeaseSummary record={lease} />}
     {summary ? <>
       <dl className="evidenceFacts">{summary.fields.slice(0, 4).map(field => <div key={field.label}><dt>{field.label}</dt><dd>{field.value ?? "Not recorded"}</dd></div>)}</dl>
       {summary.notes.filter(note => note.kind !== "source").map((note, index) => <div className={note.kind === "review" ? "evidenceNote review" : "evidenceNote"} key={index}><strong>{note.kind === "owner" ? "Your note" : "Review point"}</strong><p>{note.text}</p><small>{note.source}</small></div>)}
