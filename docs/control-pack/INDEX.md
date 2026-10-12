@@ -1,6 +1,6 @@
 # KAIKOA OS — Control Pack
 
-Reviewed: 2026-10-11, Asia/Manila. Milestone 034 adds available model/build years to vehicle/vessel cards and details, using existing protected registration evidence. One vessel year is recorded; all six vehicle years remain unknown. First circulation and document dates are excluded. All 84 tests, TypeScript and production build pass. Resolve `Milestone 034: show available vehicle and vessel years` and its matching READY preview. Vehicle readiness from 033 is preserved; no database/provider or access change is made. Display acceptance, source review and coordinated recovery gates remain open. See [Milestone 034](../milestone-034-asset-year-tags.md).
+Reviewed: 2026-10-12, Asia/Manila. Milestone 034 is closed within its delivered scope: available model/build year tags, preserved vehicle identity/readiness and selected-card desktop feedback recorded. Feature 2d6c9ec has a rechecked READY preview; all 84 tests and TypeScript pass again, with production build verified during implementation. The founder explicitly leaves the selected vehicle year blank until suitable registration scan/photo evidence confirms it. Resolve `Milestone 034: record acceptance and close session` and its matching READY preview, then begin the founder's fresh task. No code/database/provider/access changes in closeout. Source review, other display scopes and coordinated recovery gates remain open. See [Milestone 034](../milestone-034-asset-year-tags.md).
 
 ## Purpose and reading order
 

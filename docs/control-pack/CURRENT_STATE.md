@@ -1,6 +1,18 @@
 # KAIKOA OS — Current State
 
-Reviewed: 2026-10-11, Asia/Manila. Milestone 034 available vehicle/vessel years is the active checkpoint; earlier milestone narratives below are dated evidence.
+Reviewed: 2026-10-12, Asia/Manila. Milestone 034 is closed within the delivered display scope. Ready for a fresh founder-selected task; earlier narratives below are dated evidence.
+
+## Session close — 2026-10-12
+
+Feature commit `2d6c9ec029603529a3285157ea9abeddc876b200`, tree `4834bb7ea5db930e84ede0301bd7cf47e4547331`, is clean and aligned with remote branch `milestone-001-hull`. Matching Vercel preview `dpl_LcG2PHc8GNoM9yj1DkFEzNPyB6BV` is rechecked READY. Stable [Assets access](https://kaikoa-os-git-milestone-001-hull-ehzobel-4943.vercel.app/private-memory/inventory) remains unchanged.
+
+On 2026-10-11 the founder supplied two desktop screenshots and confirmed the selected vehicle tag looks good. The screenshots visibly show its clean name, base/plate tags, green readiness and four checks, and the vessel's year tag. This accepts the selected card layout within that observed scope; it does not certify all six vehicles, detail pages, mobile layout, source facts or fresh authorization/recovery tests. The absence of the vehicle year matches the unknown source state, rather than a rendering failure.
+
+On 2026-10-12 the founder explicitly defers the selected vehicle's year until registration scan/photo evidence verifies it. The existing supplied photo remains retained as registration evidence, but only states first circulation, not a confirmed model/manufacture year. Leave the year blank; do not substitute first circulation, infer from identifiers or solicit another owner guess. Resume that item only when suitable new evidence is supplied.
+
+Closeout checks: all 84 unit tests and TypeScript pass again. The application production build passed during 034; closeout changes are documentation only. Verify their matching preview after publication. No code, database, source documents, access settings or provider configuration is changed in closeout. Existing missing-policy/insurer-registration/service-receipt review points, unreported vehicle checks and coordinated database/Auth/provider recovery gates remain open within their recorded scope.
+
+Documentation closeout publishes under `Milestone 034: record acceptance and close session`; resolve that latest subject and its matching READY preview before the next task. No new feature milestone is selected or started by this closeout.
 
 ## Milestone 034 — available vehicle and vessel years
 
@@ -14,9 +26,9 @@ Publication follows under `Milestone 034: show available vehicle and vessel year
 
 ## Current next starting point
 
-1. Recheck the development head and matching READY preview; inspect year/base/plate/readiness tags in Assets in the founder's browser.
-2. Accept additional explicit model/build year evidence when supplied. Preserve unknown years and never replace them with first-registration dates.
-3. Retain existing source review, unreported readiness and coordinated database/Auth/provider recovery gates. Do not repeat imports or previously rejected migration/identity tests.
+1. Read AGENTS.md and the Control Pack, then recheck the latest development head, clean working tree and matching READY preview. Resolve the documentation-closeout subject above; do not use main as the baseline.
+2. Start with the founder's fresh task and scope the next bounded increment. Do not reopen completed imports, repeat accepted selected-card screenshots or start unrelated candidate work automatically.
+3. Keep the selected vehicle year blank pending suitable scan/photo evidence. Preserve existing source review, unreported readiness and coordinated recovery gates; do not repeat rejected migration/identity tests.
 
 ## Historical Milestone 033 — consistent vehicle identity and readiness
 

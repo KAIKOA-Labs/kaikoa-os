@@ -10,4 +10,12 @@ Verification: 84 tests, production build and TypeScript pass. Four new tests cov
 
 Baseline is clean/aligned at `9be9aa4b83a937fc9922cbc851409e3d270d833e`, tree `4e9ae49108cb928c50e4a5b279e643f7c1218329`, with matching READY preview `dpl_BcQNobpp8BCjpk9BupNY54yX93nH`. Publication follows under `Milestone 034: show available vehicle and vessel years`; resolve that subject and matching READY deployment. Browser acceptance remains pending; no real-session authorization or recovery gate is newly certified.
 
-Next: inspect Assets in the founder's browser. Add further explicit year evidence when supplied, preserving provenance and separating model/build year from registration dates. Existing insurance/service review points and wider recovery gates remain open.
+## Closeout — 2026-10-12
+
+Delivered feature `2d6c9ec029603529a3285157ea9abeddc876b200`, tree `4834bb7ea5db930e84ede0301bd7cf47e4547331`, is clean/aligned with the remote development branch. Matching preview `dpl_LcG2PHc8GNoM9yj1DkFEzNPyB6BV` is rechecked READY.
+
+The founder's 2026-10-11 desktop screenshots show the selected vehicle base/plate/readiness/four checks and the vessel year tag. The founder confirms the selected vehicle tag looks good. Acceptance is limited to that card/display scope; other cards, detail pages, mobile layout and source validity are not independently certified. On 2026-10-12 the founder explicitly defers the selected vehicle year until a registration scan/photo confirms it. The existing supplied registration photo remains evidence, with first circulation kept separate from model/manufacture year.
+
+All 84 tests and TypeScript pass again at closeout. The production build passed during implementation; closeout edits are documentation only, with no code/database/provider/access changes. Documentation publishes under `Milestone 034: record acceptance and close session`; resolve its latest head and matching READY preview. Existing source review and coordinated recovery gates remain open.
+
+Next: begin the founder's fresh task after reading the Control Pack and checking the current remote checkpoint. Do not repeat imports or the accepted selected-card check. Keep the vehicle year blank pending suitable evidence, and do not infer it from first circulation or identifiers.
