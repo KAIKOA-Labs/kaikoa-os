@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getBrowserSupabase } from "@/lib/supabase-browser";
 import { credentialFromMetadata, credentialTypeLabels, credentialGroups, credentialGroup, renewalAttention, credentialStateLabel, type CredentialRecord } from "@/lib/credential-record";
 import { passportPlansByEntity, passportAttention, type PassportPlan } from "@/lib/passport-renewal";
+import PassportReadiness from "./passport-readiness";
 
 type Row = { id: string; slug: string; name: string; subtype: string | null; status: string; data_quality: string | null; credential_record: unknown; credential_group: unknown };
 export default function CredentialInventory() {
@@ -76,12 +77,13 @@ export default function CredentialInventory() {
             <div className="assetGrid">{members.map(row => {
           const record: CredentialRecord | null = credentialFromMetadata(row.credential_record);
           const plan = passportPlans.get(row.id);
+          const isPassport = record?.credential_type === "passport" || row.subtype === "passport";
           const attention = plan ? passportAttention(plan, today) : record ? renewalAttention(record, today) : "Details need setup";
           return <article className="asset credentialCard" key={row.id}>
             <span className="eyebrow">{record ? credentialTypeLabels[record.credential_type] : row.subtype === "passport" ? "Passport · needs setup" : "Credential · needs setup"}</span>
-            <strong>{row.name}</strong>
+            <div className="credentialHeading"><strong>{row.name}</strong>{isPassport && <PassportReadiness plan={plan} today={today} />}</div>
             <span>{record?.issuer || "Issuer not recorded"}</span>
-            <span className="credentialAttention">{attention}</span>
+            {(!plan || plan.conflict || today >= plan.renew_on) && <span className="credentialAttention">{attention}</span>}
             <small>{record?.last_four ? `Ending ···· ${record.last_four}` : "Number suffix not recorded"}</small>
             <small>Expires: {plan?.conflict ? "Sources disagree · review linked documents" : plan?.record.expires_on ?? record?.expires_on ?? "Not recorded"}{plan && !plan.conflict ? " · passport photo" : ""}</small>
             {plan && !plan.conflict ? <>
@@ -98,7 +100,7 @@ export default function CredentialInventory() {
             })}</div>
           </section>;
         })}</div>}
-      <p className="muted">Passport planning starts nine months before expiry, with a six-month travel threshold. Configured passport reminders run in ChatGPT; other reminder dates here are records only. Update the source after renewal. Dates do not certify current validity or destination entry requirements.</p>
+      <p className="muted">Passport reminders start 12 months before expiry. Green means the recorded passport dates have more than six months remaining; check your planned travel dates and destination requirements. Configured reminders run in ChatGPT. Update the source after renewal.</p>
     </section>}
   </main>;
 }

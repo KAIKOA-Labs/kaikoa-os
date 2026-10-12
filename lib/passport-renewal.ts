@@ -8,6 +8,7 @@ export type PassportRecord = {
 };
 export type PassportDocument = { id: string; document_type: string; status: string; source_url: string | null; passport_record: unknown; evidence_summary: unknown };
 export type PassportPlan = { record: PassportRecord; renew_on: string; travel_review_on: string; source_url: string; conflict: boolean };
+export const passportRenewalMonths = 12;
 
 export function monthsBefore(date: string, months: number): string {
   if (!isIsoDate(date) || !Number.isInteger(months) || months < 0 || months > 120) throw new Error("Invalid calendar date or interval");
@@ -48,7 +49,7 @@ export function passportPlansByEntity(
     if (expiryFields.length !== 1 || expiryFields[0].value !== record.expires_on) continue;
     for (const link of links) {
       if (link.document_id !== document.id || !link.entity_id || link.obligation_id !== null || !eligible.has(link.entity_id)) continue;
-      const plan = { record, source_url: source, renew_on: monthsBefore(record.expires_on, 9), travel_review_on: monthsBefore(record.expires_on, 6), conflict: false };
+      const plan = { record, source_url: source, renew_on: monthsBefore(record.expires_on, passportRenewalMonths), travel_review_on: monthsBefore(record.expires_on, 6), conflict: false };
       candidates.set(link.entity_id, [...(candidates.get(link.entity_id) ?? []), plan]);
     }
   }
@@ -69,4 +70,13 @@ export function passportAttention(plan: PassportPlan, today: string): string {
   if (today === plan.travel_review_on) return "Six months remaining · renew before travel";
   if (today >= plan.renew_on) return "Renewal window reached";
   return "Renewal planned before six-month threshold";
+}
+
+export function passportReadiness(plan: PassportPlan | undefined, today: string): { state: "ready" | "attention" | "expired" | "unknown"; label: string; detail: string } {
+  if (!plan || !isIsoDate(today)) return { state: "unknown", label: "Needs verification", detail: "A source-backed passport expiry is needed for the date check." };
+  if (plan.conflict) return { state: "attention", label: "Review passport dates", detail: "Recorded expiry sources disagree." };
+  if (plan.record.issued_on > today || plan.record.recorded_on > today) return { state: "unknown", label: "Check source dates", detail: "The issue or evidence date is in the future." };
+  if (today >= plan.record.expires_on) return { state: "expired", label: "Expired", detail: "The recorded expiry date has been reached." };
+  if (today >= plan.travel_review_on) return { state: "attention", label: "Renew before travel", detail: "Six months or less remain before recorded expiry." };
+  return { state: "ready", label: "Ready to travel", detail: "Passport date check: more than six months remain. Check the dates and requirements of your planned trip." };
 }

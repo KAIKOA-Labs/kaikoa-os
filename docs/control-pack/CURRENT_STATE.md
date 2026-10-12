@@ -1,6 +1,18 @@
 # KAIKOA OS — Current State
 
-Reviewed: 2026-10-12, Asia/Manila. Milestone 034 remains closed. Milestone 035 delivers the explicitly approved two-passport evidence/renewal pilot with enabled ChatGPT watches. Browser acceptance and wider recovery gates remain open. Earlier narratives below are dated evidence.
+Reviewed: 2026-10-12, Asia/Manila. Milestone 036 implements twelve-month renewal alerts and passport date readiness; earlier file imports and all pending source/recovery items are preserved. Browser acceptance and notification delivery remain unverified. Earlier narratives below are dated evidence.
+
+## Milestone 036 — twelve-month renewal and passport date readiness
+
+The founder explicitly approves twelve-month first alerts and requests green Ready to travel beside passports. Baseline `f44b57980bd6010d06f386e4e10c46b432dbf8fc` is clean/aligned with the fetched development head and matching READY preview `dpl_CWFZBRUPNAKTkC2F95hL71mNstgD`. The two existing ChatGPT watches are updated successfully in place; monthly cadence/timezone and identities are retained. They begin notifications at twelve months, target renewal completion by nine months and escalate at seven/six months. No duplicate task or unsupported future one-off is created.
+
+The shared resolver and cards show a date-check readiness badge beside the passport name using the vehicle visual style. Green means known, non-conflicting source dates with more than six months remaining, and issue/evidence dates not in the future. Exactly six months or less produces Renew before travel; reached expiry is red Expired. Missing dates stay grey; conflicting dates require review. Visible qualification scopes the tag to dates, not issuer validity certification or country admission. Renewal attention stays separate, so an early reminder does not remove green. The earlier planning attention pill is hidden before renewal starts.
+
+Two existing source summaries receive revised renewal-start dates and planning notes with two explicit before/after agent document audits. Expected-metadata checks stop stale writes. Original passport_record facts, file/provider/backup references and owner credential metadata are preserved; full prior-record/history fingerprints match. Exact readback and a rolled-back no-op retry pass. Totals: 26 entities/38 entity audits, eight obligations/15 obligation audits, 21 documents, 18 links and 41 document audits. No source copy, new record, operational owner write, migration, access or provider configuration change.
+
+All 91 tests, TypeScript and production build pass, including twelve-month/calendar boundaries and green/amber/red/missing/conflicting/future-source behavior. Both saved private plans match the production resolver and classify green for the inspected date. React review retains protected explicit queries, identity/mounted guards, wrapping tags and textual status. Publication verification follows before handover; browser acceptance and actual notification delivery remain pending.
+
+Publish under `Milestone 036: show passport date readiness and twelve-month renewal`; resolve its exact head and matching READY preview. Next: the founder can inspect the passport cards in their normal browser. Preserve all existing source review, missing identifiers, vehicle-year, other readiness and coordinated recovery/provider-denial gates. Do not repeat the completed 035 imports/recovery, rejected role simulations/migrations or unsupported two-year scheduling attempt. See [Milestone 036](../milestone-036-passport-readiness.md).
 
 ## Milestone 035 — approved passport evidence and renewal pilot delivered
 

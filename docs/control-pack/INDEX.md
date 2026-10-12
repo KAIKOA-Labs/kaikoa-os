@@ -1,10 +1,10 @@
 # KAIKOA OS — Control Pack
 
-Reviewed: 2026-10-12, Asia/Manila. Milestone 034 is closed within its delivered scope: available model/build year tags, preserved vehicle identity/readiness and selected-card desktop feedback recorded. Feature 2d6c9ec has a rechecked READY preview; all 84 tests and TypeScript pass again, with production build verified during implementation. The founder explicitly leaves the selected vehicle year blank until suitable registration scan/photo evidence confirms it. Resolve `Milestone 034: record acceptance and close session` and its matching READY preview, then begin the founder's fresh task. No code/database/provider/access changes in closeout. Source review, other display scopes and coordinated recovery gates remain open. See [Milestone 034](../milestone-034-asset-year-tags.md).
+Reviewed: 2026-10-12, Asia/Manila. Current increment is Milestone 036: twelve-month passport renewal alerts and visibly qualified date readiness. Milestone 035 originals/evidence links are retained and Milestone 034 remains closed, with the deferred vehicle year still pending suitable source evidence. Read Current State for the exact latest publication, acceptance limits and preserved recovery/source gates.
 
 ## Purpose and reading order
 
-Current continuation, 2026-10-12: the founder explicitly approved the two-passport exception proposed in Milestone 035. The private originals, linked source dates, nine-/six-month planning display and two enabled monthly ChatGPT renewal watches are delivered. Read CURRENT_STATE.md and [Milestone 035](../milestone-035-personal-id-test.md), then resolve `Milestone 035: link passport evidence and enable renewal watches` and its matching preview. Browser acceptance and broader recovery/provider-denial remain open. Milestone 034 remains closed and its pending items are retained.
+Current continuation, 2026-10-12: the founder requests Milestone 036 implementation. The two existing watches/planning summaries move to twelve months, and passport cards show green above the six-month threshold with a visible date-check qualifier. Read CURRENT_STATE.md and [Milestone 036](../milestone-036-passport-readiness.md), then resolve `Milestone 036: show passport date readiness and twelve-month renewal` and its matching preview. Browser acceptance, notification delivery and broader recovery/provider-denial remain open; previous file-copy and recovery checks are retained within their scope.
 
 Resume development from durable evidence rather than a long conversation.
 
