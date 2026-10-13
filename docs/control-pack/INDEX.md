@@ -1,5 +1,9 @@
 # KAIKOA OS — Control Pack
 
+## Latest handoff — 2026-10-13
+
+Start with the 2026-10-13 handoff at the top of [Current State](CURRENT_STATE.md). The last verified pre-handoff READY preview matched the external-dispatch safeguard commit `27b1d8a`; recheck branch head/deployment after this documentation closeout. The live inventory already archived the non-owned D-Max; the email composition mistake is recorded with an agent-level fail-closed gate in [AGENTS.md](../../AGENTS.md). Server-side unattended dispatch is **not implemented or enabled** by that instruction. Milestone 042 vehicle registration evidence/readiness is delivered within scope, with visual acceptance and plate reconciliation pending; subsequent boating-credential activity requires inspecting actual source and evidence. Preserve earlier open source, rental, medical, credential and recovery gates. The former 042-only continuation instruction below is historical, not the latest branch checkpoint.
+
 Reviewed: 2026-10-13, Asia/Manila. Current increment is Milestone 042: selected vehicle registration evidence and blocked readiness. Prior rental/clinical/review/notification/treatment and broader recovery limits remain preserved.
 
 ## Purpose and reading order
