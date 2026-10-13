@@ -16,6 +16,7 @@ export const credentialGroups = [
   { key: "national_ids", label: "National IDs" },
   { key: "driving_licenses", label: "Driving Licenses" },
   { key: "philippines_ppl", label: "Philippines PPL" },
+  { key: "boating_licenses", label: "Boating Licenses" },
   { key: "licenses", label: "Other Licenses" },
   { key: "certificates", label: "Certificates" },
   { key: "other", label: "Other Credentials" },
@@ -31,6 +32,7 @@ export function credentialGroup(type: CredentialType | undefined, subtype?: stri
   if (type === "national_id") return "national_ids";
   if (type === "driver_license") return "driving_licenses";
   if (type === "certification") return "certificates";
+  if (type === "boating_license") return "boating_licenses";
   if (type === "pilot_license" || type === "radio_license" ||
       type === "boating_license" || type === "professional_license") return "licenses";
   return "other";
