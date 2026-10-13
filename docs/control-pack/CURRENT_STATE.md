@@ -1,5 +1,19 @@
 # KAIKOA OS — Current State
 
+## Session handoff — 2026-10-13 (latest checkpoint)
+
+**Verified foundation:** KAIKOA OS development continues on `milestone-001-hull`, not `main`. Vercel READY preview `dpl_5TyFJEdM1YZM92F9baSSowqDBMeG` was verified against commit `27b1d8ab2b267d1d7d852bd4991f5a8587eec27d` before this closeout. That commit added the mandatory external-dispatch gate in root `AGENTS.md`. The successor handoff commit requires a new matching deployment check; READY does not certify operational/browser acceptance.
+
+**Vehicle-email incident:** Founder reports that an already-sent renewal email to his delegate mistakenly named a non-owned Isuzu D-Max; the delegate caught it. Live Supabase `public.entities` readback on 2026-10-13 verified D-Max already `ARCHIVED`, with a 2026-10-12 founder ownership correction. Current records also include KTM Freeride 350, KTM Duke 690 and Honda CRF 450 (all REVIEW REQUIRED). The defect was composing an external email from stale chat context, not a defective archived record. Do not send additional corrective messages without fresh instruction/context. The original external email cannot be retracted by changing a draft.
+
+**Delivered fix:** Root `AGENTS.md` now requires fresh live inventory/ownership/record-ID/obligation/recipient verification and fail-closed archived/non-owner exclusion before drafting, scheduling, or sending; dispatch-time revalidation and audit are specified. GitHub file readback passed. No database/Drive/obligation mutation, scheduler, separate sender identity or autonomous email functionality was implemented for this incident.
+
+**Open gates:** A server-enforced pre-dispatch validator, idempotency, notification delivery evidence, failure escalation and actual unattended scheduler remain unimplemented/not verified. Perform read-only rejection tests for archived/non-owner vehicles before any mail automation; then seek relevant approval/testing for real dispatch. Reconcile actual new vehicle registrations only after authentic supporting documents arrive, preserving historical evidence and audit. Milestone 042 source/readiness feature is delivered within scope; plate discrepancies and founder visual acceptance remain open. Post-042 boating-credential work appeared in Vercel commit history; inspect its exact current source state before declaring it finished. Medical, rental, credential, other notification and coordinated recovery acceptance gates are preserved and are not silently closed.
+
+**Next session:** Read `AGENTS.md`, Control Pack, actual branch head and matching Vercel preview. Continue the existing A/B/C/D and later phases; choose one small, verifiable increment. Recommended first item: read-only dispatch eligibility/preflight that excludes archived assets. Do not rely on past chat memory for external actions.
+
+---
+
 Reviewed: 2026-10-12, Asia/Manila. Milestone 040 completes the supplied annual medical report archive. Review-cycle status and clinical/source interpretation remain separate; earlier medical/dental/treatment scheduling and all broader pending items are preserved.
 
 ## Session close — 2026-10-12 after Milestone 040
