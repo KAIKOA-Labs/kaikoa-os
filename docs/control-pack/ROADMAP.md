@@ -1,5 +1,13 @@
 # KAIKOA OS — Roadmap
 
+## 2026-10-13 handoff — bounded dispatch-safety incident
+
+**Completed:** Live verification confirmed the non-owned D-Max was already ARCHIVED and the active owner-vehicle records remained distinct. Root AGENTS.md gained a mandatory fresh authoritative inventory/ownership/recipient preflight before external operational drafts or sends, with fail-closed archived-asset exclusion. Commit `27b1d8a` had a matching READY Vercel preview. This fixes documented assistant procedure, **not** server-side enforcement; no additional email was sent.
+
+**Not completed / intentionally preserved:** Autonomous outbound renewal dispatch, dispatch-time server verification, durable send/delivery/failure logs, idempotent retries, Richel's outstanding renewal documentary reconciliation and independent founder acceptance were not implemented or verified. Milestone 042 bounded source/readiness work remains delivered; card/plate acceptance still needs evidence. More recent boating-credential branch activity must be inspected from actual source; earlier medical, rental, credential, notification and broader restoration gates remain open.
+
+**First safe next increment:** Read-only server-side eligibility preflight and tests proving archived/non-owner assets are excluded, without sending any email or mutating owner data.
+
 Reviewed: 2026-10-10, Asia/Manila. Phases and implementation milestones are distinct. The table is current; older dated milestone narratives retain their historical context.
 
 | Milestone | State | Evidence / limits |
