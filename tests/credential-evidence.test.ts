@@ -37,3 +37,15 @@ test("back-image links require one safe matching bundle and the same credential 
   assert.equal(credentialEvidenceByEntity([entity], [document, back], [link, { ...backLink, entity_id: "other" }]).get(entity.id)?.back_source_url, null);
   assert.equal(credentialEvidenceByEntity([entity], [document, { ...back, source_url: "https://example.com/back" }], [link, backLink]).get(entity.id)?.back_source_url, null);
 });
+
+test("Asturias boating card is recognized as a private source-backed licence without extending professional privileges", () => {
+  const boating = { ...record, credential_type: "boating_license", issuer: "Gobierno del Principado de Asturias", issued_on: "2022-09-20", expires_on: "2032-09-20", last_four: "1276", restrictions: ["Recreational only; not a professional or charter authorization"] };
+  const holder = { ...entity, credential_record: { ...owner, credential_type: "boating_license", issuer: boating.issuer, last_four: "1276", expires_on: "2032-09-20", reminder_on: "2032-03-20" }, credential_group: "boating_licenses" };
+  const pdf = { ...document, source_url: "https://drive.google.com/file/d/ExampleBoatingCertificate123/view", status: "VERIFIED", credential_source_record: boating, evidence_summary: { ...document.evidence_summary as object, fields: [{ label: "Expiry date", value: "2032-09-20", source: "Official Asturias card" }] } };
+  assert.equal(parseCredentialSource(boating)?.credential_type, "boating_license");
+  const displayed = credentialEvidenceByEntity([holder], [pdf], [link]).get(entity.id);
+  assert.equal(displayed?.record.expires_on, "2032-09-20");
+  assert.equal(displayed?.record.last_four, "1276");
+  assert.equal(displayed?.conflict, false);
+  assert.equal(credentialEvidenceByEntity([{ ...holder, credential_record: { ...holder.credential_record, credential_type: "pilot_license" } }], [pdf], [link]).size, 0);
+});
