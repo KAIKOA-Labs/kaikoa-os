@@ -29,6 +29,8 @@ test("grouping separates national IDs/driving licenses and respects explicit avi
   assert.equal(credentialGroup("driver_license"), "driving_licenses");
   assert.equal(credentialGroup("pilot_license"), "licenses");
   assert.equal(credentialGroup("certification"), "certificates");
+  assert.equal(credentialGroup("boating_license"), "boating_licenses");
+  assert.equal(credentialGroup("boating_license", "credential", "boating_licenses"), "boating_licenses");
   assert.equal(credentialGroup("national_id"), "national_ids");
   assert.equal(credentialGroup("other"), "other");
   assert.equal(credentialGroup(undefined, "passport"), "passports");
