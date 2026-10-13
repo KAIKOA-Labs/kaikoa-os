@@ -34,7 +34,7 @@ export function credentialGroup(type: CredentialType | undefined, subtype?: stri
   if (type === "certification") return "certificates";
   if (type === "boating_license") return "boating_licenses";
   if (type === "pilot_license" || type === "radio_license" ||
-      type === "boating_license" || type === "professional_license") return "licenses";
+      type === "professional_license") return "licenses";
   return "other";
 }
 
