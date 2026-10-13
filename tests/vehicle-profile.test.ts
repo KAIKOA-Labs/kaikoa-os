@@ -44,3 +44,16 @@ test("one linked profile supplies the same current base; malformed or duplicate 
   assert.equal(vehicleProfilesByEntity([{id:"a",vehicle_profile:{...profile,extra:true}}],links).size,0);
   assert.equal(vehicleProfilesByEntity([{id:"a",vehicle_profile:profile},{id:"b",vehicle_profile:profile}],[...links,{document_id:"b",entity_id:"vehicle"}]).size,0);
 });
+
+test("expired registration blocks use even when other checks are unknown; expiry day remains inclusive", () => {
+  const p = { ...profile, condition: "unknown", insurance: "unknown", serviced_on: null, service_interval: "unknown", registration: "needs_review", registration_expires_on: "2026-08-31" };
+  const expired = vehicleReadiness(p, "2026-10-13");
+  assert.equal(expired.state, "blocked");
+  assert.equal(expired.label, "Not ready to use");
+  assert.equal(expired.checks[1].label, "Registration expired · renewal pending");
+  assert.equal(vehicleReadiness({...profile, registration_expires_on: "2026-10-11"}, "2026-10-11").state, "ready");
+  assert.equal(vehicleReadiness({...profile, registration_expires_on: "2026-10-11"}, "2026-10-12").state, "blocked");
+  assert.equal(vehicleReadiness({...p, checked_on: null}, "2026-10-13").state, "unknown");
+  assert.equal(vehicleReadiness({...p, checked_on: "2026-11-01"}, "2026-10-13").state, "unknown");
+  assert.equal(vehicleReadiness({...p, registration_expires_on: null}, "2026-10-13").state, "attention");
+});

@@ -1,10 +1,10 @@
 # KAIKOA OS — Control Pack
 
-Reviewed: 2026-10-13, Asia/Manila. Current increment is Milestone 041: selected rental agreements and scheduled rent on existing properties. Prior clinical/review/notification/treatment and broader recovery limits remain preserved.
+Reviewed: 2026-10-13, Asia/Manila. Current increment is Milestone 042: selected vehicle registration evidence and blocked readiness. Prior rental/clinical/review/notification/treatment and broader recovery limits remain preserved.
 
 ## Purpose and reading order
 
-Current continuation, 2026-10-13: [Milestone 041](../milestone-041-rental-agreements.md) is the latest rental-feature checkpoint. Read it alongside CURRENT_STATE.md, whose latest detailed entry remains the preceding Milestone 040. Resolve `Milestone 041: link rental agreements and scheduled rent` and its matching preview. Selected original copies, audited links and schedule display are delivered; receipts, current tenancy, renewal exercise, maintenance/insurance fulfilment and browser acceptance remain separate. Older Control Pack files remain unchanged following an automatic publication-review rejection of unrelated sensitive history. Do not repeat completed imports/recovery or prior notification tests.
+Current continuation, 2026-10-13: [Milestone 042](../milestone-042-vehicle-registration-status.md) is the latest selected-file/readiness checkpoint. Resolve `Milestone 042: flag expired vehicle registration` and its exact matching preview. Read alongside [Milestone 041](../milestone-041-rental-agreements.md) and CURRENT_STATE.md, whose latest detailed entry remains Milestone 040. Original copies, audited links, historical expiry evidence and red blocked readiness are delivered for the selected scope; current plate discrepancies and founder visual acceptance remain open. Earlier rental receipts/current tenancy/renewal exercise and service/insurance fulfilment remain separate. Older Control Pack history is retained unchanged; do not repeat completed imports/recovery or prior notification tests.
 
 Resume development from durable evidence rather than a long conversation.
 

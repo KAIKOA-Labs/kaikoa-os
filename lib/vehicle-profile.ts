@@ -56,17 +56,18 @@ export function annualServiceReview(servicedOn: string): string {
   return new Date(Date.UTC(year, month, day)).toISOString().slice(0, 10);
 }
 export type VehicleCheck = { label: string; state: "good" | "unknown" | "attention" };
-export function vehicleReadiness(value: unknown, today: string): { state: "ready" | "unknown" | "attention"; label: string; checks: VehicleCheck[] } {
+export function vehicleReadiness(value: unknown, today: string): { state: "ready" | "unknown" | "attention" | "blocked"; label: string; checks: VehicleCheck[] } {
   const p = parseVehicleProfile(value);
   if (!p || !vehicleDate(today) || p.checked_on === null || p.checked_on > today) return { state: "unknown", label: "Readiness not checked", checks: [] };
   const expired = (date: string | null) => date !== null && date < today;
   const checks: VehicleCheck[] = [
     { label: vehicleConditions[p.condition], state: p.condition === "excellent" || p.condition === "good" ? "good" : p.condition === "needs_work" ? "attention" : "unknown" },
-    { label: expired(p.registration_expires_on) ? "Registration expired" : registrationStates[p.registration], state: expired(p.registration_expires_on) || p.registration === "needs_review" ? "attention" : p.registration === "current" ? "good" : "unknown" },
+    { label: expired(p.registration_expires_on) ? "Registration expired · renewal pending" : registrationStates[p.registration], state: expired(p.registration_expires_on) || p.registration === "needs_review" ? "attention" : p.registration === "current" ? "good" : "unknown" },
     { label: expired(p.insurance_expires_on) ? "Insurance renewal needed" : insuranceStates[p.insurance], state: expired(p.insurance_expires_on) || p.insurance === "unpaid" ? "attention" : p.insurance === "paid" ? "good" : "unknown" },
     { label: p.serviced_on === null ? "Service not checked" : p.serviced_on > today ? "Service date needs review" : p.service_interval === "annual" && annualServiceReview(p.serviced_on) <= today ? "Annual service needs review" : p.service_interval === "annual" ? "Annual service done" : "Service date recorded", state: p.serviced_on === null || p.service_interval === "unknown" ? "unknown" : p.serviced_on > today || annualServiceReview(p.serviced_on) <= today ? "attention" : "good" },
   ];
   const ready = checks.every(check => check.state === "good");
   const unknown = checks.every(check => check.state === "unknown");
-  return { state: ready ? "ready" : unknown ? "unknown" : "attention", label: ready ? "Ready to use" : unknown ? "Readiness not checked" : "Check before use", checks };
+  const blocked = expired(p.registration_expires_on);
+  return { state: blocked ? "blocked" : ready ? "ready" : unknown ? "unknown" : "attention", label: blocked ? "Not ready to use" : ready ? "Ready to use" : unknown ? "Readiness not checked" : "Check before use", checks };
 }
