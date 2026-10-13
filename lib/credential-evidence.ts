@@ -3,7 +3,7 @@ import { parseEvidenceSummary } from "./document-evidence.ts";
 import { safeDriveLink } from "./drive-reference.ts";
 
 export type CredentialSourceRecord = {
-  version: 1; credential_type: "national_id" | "driver_license" | "pilot_license"; issuer: string;
+  version: 1; credential_type: "national_id" | "driver_license" | "pilot_license" | "boating_license"; issuer: string;
   issued_on: string | null; expires_on: string | null; last_four: string | null; recorded_on: string;
   source_note: string; restrictions: string[];
 };
@@ -17,7 +17,7 @@ export function parseCredentialSource(value: unknown): CredentialSourceRecord | 
   const v = value as Record<string, unknown>;
   const keys = ["version", "credential_type", "issuer", "issued_on", "expires_on", "last_four", "recorded_on", "source_note", "restrictions"];
   if (Object.keys(v).length !== keys.length || keys.some(key => !Object.hasOwn(v, key)) || v.version !== 1 ||
-      !["national_id", "driver_license", "pilot_license"].includes(String(v.credential_type)) || !text(v.issuer, 120) ||
+      !["national_id", "driver_license", "pilot_license", "boating_license"].includes(String(v.credential_type)) || !text(v.issuer, 120) ||
       !(v.issued_on === null || isIsoDate(v.issued_on)) || !(v.expires_on === null || isIsoDate(v.expires_on)) ||
       (typeof v.issued_on === "string" && typeof v.expires_on === "string" && v.issued_on >= v.expires_on) ||
       !(v.last_four === null || typeof v.last_four === "string" && /^[0-9]{4}$/.test(v.last_four)) || !isIsoDate(v.recorded_on) ||
