@@ -49,7 +49,11 @@ begin
    fingerprint:=lower(label)||'|'||kind||'|'||n::text;
    if fingerprint=any(keys) then raise exception 'Duplicate physical print'; end if;
    keys:=array_append(keys,fingerprint);
-   if item->>'production' not in ('unknown','printed_signed','framed_boxed')
+   if jsonb_typeof(item->'production')<>'string'
+     or jsonb_typeof(item->'availability')<>'string'
+     or jsonb_typeof(item->'fulfillment')<>'string'
+     or jsonb_typeof(item->'payment')<>'string'
+     or item->>'production' not in ('unknown','printed_signed','framed_boxed')
      or item->>'availability' not in ('unknown','available','reserved','sold','gift')
      or item->>'fulfillment' not in ('unknown','held','awaiting_handover','shipped','delivered')
      or item->>'payment' not in ('unverified','reported_paid','verified_paid','not_applicable')
