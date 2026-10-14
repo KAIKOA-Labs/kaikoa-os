@@ -21,6 +21,7 @@ export default function ArtworkInventorySummary({ slug, metadata }: { slug: stri
     {inventory?.artist_proofs.image_size && <p>AP image size: {inventory.artist_proofs.image_size}</p>}
     {inventory?.artist_proofs.source_note && <p style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>Source: {inventory.artist_proofs.source_note} · Date: {inventory.artist_proofs.source_date || "Unknown"}</p>}
     <p className="muted">Still to print is not stock available for sale.</p>
+    <p><Link href={"/private-memory/artwork/" + encodeURIComponent(slug) + "/prints"}>View physical prints →</Link></p>
     <Link href={"/private-memory/artwork/" + encodeURIComponent(slug) + "/editions"}>Manage editions →</Link>
   </section>;
 }
