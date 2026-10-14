@@ -1,4 +1,4 @@
-import { registryFromMetadata, type PrintRegistry } from "./artwork-print-registry";
+import { registryFromMetadata, type PrintRegistry } from "./artwork-print-registry.ts";
 
 export type ArtGalleryStats = {
  state: "missing" | "invalid" | "recorded"; registry: PrintRegistry | null;
