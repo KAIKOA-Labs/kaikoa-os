@@ -1,5 +1,25 @@
 # KAIKOA OS — Current State
 
+## Verified artwork session closeout — 2026-10-14 (latest handoff)
+
+**Scope:** Owner requested a clean finish and continuity checkpoint for today's Fine Art Registry and private image archive work. Direct fresh checks against the live development branch, Vercel, Supabase, and Drive replace earlier historical pending-import notes. This is a **development-session closeout, not full operational completion**.
+
+**Verified baseline before this documentation commit:** `milestone-001-hull` head `2b973d67a64638a875e6c775266b1667a4fc26fe` had exact matching Vercel READY deployment `dpl_X3rz2E1AN7RyDgCevY8RAb77bZJ4`. Main has not been modified in this session. After the documentation commit, check the successor head and matching deployment independently.
+
+**Private images:** Live Supabase Storage has **four WebP objects** in `kaikoa-private-art-previews`: `karmic-bloom/primary.webp` (83,202 bytes), `king-of-the-air/primary.webp` (130,466 bytes), `la-vie-en-rose/white.webp` (94,308 bytes), and `la-vie-en-rose/black.webp` (105,892 bytes). Bucket is recorded private, owner-scoped policies were inspected earlier. Object metadata is verified, but fresh real-account visual browser acceptance and independent signed-URL/RLS denial tests remain open. Do not replace masters with previews.
+
+**Print inventory now actually present:** La Vie en Rose 9 physical entries, Karmic Bloom 8, King of the Air 3 (20 combined), and all applicable edition/artist-proof limit rules. Karmic Bloom and King of the Air import work is **already completed**; earlier pending-import statements are historical and superseded. The data is not entirely correct: Karmic AP 1/2 and numbered 1/20 and 2/20 still have outdated custody/fulfillment/sale labels. King 1/1 and AP 1/2 have outdated custody/status, while AP 2/2 is incorrectly recorded as physically printed. Preserve their original evidence and founder corrections; don't falsely mark the items reconciled.
+
+**Outstanding user-authorized corrections:** King 1/1 completed, reported paid, gifted/delivered to Marama in Siargao; AP 1/2 onboard KAIKOA in French Polynesia; AP 2/2 unprinted, unpaid, not delivered (authorized AP capacity 2 remains, but no physical AP2 item). Karmic AP1 founder-held and exhibited in mother's Siargao property; 1/20 sold and delivered to client; 2/20 delivered to client, sale status unknown. Extra Karmic 3–7 and White Panther 5–7 remain in ORT archival storage; La Vie en Rose White 4/20 remains complete/reserved for Egg Fiasco. No direct agent write bypass is authorized. Existing owner-only RPC and audit remain intact. Source-backed correction planner and tests are committed but are **not** an agent execution service. Automatic agent writes, service identity, owner scope and audit enforcement are open gates.
+
+**Drive/archive:** The authorized `Original Artwork Masters — Private` Google Drive folder (ID `13l7azOUF-WU0hc1TPUYSnam482IouoKN`) is still empty on direct readback. None of the four full-resolution TIFFs are confirmed archived to Drive. A previously generated local ZIP exists only if files persist; user may need to reattach expired files. The DocuSign fully executed one-of-one co-ownership agreement is still not verified as securely archived. Do not claim masters or signed agreement saved.
+
+**Remaining verification:** The browser/gallery has not received new founder acceptance since private thumbnails appeared; full Node test execution was not independently observed, and Vercel READY is not proof of operational authorization tests. No paid infrastructure, merge, new account, secret or current production record mutation in this closeout.
+
+**Clean next milestone:** A narrowly scoped independently authenticated agent-write service, exact print correction planner, independent before/after actor audit, replay/idempotency and stale guards, role-denial tests, then authorized physical-print updates and live readback. Do not broaden to other private financial records until this first bounded use case passes. Archive masters via an actually supported private-file upload path with checksum/access/readback verification. Existing A → B → C → D phases remain intact.
+
+---
+
 ## 2026-10-14 — Artwork chat-correction workflow, first bounded increment
 
 Founder requires natural-language KAIKOA OS updates without downloading/importing JSON. Latest founder-sourced corrections to **King of the Air**: 1/1 was printed/paid/framed/boxed and delivered as a gift/award to Marama in Siargao; AP 1/2 is aboard KAIKOA in French Polynesia; AP 2/2 was never printed, paid or delivered and remains an allowed but unproduced slot. Latest corrections to **Karmic Bloom**: AP 1/2 printed and delivered to founder, displayed at mother's Siargao property; numbered 1/20 sold and delivered to client; 2/20 delivered to client (sale not independently confirmed). Existing numbered 3–7/20 Extras remain in ORT basement storage. Do not infer verified financial settlements, unidentified collectors, or missing dates.
