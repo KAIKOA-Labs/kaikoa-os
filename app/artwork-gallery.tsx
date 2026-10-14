@@ -1,12 +1,15 @@
+"use client";
 import Link from "next/link";
+import { usePrivateArtworkPreviews } from "@/lib/private-artwork-images";
 import { artGalleryStats } from "@/lib/art-gallery-stats";
 import type { InventoryRecord } from "@/lib/inventory-view";
 
 export default function ArtworkGallery({ records }: { records: InventoryRecord[] }) {
+ const {images}=usePrivateArtworkPreviews(records.map(r=>r.slug));
  return <div className="fineArtGallery">
    <div className="fineArtGalleryIntro">
      <div><p className="eyebrow">KAIKOA · PRIVATE COLLECTION</p><h2>Works and editions</h2>
-       <p className="muted">Each numbered work has its own location, production and delivery history. Actual artwork images will be added when verified.</p></div>
+       <p className="muted">Each numbered work has its own location, production and delivery history. Images come from owner-only private storage, never from the public repository.</p></div>
      <span className="fineArtGalleryTotal">{records.length} {records.length === 1 ? "artwork" : "artworks"}</span>
    </div>
    <div className="fineArtGrid">
@@ -15,9 +18,11 @@ export default function ArtworkGallery({ records }: { records: InventoryRecord[]
        const url="/private-memory/artwork/"+encodeURIComponent(item.slug)+"/prints";
        return <article className="fineArtCard" key={item.id}>
          <Link href={url} className="fineArtCanvas" aria-label={"Open "+item.name+" inventory"}>
-           <span className="fineArtCanvasEyebrow">KAIKOA · FINE ART</span>
-           <span className="fineArtCanvasTitle">{item.name}</span>
-           <small>Image awaiting verified source</small>
+           {images[item.slug]?.length ? <div className="fineArtImageGrid">{images[item.slug].map(v=><figure key={v.label}><img src={v.url} alt={item.name+" — "+v.label} loading="lazy" referrerPolicy="no-referrer" /><figcaption>{v.label}</figcaption></figure>)}</div> : <>
+             <span className="fineArtCanvasEyebrow">KAIKOA · FINE ART</span>
+             <span className="fineArtCanvasTitle">{item.name}</span>
+             <small>Private thumbnail awaiting upload</small>
+           </>}
          </Link>
          <div className="fineArtCardBody">
            <p className="eyebrow">ARTWORK</p><h3>{item.name}</h3>
@@ -49,6 +54,7 @@ export default function ArtworkGallery({ records }: { records: InventoryRecord[]
              <p className="muted">{stats.state==="missing"?"No physical print records have been saved for this artwork.":"Saved data could not be validated; no quantities are inferred."}</p>
            </div>}
            <div className="fineArtActions"><Link href={url}>View prints →</Link><Link href={"/private-memory/assets/"+encodeURIComponent(item.slug)}>Artwork details</Link></div>
+           <p><Link className="back" href="/private-memory/artwork/images">Manage private artwork images →</Link></p>
          </div>
        </article>;
      })}
