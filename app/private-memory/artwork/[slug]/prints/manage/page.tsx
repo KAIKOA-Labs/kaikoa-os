@@ -27,6 +27,7 @@ export default function ManagePhysicalPrints() {
   const [prints, setPrints] = useState<PrintRecord[]>([]);
   const [state, setState] = useState("Loading print records…");
   const [message, setMessage] = useState("");
+  const [importText, setImportText] = useState("");
   const [busy, setBusy] = useState(false);
   const generation = useRef(0);
   const inFlight = useRef(false);
@@ -88,6 +89,12 @@ export default function ManagePhysicalPrints() {
     </header>
     <form className="workflowForm" onSubmit={save}>
       <fieldset disabled={busy} className="editionFieldset">
+        <section className="panel"><h2>Import reconciled inventory</h2>
+          <p className="muted">Paste a reviewed JSON registry here. Validation previews the edition and print counts; nothing is saved until you confirm the final Save action. Keep private source material outside GitHub.</p>
+          <label htmlFor="print-json-import">Registry JSON</label>
+          <textarea id="print-json-import" rows={5} value={importText} onChange={e => setImportText(e.target.value)} placeholder="Paste a validated registry JSON object…" />
+          <button type="button" onClick={() => { try { const parsed = validatePrintRegistry(JSON.parse(importText)); if (!window.confirm(`Replace the unsaved draft with ${parsed.rules.length} edition rules and ${parsed.prints.length} individual print records? This does not save to the database.`)) return; setRules(parsed.rules); setPrints(parsed.prints); setMessage(`Draft imported: ${parsed.rules.length} editions, ${parsed.prints.length} physical records. Review below before saving.`); } catch (err) { setMessage(err instanceof Error ? err.message : "Invalid JSON."); } }}>Validate and preview import</button>
+        </section>
         <section className="panel"><h2>Authorized editions</h2>
           <p className="muted">Lock a one-of-one edition permanently. Once a locked rule is saved, it cannot be unlocked or removed through this editor.</p>
           {rules.map((rule, index) => <div key={index} className="detail" style={{ marginBottom: 14 }}>
