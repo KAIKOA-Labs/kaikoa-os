@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import ArtworkEditionOverview from "@/app/artwork-edition-overview";
+import ArtworkGallery from "@/app/artwork-gallery";
 import LeaseSummary from "@/app/lease-summary";
 import { leasesByEntity } from "@/lib/lease-record";
 import VehicleSummary from "@/app/vehicle-summary";
@@ -29,7 +29,7 @@ export default function InventoryBrowser({ section }: { section: Exclude<Invento
       if (!active) return;
       if (authError || !identity.user) { setStage("signed-out"); return; }
       const request = section === "artwork"
-        ? db.from("entities").select("id,slug,name,subtype,status,location,data_quality,artwork_inventory:metadata->artwork_inventory").eq("subtype", "artwork")
+        ? db.from("entities").select("id,slug,name,subtype,status,location,data_quality,artwork_inventory:metadata->artwork_inventory,artwork_print_registry:metadata->artwork_print_registry").eq("subtype", "artwork")
         : db.from("entities").select("id,slug,name,subtype,status,location,data_quality");
       const [inventory, profiles, links] = await Promise.all([
         request.neq("status", "ARCHIVED").order("name"),
@@ -71,14 +71,7 @@ export default function InventoryBrowser({ section }: { section: Exclude<Invento
       <div className="sectionHead"><p className="muted" role="status">Showing {visible.length} of {sectionRecords.length} records</p>
         {(query || category !== null) && <button type="button" onClick={clearFilters}>Clear filters</button>}</div>
       {visible.length === 0 ? <p className="muted">{sectionRecords.length === 0 ? definition.empty : "No records match your search and category. Clear the filters to see this section."}</p> :
-        section === "artwork" ? <div className="assetGrid">{visible.map(record => <article className="asset artworkInventoryCard" key={record.id}>
-          <span className="eyebrow">Artwork</span>
-          <Link className="artworkCardTitle" href={"/private-memory/assets/" + encodeURIComponent(record.slug)}><strong>{record.name} →</strong></Link>
-          <span>{record.status}</span><small>{record.location || "Location not recorded"}</small>
-          <small>Data quality: {inventoryQualityLabel(record.data_quality)}</small>
-          <ArtworkEditionOverview inventory={record.artwork_inventory} />
-          <Link className="back" href={"/private-memory/artwork/" + encodeURIComponent(record.slug) + "/editions"}>Manage editions →</Link>
-        </article>)}</div> :
+        section === "artwork" ? <ArtworkGallery records={visible} /> :
         <div className="inventoryCategoryGroups">{categoryGroups.map(group => <div className="inventoryCategoryGroup" key={group.key}>
           <div className="sectionHead"><h2>{group.label}</h2><span className="muted">{group.count} {group.count === 1 ? "record" : "records"}</span></div>
           <div className="assetGrid">{group.records.map(record => <Link className="asset assetLink" key={record.id} href={"/private-memory/assets/" + encodeURIComponent(record.slug)}>
