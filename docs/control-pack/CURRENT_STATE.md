@@ -1,5 +1,17 @@
 # KAIKOA OS — Current State
 
+## Artwork visual gallery increment — 2026-10-14
+
+Founder accepted individual Physical Prints display (including La Vie en Rose White AP 2/2) and requested a clean gallery in the existing Artwork workspace. Reused the authenticated inventory browser and existing artwork entities. New `app/artwork-gallery.tsx` and `lib/art-gallery-stats.ts` render a responsive collection summary from **only** saved `metadata.artwork_print_registry`: edition versions, physical-record count, APs, held prints, awaiting handover, delivered, sold and locked editions. No available-for-sale count is inferred. Entries without records show a clear awaiting-import state. No generic or invented artwork illustrations; placeholder explicitly requests verified artwork image sources.
+
+The protected Artwork query now projects only the additional print-registry metadata needed for this view, and `lib/inventory-view.ts` includes its optional typed projection. Other Assets and subscriptions paths are unchanged. New `tests/art-gallery-stats.test.ts` checks AP, recorded-vs-capacity, and malformed/missing source semantics; test file is committed but local runner execution is not separately certified. Deployment READY and exact matching commit must be checked after checkpoint publication. No database, Drive, owner data, gallery image sources, or contracts were modified by this gallery increment.
+
+Founder-reported La Vie en Rose save is verified directly from live Supabase: 9 physical records including one white AP 2/2, four numbered white copies 1–4, three white Extras 5–7, and one black locked 1/1. Karmic Bloom and King of the Air have no imported physical registry yet. Existing original edition-summary metadata remains separate and empty; the gallery intentionally relies on the populated print registry.
+
+Next: founder visual browser acceptance of the Artwork gallery. Then import Karmic Bloom/King of the Air through their existing owner-operated authenticated editor, one artwork and verification checkpoint at a time. Actual artwork imagery requires a verified permitted original asset, not a generic substitute.
+
+---
+
 ## Artwork physical-print handoff — 2026-10-14 (most recent)
 
 Founder browser screenshot accepts the protected Physical Prints page on the development preview: correct signed-in navigation, artwork identity and explicit awaiting-reconciliation state.
