@@ -1,5 +1,21 @@
 # KAIKOA OS — Current State
 
+## Artwork physical-print handoff — 2026-10-14 (most recent)
+
+Founder browser screenshot accepts the protected Physical Prints page on the development preview: correct signed-in navigation, artwork identity and explicit awaiting-reconciliation state.
+
+A distinct `artwork_print_registry` metadata structure and owner-operated editor/import are implemented on `milestone-001-hull`. Source files include `lib/artwork-print-registry.ts`, `app/private-memory/artwork/[slug]/prints/page.tsx`, `app/private-memory/artwork/[slug]/prints/manage/page.tsx`, and migration `20261014020000_artwork_physical_print_registry.sql`. The migration was applied successfully on 2026-10-14. Database readback confirms a SECURITY DEFINER/empty-search-path function restricted to authenticated execution, with anonymous EXECUTE revoked; an unauthenticated call failed closed. Function uses the established fixed-owner check, exact expected-subtree stale protection, limits/unique print identities, locked edition preservation, and entity-change-history audit. This is **not** an unattended importer or a bypass of owner identity. Full live owner-authenticated submit, wrong-owner role and mutation/no-op audit tests are not yet verified.
+
+Current development branch is `milestone-001-hull`; matching final deployment must be checked after the last editor commit. Three existing artworks remain unchanged and have no `artwork_print_registry` data yet. Existing `artwork_inventory` version-1 totals and artwork entities remain preserved. The owner editor offers a reviewed local JSON upload or paste, a validation/preview step, and a separate confirmed audited Save.
+
+Founder-confirmed storage: eight Extra prints (five Karmic Bloom 3–7/20 and three La Vie en Rose White 5–7/20) in One Roxas Triangle basement archival storage. White Panther 4/20 is fully framed/boxed, reserved for Egg Fiasco and pending handover in the same storage. Black Panther 1/1 is sold with zero artist proofs and an absolute non-reproduction promise; executed contract not independently recovered, and the shared draft in Drive is not a signed private archive. Other physical stock and payments retain source-labelled uncertainty.
+
+Three privately generated import JSON files (not committed) were structurally checked against the intended field set, edition bounds, unique per-print identities, allocation and custody requirements. They contain 9 Panther, 8 Snake, and 3 Eagle physical records; APs marked None/Wait without evidence of physical creation are not fabricated as produced inventory. The draft import files need owner review before real save, and original screenshot/contract evidence may need renewal if attachments expire. Do not claim inventory imported or archive complete.
+
+Next: verify the final matching READY preview, have founder use the owner editor to import one artwork JSON file and explicitly save, then read back the private records and history before continuing to the next artwork. Never record private collectors/locations in public Git. Preserve all previous Control Pack gates and external-dispatch restrictions.
+
+---
+
 ## Session handoff — 2026-10-13 (latest checkpoint)
 
 **Verified foundation:** KAIKOA OS development continues on `milestone-001-hull`, not `main`. Vercel READY preview `dpl_5TyFJEdM1YZM92F9baSSowqDBMeG` was verified against commit `27b1d8ab2b267d1d7d852bd4991f5a8587eec27d` before this closeout. That commit added the mandatory external-dispatch gate in root `AGENTS.md`. The successor handoff commit requires a new matching deployment check; READY does not certify operational/browser acceptance.
