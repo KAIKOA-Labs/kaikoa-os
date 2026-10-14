@@ -56,6 +56,7 @@ export default function ArtworkPrintsPage() {
           registry.prints.filter(print => print.edition_label === rule.edition_label).sort((a,b) => a.kind.localeCompare(b.kind) || a.number-b.number)
             .map(print => <PrintItem key={print.kind + print.number} print={print} limit={print.kind === "numbered" ? rule.numbered_limit : rule.artist_proof_limit} />)}
       </section>)}
+    <p><Link href={"/private-memory/artwork/" + encodeURIComponent(slug) + "/prints/manage"}>Manage physical print records →</Link></p>
     <p><Link href={"/private-memory/artwork/" + encodeURIComponent(slug) + "/editions"}>Edition totals →</Link></p>
     <p><Link href="/private-memory/artwork">Back to Artwork →</Link></p>
   </main>;
