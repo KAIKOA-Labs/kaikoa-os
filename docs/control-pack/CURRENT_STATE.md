@@ -1,5 +1,18 @@
 # KAIKOA OS — Current State
 
+## Vehicle-profile owner editor — 2026-10-23
+
+**Implemented (development branch only):** An authenticated review route for existing vehicle assets, an owner-guarded/stale-protected audited update RPC for existing linked `vehicle_profile` documents, and independent owner-ready and outstanding-maintenance fields. Existing recorded service history is not fabricated, and expiry checks remain authoritative blockers. This is a private signed-in owner action, not automatic email-to-inventory synchronization or an agent impersonation endpoint.
+
+**Verified:** SQL migration applied to project `kaikoa-os`; authenticated role has RPC EXECUTE and anonymous role does not. A no-identity RPC invocation was rejected with `42501 Not authorized`. Vercel READY preview `dpl_8scLcecE9PLPv6gipfkS9fgA9eVu` matches branch commit `920e052d6a83a24c6d7a18dc0d28debb3ae6b346` prior to this documentation commit. No owner-authenticated browser save, real owner audit/readback, independent non-owner denial, or full local test suite is claimed.
+
+**Open operational gate:** Existing KTM vehicle profiles still have stale insurance/registration/owner-check facts. Owner must review and submit through the new protected vehicle editor; then check exact changed document and agent/owner audit plus dashboard, two vehicles separately. The source evidence is archived privately in Drive but the new files are not yet registered as linked database document references. Honda remains separate pending plate reconciliation. No repairs or workshop services are marked complete.
+
+**Repository safety note:** A transient development revision contained hardcoded vehicle-specific source facts; these were removed from the latest branch source. Historical commits still require private-data history exposure assessment; do not reuse or publish historical source examples. A founder identifier appeared in the migration consistent with older guards; evaluate source-history remediation separately without weakening the authenticated owner check.
+
+---
+
+
 ## Verified artwork session closeout — 2026-10-14 (latest handoff)
 
 **Scope:** Owner requested a clean finish and continuity checkpoint for today's Fine Art Registry and private image archive work. Direct fresh checks against the live development branch, Vercel, Supabase, and Drive replace earlier historical pending-import notes. This is a **development-session closeout, not full operational completion**.
