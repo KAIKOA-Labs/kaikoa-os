@@ -7,7 +7,7 @@ export type VehicleDraft = {
   registration_expires_on: string | null; insurance_expires_on: string | null;
   serviced_on: string | null; service_interval: "unknown" | "annual"; checked_on: string | null;
 };
-export type VehicleProfile = VehicleDraft & { version: 1; source_note: string; recorded_at: string };
+export type VehicleProfile = VehicleDraft & { version: 1; source_note: string; recorded_at: string; owner_ready?: boolean; maintenance_note?: string | null };
 function object(value: unknown): value is Record<string, unknown> { return !!value && typeof value === "object" && !Array.isArray(value); }
 function text(value: unknown, max: number): value is string { return typeof value === "string" && value.trim() === value && value.length > 0 && Array.from(value).length <= max && !/[\u0000-\u001f\u007f]/.test(value); }
 export function vehicleDate(value: unknown): value is string {
@@ -32,13 +32,15 @@ export function vehicleDraft(value: unknown): VehicleDraft {
 export function parseVehicleProfile(value: unknown): VehicleProfile | null {
   if (!object(value) || value.version !== 1 || !text(value.source_note, 1000) || value.source_note.length < 4 || typeof value.recorded_at !== "string" ||
     !/^\d{4}-\d{2}-\d{2}T(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/.test(value.recorded_at) || !vehicleDate(value.recorded_at.slice(0, 10)) || !Number.isFinite(Date.parse(value.recorded_at))) return null;
-  const { version, source_note, recorded_at, ...draft } = value;
-  void version; void source_note; void recorded_at;
+  const { version, source_note, recorded_at, owner_ready, maintenance_note, ...draft } = value;
+  if (owner_ready !== undefined && typeof owner_ready !== "boolean") return null;
+  if (maintenance_note !== undefined && maintenance_note !== null && !text(maintenance_note, 500)) return null;
+  void version; void source_note; void recorded_at; void owner_ready; void maintenance_note;
   try { vehicleDraft(draft); } catch { return null; }
   return value as VehicleProfile;
 }
 export function emptyVehicleDraft(name: string): VehicleDraft { return { display_name: name, current_base: null, registration_plate: null, condition: "unknown", registration: "unknown", insurance: "unknown", registration_expires_on: null, insurance_expires_on: null, serviced_on: null, service_interval: "unknown", checked_on: null }; }
-export function draftFromProfile(profile: VehicleProfile): VehicleDraft { const { version, source_note, recorded_at, ...draft } = profile; void version; void source_note; void recorded_at; return draft; }
+export function draftFromProfile(profile: VehicleProfile): VehicleDraft { const { version, source_note, recorded_at, owner_ready, maintenance_note, ...draft } = profile; void version; void source_note; void recorded_at; void owner_ready; void maintenance_note; return draft; }
 export type VehicleProfileDocument = { id: string; vehicle_profile: unknown };
 export function vehicleProfilesByEntity(documents: VehicleProfileDocument[], links: { document_id: string; entity_id: string | null }[]): Map<string, VehicleProfile> {
   const byDocument = new Map(documents.map(row => [row.id,row.vehicle_profile]));
@@ -66,8 +68,11 @@ export function vehicleReadiness(value: unknown, today: string): { state: "ready
     { label: expired(p.insurance_expires_on) ? "Insurance renewal needed" : insuranceStates[p.insurance], state: expired(p.insurance_expires_on) || p.insurance === "unpaid" ? "attention" : p.insurance === "paid" ? "good" : "unknown" },
     { label: p.serviced_on === null ? "Service not checked" : p.serviced_on > today ? "Service date needs review" : p.service_interval === "annual" && annualServiceReview(p.serviced_on) <= today ? "Annual service needs review" : p.service_interval === "annual" ? "Annual service done" : "Service date recorded", state: p.serviced_on === null || p.service_interval === "unknown" ? "unknown" : p.serviced_on > today || annualServiceReview(p.serviced_on) <= today ? "attention" : "good" },
   ];
-  const ready = checks.every(check => check.state === "good");
+  const ownerReady = p.owner_ready === true && p.condition === "good" && p.checked_on !== null && p.checked_on <= today;
+  const ready = checks.every(check => check.state === "good") || (ownerReady && checks.slice(0, 3).every(check => check.state === "good") && checks[3].state !== "attention");
   const unknown = checks.every(check => check.state === "unknown");
-  const blocked = expired(p.registration_expires_on);
+  const blocked = expired(p.registration_expires_on) || expired(p.insurance_expires_on);
+  if (ownerReady) checks.push({ label: "Owner-confirmed ready (service separately unverified)", state: "good" });
+  if (p.maintenance_note) checks.push({ label: "Repair note · " + p.maintenance_note, state: "attention" });
   return { state: blocked ? "blocked" : ready ? "ready" : unknown ? "unknown" : "attention", label: blocked ? "Not ready to use" : ready ? "Ready to use" : unknown ? "Readiness not checked" : "Check before use", checks };
 }
