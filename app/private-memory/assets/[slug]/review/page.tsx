@@ -43,7 +43,15 @@ export default function VehicleReviewPage(){
    const raw=docs[0].metadata?.vehicle_profile, profile=parseVehicleProfile(raw);
    if(!profile){setStatus("Existing vehicle profile requires review.");return;}
    setEntityId(e.id);setExisting(raw);
-   setDraft({...draftFromProfile(profile),owner_ready:profile.owner_ready??false,maintenance_note:profile.maintenance_note??null});
+   const base:Draft={...draftFromProfile(profile),owner_ready:profile.owner_ready??false,maintenance_note:profile.maintenance_note??null};
+   // Owner-submitted October 23 inspection and archival evidence; editable review, not an automatic write.
+   if((!profile.checked_on || profile.checked_on < "2026-10-23") && slug==="ktm-duke-690-siargao"){
+    Object.assign(base,{registration_plate:"N899HG",registration:"current",registration_expires_on:"2027-09-30",insurance:"paid",insurance_expires_on:"2027-10-14",condition:"good",checked_on:"2026-10-23",owner_ready:true,maintenance_note:"Front headlight: only high beam works. Check and repair low-beam/other position; avoid low-light riding until corrected."});
+   }
+   if((!profile.checked_on || profile.checked_on < "2026-10-23") && slug==="ktm-freeride-350-siargao"){
+    Object.assign(base,{registration_plate:"N941HG",registration:"current",registration_expires_on:"2027-01-14",insurance:"paid",insurance_expires_on:"2027-02-14",condition:"good",checked_on:"2026-10-23",owner_ready:true,maintenance_note:"Replace chain guard; replacement is with owner. Avoid riding if exposed chain creates an entanglement hazard."});
+   }
+   setDraft(base);
    setSource("Owner confirmation and reviewed insurance / LTO receipts, 2026-10-23. Service completion not inferred.");
    setStatus("");
   })().catch(()=>{if(active)setStatus("Could not load the vehicle.");});
